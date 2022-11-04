@@ -2,9 +2,9 @@
 using Microsoft.Extensions.Options;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using Testertest.Services;
+using PReMaSys.Services;
 
-namespace Testertest.Areas.Identity.Services
+namespace PReMaSys.Areas.Identity.Services
 {
     public class EmailSender: IEmailSender
     {

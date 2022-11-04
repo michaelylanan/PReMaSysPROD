@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Data;
-using Testertest.Data;
-using Testertest.Models;
+using PReMaSys.Data;
+using PReMaSys.Models;
 
-namespace Testertest.Controllers
+namespace PReMaSys.Controllers
 {
     //[Authorize(Roles = "Admin")]
     public class AdminController : Controller

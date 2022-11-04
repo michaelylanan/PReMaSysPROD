@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Testertest.Data;
+using PReMaSys.Data;
 
 using Microsoft.AspNetCore.Identity.UI.Services;
-using Testertest.Services;
-using Testertest.Areas.Identity.Services;
+using PReMaSys.Services;
+using PReMaSys.Areas.Identity.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

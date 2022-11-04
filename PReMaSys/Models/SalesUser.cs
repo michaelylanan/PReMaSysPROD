@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace Testertest.Models
+namespace PReMaSys.Models
 {
     public class SalesUser
     {

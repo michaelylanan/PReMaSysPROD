@@ -1,4 +1,4 @@
-﻿namespace Testertest.Services;
+﻿namespace PReMaSys.Services;
 
 public class AuthMessageSenderOptions
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Testertest.ViewModel
+namespace PReMaSys.ViewModel
 {
     public class EditSalesUserViewModel
     {

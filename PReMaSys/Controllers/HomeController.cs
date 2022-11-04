@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using Testertest.Data;
-using Testertest.Models;
+using PReMaSys.Data;
+using PReMaSys.Models;
 
-namespace Testertest.Controllers
+namespace PReMaSys.Controllers
 {
     public class HomeController : Controller
     {

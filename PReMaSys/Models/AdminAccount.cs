@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 
-namespace Testertest.Models
+namespace PReMaSys.Models
 {
     public class AdminAccount
     {

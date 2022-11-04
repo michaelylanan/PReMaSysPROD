@@ -3,7 +3,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace  Testertest.Areas.Identity.Pages.Account.Manage
+namespace  PReMaSys.Areas.Identity.Pages.Account.Manage
 {
 
     public static class ManageNavPages

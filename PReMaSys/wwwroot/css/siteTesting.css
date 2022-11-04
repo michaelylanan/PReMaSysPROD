@@ -1,0 +1,175 @@
+html {
+    font-size: 14px;
+    /* font-family: 'Roboto', sans-serif; */
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+    
+}
+
+.page-title-header, .point-title-header, .point-total-header, table, .rewards-tab, .login-form, .register-form, .nav-link-form, .nav-link-employee, .nav-link-admin, .reward-option, .option-link, h1,h2,h3,p, h5, button, .card {
+    font-family: 'Barlow', sans-serif;
+}
+
+.mainpage-usrs-pic {
+    width: 230px;
+}
+
+/*CSS COMPILATION HOMEPAGE*/
+
+/* CSS FOR NAVBAR - HOME PAGE*/
+
+.nav-link-form {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    padding: 12px 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+ul.navbar-list {
+    list-style-type: none;
+}
+
+
+.navbar-dark {
+    background-color: #489c3b;
+}
+
+.logoname {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 900;
+  /*font-size:50px;*/
+}
+
+
+/* CSS FOR LOGIN and REGISTER PAGE*/
+
+.login-form, .register-form{
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 80px 600px 0px 600px;
+    text-align: center
+}
+
+.nav-link-employee, .nav-link-admin, .nav-link-form {
+    margin: 5px;
+}
+
+
+.nav-link-admin:hover, .nav-link-employee:hover, .nav-link-form:hover, .option-link:hover {
+    background-color: #75ab6c;
+    color: black;
+
+}
+
+/* CSS FOR ADMIN PAGE*/
+
+/* admin */
+
+.nav-link-admin, .nav-link-employee {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    padding: 12px 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
+
+.option-link {
+    text-decoration: none;
+    color: black;
+    border: 1px solid green;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.performance-options-container {
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.between{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+
+
+/* FOR EMPLOYEES PAGES*/
+
+/* CSS for employee homepage*/
+.rewards-tab, .table-for-rewards {
+    margin-top: 80px;
+}
+
+.person-img, .transaction-reward-img{
+    width: 50px;
+}
+
+/*#table-rewards, #transaction-table, #rank-table, #status-table{
+    border-color: #489c3b;
+}*/
+
+.emp-main-page-table {
+    background-color: #C9F8D1;
+}
+
+.nav-link:hover {
+    background-color: #62bd82;
+}
+
+#reward-img{
+    height: 250px;
+    width:290px;
+}
+
+.card-rewards{
+    width: 295px;
+    margin-left:27px;
+}
+
+/*FOR ADMIN*/
+
+/*css for admin pages*/
+.notificationback-link{
+    width: 100px;
+}
+
+
+.ranking-card {
+    width: 300px;
+}
+
+/*FOR DOMAIN and SUPPORT*/
+
+
+.create-role-form, .create-se-form, .create-r-form, .edit-r-form, .edit-se-form, .edit-role-form, .approve-r-form, .deduct-points-forn {
+    margin-left: 500px;
+    margin-right: 500px;
+}
+
+
+
+
+

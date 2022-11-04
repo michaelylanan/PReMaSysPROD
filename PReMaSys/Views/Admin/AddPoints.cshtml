@@ -1,0 +1,41 @@
+﻿@model Testertest.Models.SalesEmployeeRecord
+
+@{
+    ViewData["Title"] = "AddPoints";
+    Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
+}
+
+<h1 class="text-center mt-5">AddPoints</h1>
+
+<h4 class="text-center mb-5">SalesEmployeeRecord</h4>
+<hr />
+
+        <form asp-action="AddPoints" class="add-points-form mt-5">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SEmployeeRecordsID" />
+            <div class="form-group mb-3">
+                <label asp-for="EmployeeNo" class="control-label"></label>
+                <input asp-for="EmployeeNo" class="form-control" />
+                <span asp-validation-for="EmployeeNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="EmployeeUsername" class="control-label"></label>
+                <input asp-for="EmployeeUsername" class="form-control" />
+                <span asp-validation-for="EmployeeUsername" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="EmployeePoints" class="control-label"></label>
+                <input asp-for="EmployeePoints" class="form-control" />
+                <span asp-validation-for="EmployeePoints" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3 mt-5">
+                <input type="submit" value="Add Points" class="btn btn-success" />
+                  <a asp-action="ESalesProfitPoints" class="btn btn-outline-success">Back to List</a>
+            </div>
+        </form>
+
+
+

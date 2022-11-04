@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Testertest.Models.SalesEmployeeRecord>
+
+@{
+    ViewData["Title"] = "ESalesProfitPoints";
+    Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
+}
+
+<h1 class="text-center mt-5">ESalesProfitPoints</h1>
+
+@*<p class="mt-5 mb-5">
+    <a href="#" class="btn btn-success p-2">Create New +</a>
+</p>*@
+<table class="table table-hover" id="espoints">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeePicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeUsername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeFirstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeePoints)
+            </th>
+   @*         <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" style="color:red; font-family:'Franklin Gothic Book'"> No rows match the Search Criteria!</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeNo)
+                    </td>
+                    <td>
+                        <img style="height:2em" src="@Url.Content(item.EmployeePicture)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeUsername)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeFirstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeLastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeePoints)
+                    </td>
+@*                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateModified)
+                    </td>*@
+                    <td>
+                        <a asp-action="AddPoints" asp-route-id="@item.SEmployeeRecordsID" class="btn btn-info"><i class="fa-solid fa-plus"></i></a> 
+                        <a asp-action="DeductPoints" asp-route-id="@item.SEmployeeRecordsID" class="btn btn-danger"><i class="fa-solid fa-minus"></i></a>
+                    </td>
+                </tr>
+        }
+
+}
+    </tbody>
+</table>
+
+ <script src="https://code.jquery.com/jquery-3.5.1.js"></script>"
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#espoints').DataTable();
+});
+</script>
+<a class="notificationback-link btn btn-outline-success p-2" href="AdminDashboard" type="button">Back</a>

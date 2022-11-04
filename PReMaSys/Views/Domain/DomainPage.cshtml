@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "DomainPage";
+    Layout = "~/Views/Shared/DomainAdminDash.cshtml";
+}
+
+<h1>DomainPage</h1>
+<body class="overflow-hidden">
+<div class="performance-options-container">
+    <div class="performance-options d-flex">
+
+       @*<a class="option-link" href="~/Domain/AdminRoles"  role="button" >
+          <h1>Admin Roles</h1>    
+          <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
+       </a>*@
+       <a class="option-link" href="~/Domain/ListAdminRoles"  role="button" >
+          <h1>Admin Roles</h1>    
+          <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
+       </a>
+       <a class="option-link ms-3 me-3" href="~/Domain/DomainPage" role="button">
+          <h1>Reports</h1>
+          <img src="~/img/reportspic.png" class="mainpage-usrs-pic"/>
+      </a>
+      <a class="option-link me-3" href="~/Domain/SEPoints" role="button">
+          <h1>Sales Profit Points</h1>
+          <img src="~/img/profitspic.png" class="mainpage-usrs-pic"/>
+      </a>
+       <a class="option-link" href="~/Domain/ApproveRewards" role="button">
+          <h1>Rewards</h1>
+          <img src="~/img/rewardspic.png" class="mainpage-usrs-pic"/>
+      </a>
+   @*     <a class="option-link" href="~/Domain/AdminRoles">Admin Roles</a> <br />
+        <a class="option-link" href="~/Domain/DomainPage">Reports</a> <br />
+        <a class="option-link between" href="~/Domain/SEPoints">Sales-Profit Points</a> <br />
+        <a class="option-link" href="~/Domain/ApproveRewards">Rewards</a> <br />*@
+    </div>
+</div>
+</body>
+
+
+ 

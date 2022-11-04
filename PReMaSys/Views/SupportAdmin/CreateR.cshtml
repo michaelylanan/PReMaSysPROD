@@ -1,0 +1,67 @@
+﻿@model Testertest.Models.Rewards
+
+@{
+    ViewData["Title"] = "CreateR";
+    Layout = "~/Views/Shared/SupportAdminDash.cshtml";
+}
+
+<h1 class="text-center mt-4">CreateR</h1>
+
+<h4 class="text-center mb-4">Rewards</h4>
+<hr />
+
+         <form asp-action="CreateR" class="create-r-form mt-5" enctype="multipart/form-data">
+            <div class="form-group  mb-3">
+               @* <label asp-for="Picture" class="control-label"></label>*@
+                <input asp-for="Picture" class="form-control" type="file" accept="image/*" />
+                <span asp-validation-for="Picture" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-3">
+               @* <label asp-for="RewardName" class="control-label"></label>*@
+                <input asp-for="RewardName" placeholder="Reward Name" class="form-control" />
+                <span asp-validation-for="RewardName" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-3">
+                <label asp-for="Category" class="control-label"></label>
+                <select asp-for="Category" class="form-control"
+                        asp-items="Html.GetEnumSelectList<Category>()" required></select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-3">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-3">
+               @* <label asp-for="RewardCost" class="control-label"></label>*@
+                <input asp-for="RewardCost" placeholder="Reward Cost" class="form-control" />
+                <span asp-validation-for="RewardCost" class="text-danger"></span>
+            </div>
+            <div class="form-group  mb-3">
+               @* <label asp-for="PointsCost" class="control-label"></label>*@
+                <input asp-for="PointsCost" placeholder="Point Cost"class="form-control" />
+                <span asp-validation-for="PointsCost" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+            <label asp-for="DateAdded" class="control-label"></label>
+            <input asp-for="DateAdded" class="form-control" />
+            <span asp-validation-for="DateAdded" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+            <label asp-for="DateModified" class="control-label"></label>
+            <input asp-for="DateModified" class="form-control" />
+            <span asp-validation-for="DateModified" class="text-danger"></span>
+            </div>*@
+            <div class="form-group mb-3 mt-5">
+                <input type="submit" value="Create" class="btn btn-success" />
+                  <a asp-action="IndexR" class="btn btn-outline-success">Back to List</a>
+            </div>
+        </form>
+ 
+       
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

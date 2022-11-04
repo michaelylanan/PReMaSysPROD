@@ -1,0 +1,61 @@
+﻿@model Testertest.Models.AdminRoles
+
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="text-center mt-4">Create Role</h1>
+
+<h4 class="text-center mb-4">Admin Roles</h4>
+<hr />
+<form asp-action="CreateRole" class="create-role-form mt-5" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="input-container mb-3">
+        <label asp-for="Role" class="control-label"></label>
+        <select asp-for="Role" class="form-control"
+                asp-items="Html.GetEnumSelectList<Role>()" required></select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        <label asp-for="AdminPicture" class="control-label"></label>
+        <input asp-for="AdminPicture" class="form-control" type="file" accept="image/*" />
+        <span asp-validation-for="AdminPicture" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        @*<label asp-for="AdminEmployeeNo" class="control-label"></label>*@
+        <input asp-for="AdminEmployeeNo" placeholder="Admin Employee No." class="form-control" />
+        <span asp-validation-for="AdminEmployeeNo" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        @*<label asp-for="AdminFirstname" class="control-label"></label>*@
+        <input asp-for="AdminFirstname" placeholder="Admin First Name." class="form-control" />
+        <span asp-validation-for="AdminFirstname" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        @*<label asp-for="AdminLastname" class="control-label"></label>*@
+        <input asp-for="AdminLastname" placeholder="Admin Last Name" class="form-control" />
+        <span asp-validation-for="AdminLastname" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        @* <label asp-for="AdminEmail" class="control-label"></label>*@
+        <input asp-for="AdminEmail" placeholder="Admin E-mail" class="form-control" />
+        <span asp-validation-for="AdminEmail" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        @* <label asp-for="ContactNo" class="control-label"></label>*@
+        <input asp-for="ContactNo" placeholder="Contact No." class="form-control" />
+        <span asp-validation-for="ContactNo" class="text-danger"></span>
+    </div>
+    <div class="input-container mb-3">
+        @* <label asp-for="Password" class="control-label"></label>*@
+        <input asp-for="Password" placeholder="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="input-container mb-3 mt-5">
+        <input type="submit" value="Create" class="btn btn-success" />
+        <a href="AdminRoles" type="button" class="btn btn-outline-success">Back to List</a>
+    </div>
+
+</form>

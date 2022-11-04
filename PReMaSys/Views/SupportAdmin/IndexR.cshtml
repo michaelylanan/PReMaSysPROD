@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Testertest.Models.Rewards>
+
+@{
+    ViewData["Title"] = "IndexR";
+    Layout = "~/Views/Shared/SupportAdminDash.cshtml";
+}
+
+<h1 class="text-center mt-5 mb-5">Index</h1>
+
+<p>
+    <a asp-action="CreateR" class="btn btn-success p-2 mb-3 ms-5" >Create New +</a>
+</p>
+<div class="px-5">
+<table class="table table-hover" id=datatable>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PointsCost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" style="color:red; font-family:'Franklin Gothic Book'"> No rows match the Search Criteria!</td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img style="height:2em" src="@Url.Content(item.Picture)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PointsCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateModified)
+                    </td>
+                    <td>
+                        <a asp-action="EditR" asp-route-id="@item.RewardsInformationId" class="btn btn-info"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a asp-action="DeleteR" asp-route-id="@item.RewardsInformationId" class="btn btn-danger" onclick='return confirm("Are You Sure?");'><i class="fa-regular fa-trash-can"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>"
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#datatable').DataTable();
+});
+</script>
+
+</div>
+<a class="notificationback-link btn btn-outline-success p-2 mt-5 ms-5" href="SupportPage" type="button">Back</a>

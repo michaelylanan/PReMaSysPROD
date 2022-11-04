@@ -1,0 +1,229 @@
+html {
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+.LoginForm {
+    padding: 16px;
+}
+
+.navbar-container{
+    height: 70px;
+    background-color: forestgreen;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.navbar,
+.main {
+    width: 1320px;
+}
+.navbar{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-list {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-item{
+    list-style: none
+}
+
+.navbar-item:not(:last-child){
+    margin-right: 10px;
+}
+
+.nav-link {
+    display: block;
+    text-align: center;
+    width: 100px;
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    padding: 12px 20px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+
+/*input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 5px 0;
+}*/
+
+/*Login Page CSS*/
+
+.login-form, .register-form{
+    margin: 40px auto auto;
+    width: 500px;
+    border: 1px solid green;
+    padding: 30px 30px;
+    border-radius: 10px;
+}
+
+.login-header, .register-header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.input-container {
+    margin-bottom: 15px; 
+}
+
+.input-container > input:not([type=checkbox]) {
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid silver;
+    width: 100%;
+}
+
+.main{
+    margin: auto;
+}
+
+.login-button, .register-button {
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+/*Admin Dashbaord CSS*/
+
+.peformance-options{
+    display: flex  
+}
+.option-link {
+    display: flex;
+    text-align: center;
+    width: 120px;
+    text-decoration: none;
+    font-size: 15px;
+    color: black;
+    padding: 12px 20px;
+    border: 1px solid green;
+    border-radius: 10px;
+    justify-content:center;
+    align-items: center
+}
+
+.option-link:not(:last-child){
+    margin:15px;
+}
+
+.performance-options-container{
+    height: calc(100vh - 70px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.performance-options{
+    display:flex;
+}
+
+/*Notification Page CSS*/
+
+.notification-header{
+    margin-top:20px;
+    font-size: 60px;
+    text-align:center;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+.notificationback-link {
+    margin-top: 100px;
+}
+
+/*Employee Home Page*/
+
+.point-container, .rewards-tab{
+    text-align:center;
+    margin-top: 38px;
+}
+
+
+
+.rewards-tab{
+    margin-top: 85px;
+}
+
+.reward-option {
+    border: 2px solid;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    border-color: green;
+}
+.reward-option.middle{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.rewards-table {
+    margin-top: 100px;
+    margin-bottom: 80px;
+}
+
+
+.reward-detail-button {
+    margin-top: 100px;
+    padding: 15px;
+    text-align: center;
+    background-color: darkseagreen;
+    border-radius: 10px;
+    border-color:darkseagreen;
+}
+
+
+.reward-box{
+    text-align:center;
+}
+
+/*transaction history*/
+
+.transaction-reward-img{
+    height:100px;
+    text-align:center;
+}
+
+image-col{
+    text-align:center;
+}
+
+/*employee rank*/
+.person-img{
+    height:60px;
+}
+
+

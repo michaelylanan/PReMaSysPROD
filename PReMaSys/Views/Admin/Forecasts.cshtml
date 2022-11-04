@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Forecasts";
+    Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
+}
+<a class="option-link" href ="~/Admin/ReportsPage" style="width:15%">< Go Back to Reports</a>
+<h1 style="margin-top:20px; text-align:center; background-color:lightgray; padding:20px; border-radius:5px">PROFIT FORECAST</h1>
+<div class="container" style="margin-top:20px; border: 2px forestgreen solid;">
+    <img src="~/img/forecast.png" style="padding:5px"/>
+</div>
+
+<div class="mb-3" style="margin-top:20px">
+    <label for="period">Choose Time Frame :</label>
+
+    <select name="period" id="period" style="font-size:15px">
+        <option value="weekly">Weekly</option>
+        <option value="monthly">Montly</option>
+        <option value="quarterly">Quarterly</option>
+        <option value="Yearly">Yearly</option>
+    </select>
+</div>
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Products Sold</th>
+            <th>July 2020</th>
+            <th>August 2020</th>
+            <th>September 2020</th>
+            <th>October 2020</th>
+            <th>November 2020</th>
+            <th>December 2020</th>
+        </tr>
+        <tr>
+            <td>Product 1</td>
+            <td>Php 100,000</td>
+            <td>Php 200,000</td>
+            <td>Php 300,000</td>
+            <td>Php 150,000</td>
+            <td>Php 280,000</td>
+            <td>Php 400,000</td>
+        </tr>
+        <tr>
+            <td>Product 2</td>
+            <td>Php 110,000</td>
+            <td>Php 280,000</td>
+            <td>Php 350,000</td>
+            <td>Php 250,000</td>
+            <td>Php 180,000</td>
+            <td>Php 300,000</td>
+        </tr>
+         <tr>
+            <td>Product 3</td>
+            <td>Php 90,000</td>
+            <td>Php 210,000</td>
+            <td>Php 290,000</td>
+            <td>Php 170,000</td>
+            <td>Php 180,000</td>
+            <td>Php 500,000</td>
+        </tr>
+        <tr>
+            <td>Product 4</td>
+            <td>Php 110,000</td>
+            <td>Php 280,000</td>
+            <td>Php 350,000</td>
+            <td>Php 250,000</td>
+            <td>Php 180,000</td>
+            <td>Php 300,000</td>
+        </tr>
+    </table>
+
+     <a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
+
+</div>
+

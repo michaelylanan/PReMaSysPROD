@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "Forecasts";
+    Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
+}
+
+<a class="option-link" href ="~/Admin/ReportsPage" style="width:30%">< Go Back to Reports</a>
+<div class="container" style="background-color:forestgreen">
+     <div style="text-align:center; font-size:30px; padding:20px; background-color:white; border:1px forestgreen solid">SUMMARY OF NET PROFIT: DESCRIPTIVE ANALYSIS</div>
+     <div style="padding:10px">
+         <div style="font-weight:bold; padding:10px; color:white">Bar Graph: UNIT SOLD PER PRODUCT</div>
+         <img src="~/img/descript.png" style="width:100%"/>
+     </div>
+     <div style="margin:10px">
+         <div style="font-weight:bold; padding:10px; color:white">Bar Graph: PROFIT GENERATED PER PRODUCT</div>
+         <img src="~/img/linegraph.png" style="width:100%"/>
+     </div>
+     <div>
+
+ <div style="text-align:center; font-size:30px; padding:20px; background-color:white">Data Interpretation</div>
+       <table class="table"style="font-size:15px; background-color:white">
+              <tr>
+                  <th colspan="4">GRAPH</th>
+              </tr>
+              <tr>
+                  <th>Product</th>
+                  <th>Units Sold</th>
+                  <th>Gross Sales</th>
+                  <th>Net Profit</th>
+              </tr>
+              <tr>
+                  <td>Product 1</td>
+                  <td>The total number of Unit Sold is: 1,475 </td>
+                  <td>The Gross Sales this month is  PHP 5,000,000.00</td>
+                  <td>The Net Profit Generated this month is  PHP  2,500,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 2</td>
+                  <td>The total number of Unit Sold is: 2,268</td>
+                  <td>The Gross Sales this month is  PHP  4,000,000.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  2,000,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 3</td>
+                  <td>The total number of Unit Sold is: 1,685</td>
+                  <td>The Gross Sales this month is  PHP  4,500,000.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  1,500,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 4</td>
+                  <td>The total number of Unit Sold is: 2,817</td>
+                  <td>The Gross Sales this month is  PHP  12,300,000.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  7,000,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 5</td>
+                  <td>The total number of Unit Sold is: 1,123</td>
+                  <td>The Gross Sales this month is  PHP  1,459,600.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  700,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 6</td>
+                  <td>The total number of Unit Sold is: 1,568</td>
+                  <td>The Gross Sales this month is  PHP  456,987.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  100,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 7</td>
+                  <td>The total number of Unit Sold is: 2,436</td>
+                  <td>The Gross Sales this month is  PHP  1,212,121.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  800,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 8</td>
+                  <td>The total number of Unit Sold is: 1,189</td>
+                  <td>The Gross Sales this month is  PHP  458,712.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  150,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 9</td>
+                  <td>The total number of Unit Sold is: 667</td>
+                  <td>The Gross Sales this month is  PHP  6,587,412.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  3,500,000.00 </td>
+              </tr>
+              <tr>
+                  <td>Product 10</td>
+                  <td>The total number of Unit Sold is: 748</td>
+                  <td>The Gross Sales this month is  PHP  3,333,333.00 </td>
+                  <td>The Net Profit Generated this month is  PHP  1,000,000.00 </td>
+              </tr>
+          </table>
+     </div>
+</div>
+ <button onClick="window.print()">Print/Save File</button>
+ <div class="back-button">
+      <a class="notificationback-link btn btn-outline-success p-2 mt-5" href="ReportsPage" type="button">Back</a>
+ </div>
+
+ <script>
+     function printFunction() { 
+         window.print(); 
+      }
+</script>

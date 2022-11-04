@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Testertest.Models.SalesEmployeeRecord>
+
+@{
+    ViewData["Title"] = "SEPoints";
+    Layout = "~/Views/Shared/DomainAdminDash.cshtml";
+}
+
+<h1 class="text-center mt-5 mb-5">Sales Employee Points</h1>
+
+
+<div class= "px-5">
+<table class="table table-hover" id="example">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeePicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeFirstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeLastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeBirthdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeePoints)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+                <tr>
+                    <td colspan="4" style="color:red; font-family:'Franklin Gothic Book'"> No rows match the Search Criteria!</td>
+                </tr>
+        }
+        else{
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeNo)
+                    </td>
+                    <td>
+                        <img style="height:2em" src="@Url.Content(item.EmployeePicture)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeFirstname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeLastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeBirthdate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeEmail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeePoints)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateAdded)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateModified)
+                    </td>
+                </tr>
+        }
+
+    }
+    </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
+</script>
+</div>
+
+ <a class="notificationback-link btn btn-outline-success p-2 mt-3 ms-5 " href="DomainPage" type="button">Back</a>

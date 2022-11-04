@@ -1,0 +1,82 @@
+@model IEnumerable<Testertest.Models.Rewards>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
+
+}
+
+<div class="point-container text-center mt-5">
+    <h1 class="point-title-header">My Points</h1>
+    <h2 class="point-total-header"><u>5000</u></h2>
+</div>
+<div class="rewards-tab text-center">
+    <a href="" class="reward-option btn btn-success p-3">Travel</a>
+    <a href="" class="reward-option middle btn btn-success p-3">Food</a>
+    <a href="" class="reward-option  btn btn-success p-3">Discounts</a>
+    <a href="" class="reward-option  btn btn-success p-3">Others</a>
+</div>
+
+<section style="margin-bottom: 70px;">
+    <div style="margin-top: 30px; /*background-color: #f1fdf3;*/ border-radius: 5px;">
+        <table style="display: grid; grid-template-columns: auto auto auto auto; margin:0px 0px 0px 90px">
+            @if (Model.Count() == 0)
+            {
+                <tr>
+                    <td colspan="4" style="color:red; font-family:'Franklin Gothic Book'"> No rows match the Search Criteria!</td>
+                </tr>
+              
+            }
+       @*  </table>*@
+       
+            else
+            {
+              <div class="row"> 
+                @foreach (var item in Model)
+                {
+               
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card text-bg-light border-success text-center card-rewards mb-4 mt-5">
+                      <div class="card-header text-bg-success">Travel Reward</div>
+                      <img src="@Url.Content(item.Picture)" class="card-img-top mx-auto" id="reward-img" alt="...">
+                      <div class="card-body text-center">
+                        <figure>
+                          <h5 class="card-title text-success"><figcaption>@Html.DisplayFor(modelItem => item.RewardName)</figcaption></h5>
+                          <p class="card-text mt-3 mb-4"><figcaption>@Html.DisplayFor(modelItem => item.PointsCost) Points</figcaption></p>
+                         <figcaption><button type="button" class="btn btn-success mt-3">Purchase</button>@*<input type="submit" value="Purchase" class="btn btn hover btn btn-secondary" style="background-color:#ecf0dd; border-radius:8px; border-color:black" />*@</figcaption>
+                       </figure>
+                     </div>
+                    </div> 
+                  </div>
+                }
+             </div>
+            }
+       </table>
+    </div>
+</section>
+
+@*<div class="row">
+   <div class="col-lg-3 col-md-4 col-sm-12">
+    <div class="card text-bg-light border-success mb-4">
+    <div class="card-header text-bg-success">Travel Reward</div>
+    <img src="~/img/girl.png" class="card-img-top mx-auto" id="reward-img" alt="...">
+    <div class="card-body text-center">
+     <h5 class="card-title text-success">20% Discount</h5>
+     <p class="card-text mt-3 mb-4">Php 60.00</p>
+     <a href="#" class="btn btn-success">Purchase</a>
+    </div>
+   </div>
+  </div>
+    <div class="col-lg-3 col-md-4 col-sm-12">
+    <div class="card text-bg-light border-success mb-4">
+    <div class="card-header text-bg-success">Travel Reward</div>
+    <img src="~/img/girl.png" class="card-img-top mx-auto" id="reward-img" alt="...">
+    <div class="card-body text-center">
+     <h5 class="card-title text-success">20% Discount</h5>
+     <p class="card-text mt-3 mb-4">Php 60.00</p>
+     <a href="#" class="btn btn-success">Purchase</a>
+    </div>
+   </div>
+  </div>
+</div>*@
+
+

@@ -1,0 +1,86 @@
+﻿@{ 
+    ViewData["Title"] = "Notification Page"; 
+      //Layout = "~/Views/Shared/_LayoutLoggedin.cshtml"; 
+  Layout = "~/Views/Shared/SupportAdminDash.cshtml";
+   
+} 
+
+<div class="px-5">
+  <h1 class="page-title-header text-center mt-5"> Notifications</h1>
+  <table class="table table-hover border-success mt-3" id="notifTable">
+    <thead>
+    <tr>
+      <th>Employee ID</th>
+      <th>Employee Name</th>
+      <th>Purchased Reward Name</th>
+      <th>Status</th>
+    </tr> 
+    </thead>
+    <tbody>
+    <tr>
+      <td>234567</td>
+      <td>Michael Ylanan</td>
+      <td>20% Discount on Starbucks</td>
+      <td>
+        <select name="reward-status" id="rew">
+          <option value="prcoessing">Processing</option>
+          <option value="claimnow">Claim Reward Now!</option>
+          <option value="opel">Unclaimed</option>
+          <option value="audi">Claimed</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>456123</td>
+      <td> Nicole Cepria</td>
+      <td>150 Pesos Gift Card</td>
+      <td>
+        <select name="reward-status" id="rew">
+          <option value="prcoessing">Processing</option>
+          <option value="claimnow">Claim Reward Now!</option>
+          <option value="opel">Unclaimed</option>
+          <option value="audi">Claimed</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>349038</td>
+      <td>Miguel Magallanes</td>
+      <td>10% Discount Girodano</td>
+      <td>
+        <select name="reward-status" id="rew">
+          <option value="prcoessing">Processing</option>
+          <option value="claimnow">Claim Reward Now!</option>
+          <option value="opel">Unclaimed</option>
+          <option value="audi">Claimed</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>565728</td>
+      <td> Miguel Del Rosario</td>
+      <td>150 Pesos Gift Card</td>
+      <td>
+        <select name="reward-status" id="rew">
+          <option value="prcoessing">Processing</option>
+          <option value="claimnow">Claim Reward Now!</option>
+          <option value="opel">Unclaimed</option>
+          <option value="audi">Claimed</option>
+        </select>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#notifTable').DataTable();
+});
+</script>
+
+ <button type="button" class="btn btn-success mt-3 p-2">Update</button>
+  <a class="notificationback-link btn btn-outline-success mt-3 p-2 " href="SupportPage" type="button">Back</a>
+</div>

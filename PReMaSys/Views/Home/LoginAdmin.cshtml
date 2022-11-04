@@ -1,0 +1,64 @@
+﻿@model Testertest.Models.AccLogin
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+
+
+@*<form class="login-form" onsubmit="document.location.href = `${document.location.origin}/Admin/AdminDashboard`; return false;">
+      <div class="login-header">
+        <h1>@ViewData["Title"]</h1>
+        <p>Sign in and start managing your employees!</p>
+    </div>
+  <div class="input-container mb-3">
+    <input type="text"  class="form-control" placeholder="Enter Username" name="un" required>
+  </div>
+  <div class="input-container mb-3">
+    <input type="password" class="form-control"placeholder="Enter Password" name="pswrd" required>
+  </div>
+  <div class="input-container mb-3">
+    <input type="checkbox" checked="checked" name="remember"> Remember me
+  </div>
+ <button type="submit" class="btn btn-success form-btn">Login</button>
+     
+
+</form>*@
+
+<form class="login-form" asp-action="LoginAdmin">
+     <div class="login-header">
+        <h1>@ViewData["Title"]</h1>
+        <p>Sign in and start managing your employees!</p>
+    </div>
+     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+       <div class="input-container mb-3 mt-5">
+        <div class="dropdown">
+  <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Pick a Role:
+  </button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" asp-action="Login" asp-controller="Home">Domain</a></li>
+    <li><a class="dropdown-item" asp-action="LoginSA" asp-controller="Home">Support Admin</a></li>
+    <li><a class="dropdown-item" asp-action="LoginAdmin" asp-controller="Home">Admin</a></li>
+    <li><a class="dropdown-item" asp-action="LoginSE" asp-controller="Home">Sales Employee</a></li>
+  </ul>
+</div>
+     </div>
+     <div class="input-container mb-3">
+        <input asp-for="AdminEmail" placeholder="Email/Username" class="form-control" />
+        <span asp-validation-for="AdminEmail" class="text-danger"></span>
+     </div>
+     <div class="input-container mb-3">
+        <input asp-for="password" placeholder="Password" class="form-control" />
+        <span asp-validation-for="password" class="text-danger"></span>
+     </div>
+     <div class="form-group b-3">
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+     </div>
+     <button type="submit" class="btn btn-success form-btn mt-3">Login</button>
+ </form>
+  
+
+ <a  class="notificationback-link" asp-controller="Employee" asp-action="EmployeeHomePage">Employee Home Page</a>  
+

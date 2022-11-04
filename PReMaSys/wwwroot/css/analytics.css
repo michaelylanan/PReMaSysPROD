@@ -1,0 +1,38 @@
+﻿.aitem1 {
+    grid-area: header;
+}
+
+.aitem2 {
+    grid-area: menu;
+}
+
+.aitem3 {
+    grid-area: main;
+}
+
+.aitem4 {
+    grid-area: right;
+}
+
+.aitem5 {
+    grid-area: footer;
+}
+
+.agrid-container {
+    display: grid;
+    grid-template-areas:
+        'header header header header header header'
+        'menu main main main main main'
+        'menu footer footer footer footer footer';
+    gap: 10px;
+    background-color: forestgreen;
+    padding: 10px;
+}
+
+    .agrid-container > div {
+        background-color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 30px;
+    }
+

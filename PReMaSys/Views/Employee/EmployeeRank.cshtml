@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Ranking Page";
+   Layout = "~/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
+}
+
+<h1 class="page-title-header text-center mt-5"> Employee Rankings</h1>
+
+<table class="table table-hover border-success text-center mt-5" id="ranktable">
+<thead>
+  <tr>
+    <th> Ranking</th>
+    <th>Employee </th>
+    <th> Sales </th>
+    <th>Profit</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td> 1st </td>
+    <td><img src="/img/person.png" class="person-img" alt="person"></td>
+    <td>Php 1.5M</td>
+    <td>Php 800k</td>
+  </tr>
+
+   <tr>
+    <td> 2nd </td>
+   <td><img src="/img/person.png" class="person-img" alt="person"></td>
+    <td>Php 1.8M</td>
+    <td>Php 700k</td>
+  </tr>
+
+  <tr>
+    <td> 3rd </td>
+    <td><img src="/img/person.png" class="person-img" alt="person"></td>
+    <td>Php 1.5M</td>
+    <td>Php 800k</td>
+  </tr>
+  </tbody>
+</table>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#ranktable').DataTable();
+});
+</script>

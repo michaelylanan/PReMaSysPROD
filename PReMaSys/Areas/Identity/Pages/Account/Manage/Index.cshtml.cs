@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Testertest.Data;
+using PReMaSys.Data;
 
-namespace Testertest.Areas.Identity.Pages.Account.Manage
+namespace PReMaSys.Areas.Identity.Pages.Account.Manage
 {
     public class IndexModel : PageModel
     {

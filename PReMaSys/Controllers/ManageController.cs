@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Testertest.Data;
-using Testertest.ViewModel;
+using PReMaSys.Data;
+using PReMaSys.ViewModel;
 
-namespace Testertest.Controllers
+namespace PReMaSys.Controllers
 {
     /*[Authorize(Roles ="Domain")]*/
     public class ManageController : Controller

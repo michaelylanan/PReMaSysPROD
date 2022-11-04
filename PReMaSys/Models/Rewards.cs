@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Policy;
-using Testertest.Data;
+using PReMaSys.Data;
 
-namespace Testertest.Models
+namespace PReMaSys.Models
 {
     public class Rewards
     {

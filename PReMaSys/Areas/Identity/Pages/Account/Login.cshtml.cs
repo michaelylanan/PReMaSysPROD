@@ -1,17 +1,10 @@
 ﻿#nullable disable
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
+using System.ComponentModel.DataAnnotations;
 using Testertest.Data;
 
 namespace Testertest.Areas.Identity.Pages.Account
@@ -90,22 +83,22 @@ namespace Testertest.Areas.Identity.Pages.Account
                     var user = await _userManager.FindByEmailAsync(Input.Email);
                     var roles = await _userManager.GetRolesAsync(user);
 
-                    if (roles.Contains("Domain"))
-                    {
-                        return Redirect("~/Domain/DomainPage");
-                    }
-                    else if (roles.Contains("Support"))
-                    {
-                        return Redirect("~/SupportAdmin/SupportPage");
-                    }
-                    else if (roles.Contains("Sales"))
-                    {
-                        return Redirect("~/Employee/EmployeeHomePage");
-                    }
-                    else if (roles.Contains("Admin"))
-                    {
-                        return Redirect("~/Admin/AdminDashboard");
-                    }
+                    //if (roles.Contains("Domain"))
+                    //{
+                    //    return Redirect("~/Domain/DomainPage");
+                    //}
+                    //else if (roles.Contains("Support"))
+                    //{
+                    //    return Redirect("~/SupportAdmin/SupportPage");
+                    //}
+                    //else if (roles.Contains("Sales"))
+                    //{
+                    //    return Redirect("~/Employee/EmployeeHomePage");
+                    //}
+                    //else if (roles.Contains("Admin"))
+                    //{
+                    //    return Redirect("~/Admin/AdminDashboard");
+                    //}
                     /* else if (roles.Contains("Admin"))
                      {
                          return Redirect("~/Admin/AdminDashboard");
@@ -115,7 +108,7 @@ namespace Testertest.Areas.Identity.Pages.Account
                          return Redirect("~/Employee/EmployeeHomePage");
                      }*/
                     return LocalRedirect(returnUrl);//redirect to this page returnUrl = ("~/")
-                    
+
 
                 }
                 if (result.RequiresTwoFactor)

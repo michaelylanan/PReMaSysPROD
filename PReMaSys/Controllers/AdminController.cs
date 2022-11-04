@@ -1,34 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
-using Microsoft.EntityFrameworkCore;
+using System.Data;
 using Testertest.Data;
 using Testertest.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json.Linq;
-
-using System.IO;
-using System.Web;
-using Microsoft.AspNetCore.Http;
-
-
-using System.IO;
-using System.Data;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-
-
-using System.IO;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Testertest.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -39,66 +16,66 @@ namespace Testertest.Controllers
             _context = context;
         }
 
-      /*  //For Excel
-        private IHostingEnvironment Environment;
-        public AdminController(IHostingEnvironment _environment)
-        {
-            Environment = _environment;   
-        }*/
+        /*  //For Excel
+          private IHostingEnvironment Environment;
+          public AdminController(IHostingEnvironment _environment)
+          {
+              Environment = _environment;   
+          }*/
         public IActionResult ReportsPage()
         {
             return View();
         }
 
-      /*  [HttpPost]
-        public IActionResult ReportsPage(IFormFile postedFile, IXLWorksheet workSheet, Row row, object cell)
-        {
-            string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            string fileName = Path.GetFileName(postedFile.FileName);
-            string filePath = Path.Combine(path, fileName);
-            using (FileStream stream = new FileStream(filePath, FileMode.Create))
-            {
-                postedFile.CopyTo(stream);
-            }
-            DataTable dt = new DataTable();
-            using (XLWorkbook workBook = new XLWorkbook(filePath))
-            {
-                workSheet = workBook.Worksheet(1);
-                bool firstRow = true;
-                foreach (IXLRow rowin in workSheet.Rows())
-                {
-                    if (firstRow)
-                    {
-                        foreach (IXLCell cellin in row.Cells())
-                        {
-                            dt.Columns.Add(cell.Value.ToString());
-                        }
-                        firstRow = false;
-                    }
-                    else
-                    {
-                        dt.Rows.Add();
-                        int i = 0;
-                        foreach (IXLCell cellin in row.Cells())
-                        {
-                            dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
-                            i++;
-                        }
-                    }
-                }
-            }
+        /*  [HttpPost]
+          public IActionResult ReportsPage(IFormFile postedFile, IXLWorksheet workSheet, Row row, object cell)
+          {
+              string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
+              if (!Directory.Exists(path))
+              {
+                  Directory.CreateDirectory(path);
+              }
+              string fileName = Path.GetFileName(postedFile.FileName);
+              string filePath = Path.Combine(path, fileName);
+              using (FileStream stream = new FileStream(filePath, FileMode.Create))
+              {
+                  postedFile.CopyTo(stream);
+              }
+              DataTable dt = new DataTable();
+              using (XLWorkbook workBook = new XLWorkbook(filePath))
+              {
+                  workSheet = workBook.Worksheet(1);
+                  bool firstRow = true;
+                  foreach (IXLRow rowin in workSheet.Rows())
+                  {
+                      if (firstRow)
+                      {
+                          foreach (IXLCell cellin in row.Cells())
+                          {
+                              dt.Columns.Add(cell.Value.ToString());
+                          }
+                          firstRow = false;
+                      }
+                      else
+                      {
+                          dt.Rows.Add();
+                          int i = 0;
+                          foreach (IXLCell cellin in row.Cells())
+                          {
+                              dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
+                              i++;
+                          }
+                      }
+                  }
+              }
 
-            ViewBag.Data = dt;
+              ViewBag.Data = dt;
 
-            System.IO.File.Delete(filePath);
+              System.IO.File.Delete(filePath);
 
-            return View();
-            
-        }*/
+              return View();
+
+          }*/
 
 
         public IActionResult AdminDashboard()
@@ -144,7 +121,7 @@ namespace Testertest.Controllers
             return View(list);
         }
 
-       
+
         public IActionResult AddPoints(int? id)
         {
             if (id == null)

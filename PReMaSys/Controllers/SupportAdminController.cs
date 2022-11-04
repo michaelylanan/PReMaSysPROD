@@ -1,27 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Testertest.Data;
 using Testertest.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json.Linq;
-
-using System.IO;
-using System.Web;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
-using System.Data;
-using Microsoft.AspNetCore.Identity;
 using Testertest.ViewModel;
 
 namespace Testertest.Controllers
 {
-    [Authorize(Roles = "Support")]
+    //[Authorize(Roles = "Support")]
     public class SupportAdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;

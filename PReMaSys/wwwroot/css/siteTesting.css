@@ -12,7 +12,7 @@ html {
     
 }
 
-.page-title-header, .point-title-header, .point-total-header, table, .rewards-tab, .login-form, .register-form, .nav-link-form, .nav-link-employee, .nav-link-admin, .reward-option, .option-link, h1,h2,h3,p, h5, button, .card {
+.page-title-header, .point-title-header, .point-total-header, table, .rewards-tab, .login-form, .register-form, .nav-link-form, .nav-link-employee, .nav-link-admin, .reward-option, .option-link, h1,h2,h3,p, h5, button, .card, .partial {
     font-family: 'Barlow', sans-serif;
 }
 
@@ -31,9 +31,8 @@ html {
     width: 100px;
     text-decoration: none;
     font-size: 15px;
-    color: white;
     padding: 12px 20px;
-    border: 1px solid white;
+    /* border: 1px solid white;*/
     border-radius: 10px;
 }
 
@@ -59,7 +58,7 @@ ul.navbar-list {
     border: 1px solid green;
     border-radius: 5px;
     padding: 15px;
-    margin: 80px 600px 0px 600px;
+    margin:  80px 200px 0px 200px/*80px 600px 0px 600px;*/;
     text-align: center
 }
 
@@ -87,7 +86,7 @@ ul.navbar-list {
     font-size: 15px;
     color: white;
     padding: 12px 20px;
-    border: 1px solid white;
+/*    border: 1px solid white;*/
     border-radius: 10px;
 }
 

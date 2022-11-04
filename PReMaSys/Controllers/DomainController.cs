@@ -1,29 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using System.Data;
 using Testertest.Data;
 using Testertest.Models;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Newtonsoft.Json.Linq;
-
-using System.IO;
-using System.Web;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Testertest.ViewModel;
-using System.Data;
-using EllipticCurve;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace RecognitionSystemFinal.Controllers
 {
-    [Authorize(Roles = "Domain")]
+    //[Authorize(Roles = "Domain")]
     public class DomainController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -42,18 +26,18 @@ namespace RecognitionSystemFinal.Controllers
             return View();
         }
 
-        /*APPROVAL OF REWARDS-------------------------------------------------------------------------------------------------------------------------------------*/ 
+        /*APPROVAL OF REWARDS-------------------------------------------------------------------------------------------------------------------------------------*/
         public IActionResult ApproveRewards()
         {
-          /*  ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
-            var latestCId = _context.Rewards.FirstOrDefault(c => c.ApplicationUser == user).CustomerId;
-            Customer cust = _context.Customers.FirstOrDefault(c => c.CustomerId == latestCId);
+            /*  ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+              var latestCId = _context.Rewards.FirstOrDefault(c => c.ApplicationUser == user).CustomerId;
+              Customer cust = _context.Customers.FirstOrDefault(c => c.CustomerId == latestCId);
 
-            var list = _context.AddToCarts.Where(c => c.Customer == cust).ToList();*/
+              var list = _context.AddToCarts.Where(c => c.Customer == cust).ToList();*/
             var list = _context.Rewards.ToList();
             return View(list);
         }
-       
+
         public IActionResult ApproveR(int? id)
         {
             if (id == null)
@@ -62,7 +46,7 @@ namespace RecognitionSystemFinal.Controllers
             }
 
             var rewards = _context.Rewards.Where(r => r.RewardsInformationId == id).SingleOrDefault();
-           
+
             if (rewards == null)
             {
                 return RedirectToAction("ApproveRewards");
@@ -70,7 +54,7 @@ namespace RecognitionSystemFinal.Controllers
 
             return View(rewards);
         }
-      
+
         [HttpPost]
         public IActionResult ApproveR(int? id, Rewards record)
         {
@@ -93,7 +77,7 @@ namespace RecognitionSystemFinal.Controllers
         /* ------------------------------------------------------------------------------------------------------------------------------------------------*/
         public IActionResult AdminAllRoles()
         {
-            var roles = _roleManager.Roles; 
+            var roles = _roleManager.Roles;
 
             return View(roles);
         }
@@ -108,11 +92,11 @@ namespace RecognitionSystemFinal.Controllers
             return View(list);
         }
 
-        
+
 
         /*CREATE NEW ADMIN ROLE*/
         public IActionResult AddRole()
-        {   
+        {
             return View();
         }
 
@@ -131,7 +115,7 @@ namespace RecognitionSystemFinal.Controllers
             var insertrec = await _userManager.CreateAsync(user, admin.Password);
             if (insertrec.Succeeded)
             {
-                ViewBag.message="The User " + admin.Email + "Is Saved Succesfully..!!";
+                ViewBag.message = "The User " + admin.Email + "Is Saved Succesfully..!!";
             }
             else
             {
@@ -146,11 +130,11 @@ namespace RecognitionSystemFinal.Controllers
 
         /*EDIT ADMIN ROLES Account------------------------------------------------*/
         [HttpGet]
-        public async Task <IActionResult> EditAdminRole(string id)
+        public async Task<IActionResult> EditAdminRole(string id)
         {
             var admin = await _userManager.FindByIdAsync(id);
 
-            if(admin == null)
+            if (admin == null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
                 return View("NotFound");
@@ -189,7 +173,7 @@ namespace RecognitionSystemFinal.Controllers
                 {
                     return RedirectToAction("ListAdminRoles");
                 }
-                foreach(var error in result.Errors)
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
@@ -198,10 +182,10 @@ namespace RecognitionSystemFinal.Controllers
         }
 
         //DELETE ADMIN ACCOUNT
-        public async Task<IActionResult> DeleteAdminAccount (string id)
+        public async Task<IActionResult> DeleteAdminAccount(string id)
         {
             var admin = await _userManager.FindByIdAsync(id);
-            if(User == null)
+            if (User == null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
                 return View("NotFound");

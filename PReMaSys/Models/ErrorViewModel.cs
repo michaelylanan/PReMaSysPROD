@@ -1,4 +1,4 @@
-namespace Testertest.Models
+namespace PReMaSys.Models
 {
     public class ErrorViewModel
     {

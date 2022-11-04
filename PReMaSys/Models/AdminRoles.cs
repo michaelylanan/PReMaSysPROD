@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Testertest.Data;
+using PReMaSys.Data;
 
-namespace Testertest.Models
+namespace PReMaSys.Models
 {
     public class AdminRoles
     {

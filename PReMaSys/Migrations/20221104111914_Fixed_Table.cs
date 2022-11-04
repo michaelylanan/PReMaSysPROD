@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Testertest.Migrations
+namespace PReMaSys.Migrations
 {
-    public partial class FixedTables : Migration
+    public partial class Fixed_Table : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

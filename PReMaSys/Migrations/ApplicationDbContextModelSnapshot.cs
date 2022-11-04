@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Testertest.Data;
+using PReMaSys.Data;
 
 #nullable disable
 
-namespace Testertest.Migrations
+namespace PReMaSys.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -160,7 +160,7 @@ namespace Testertest.Migrations
                     b.ToTable("UserTokens", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Data.ApplicationUser", b =>
+            modelBuilder.Entity("PReMaSys.Data.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -229,12 +229,12 @@ namespace Testertest.Migrations
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("userId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -246,12 +246,12 @@ namespace Testertest.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("userId");
 
                     b.ToTable("Users", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Models.AccLogin", b =>
+            modelBuilder.Entity("PReMaSys.Models.AccLogin", b =>
                 {
                     b.Property<int>("accID")
                         .ValueGeneratedOnAdd()
@@ -272,7 +272,7 @@ namespace Testertest.Migrations
                     b.ToTable("AccLogin", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Models.AccLoginSE", b =>
+            modelBuilder.Entity("PReMaSys.Models.AccLoginSE", b =>
                 {
                     b.Property<int>("accID")
                         .ValueGeneratedOnAdd()
@@ -293,7 +293,7 @@ namespace Testertest.Migrations
                     b.ToTable("AccLoginSE", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Models.AdminRoles", b =>
+            modelBuilder.Entity("PReMaSys.Models.AdminRoles", b =>
                 {
                     b.Property<int>("AdminRoleId")
                         .ValueGeneratedOnAdd()
@@ -349,7 +349,7 @@ namespace Testertest.Migrations
                     b.ToTable("AdminRoles", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Models.DomainAccount", b =>
+            modelBuilder.Entity("PReMaSys.Models.DomainAccount", b =>
                 {
                     b.Property<int>("AdminInfoId")
                         .ValueGeneratedOnAdd()
@@ -415,7 +415,7 @@ namespace Testertest.Migrations
                     b.ToTable("DomainAccount", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Models.Rewards", b =>
+            modelBuilder.Entity("PReMaSys.Models.Rewards", b =>
                 {
                     b.Property<int>("RewardsInformationId")
                         .ValueGeneratedOnAdd()
@@ -464,7 +464,7 @@ namespace Testertest.Migrations
                     b.ToTable("Rewards", "prms");
                 });
 
-            modelBuilder.Entity("Testertest.Models.SalesEmployeeRecord", b =>
+            modelBuilder.Entity("PReMaSys.Models.SalesEmployeeRecord", b =>
                 {
                     b.Property<int>("SEmployeeRecordsID")
                         .ValueGeneratedOnAdd()
@@ -547,7 +547,7 @@ namespace Testertest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", null)
+                    b.HasOne("PReMaSys.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -556,7 +556,7 @@ namespace Testertest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", null)
+                    b.HasOne("PReMaSys.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -571,7 +571,7 @@ namespace Testertest.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Testertest.Data.ApplicationUser", null)
+                    b.HasOne("PReMaSys.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -580,34 +580,34 @@ namespace Testertest.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", null)
+                    b.HasOne("PReMaSys.Data.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Testertest.Data.ApplicationUser", b =>
+            modelBuilder.Entity("PReMaSys.Data.ApplicationUser", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", "User")
+                    b.HasOne("PReMaSys.Data.ApplicationUser", "user")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("userId");
 
-                    b.Navigation("User");
+                    b.Navigation("user");
                 });
 
-            modelBuilder.Entity("Testertest.Models.AdminRoles", b =>
+            modelBuilder.Entity("PReMaSys.Models.AdminRoles", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", "ApplicationUser")
+                    b.HasOne("PReMaSys.Data.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Testertest.Models.Rewards", b =>
+            modelBuilder.Entity("PReMaSys.Models.Rewards", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", "ApplicationUser")
+                    b.HasOne("PReMaSys.Data.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -616,9 +616,9 @@ namespace Testertest.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("Testertest.Models.SalesEmployeeRecord", b =>
+            modelBuilder.Entity("PReMaSys.Models.SalesEmployeeRecord", b =>
                 {
-                    b.HasOne("Testertest.Data.ApplicationUser", "ApplicationUser")
+                    b.HasOne("PReMaSys.Data.ApplicationUser", "ApplicationUser")
                         .WithMany()
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)

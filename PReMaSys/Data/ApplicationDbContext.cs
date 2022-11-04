@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Testertest.Data;
-using Testertest.Models;
+using PReMaSys.Data;
+using PReMaSys.Models;
 
-namespace Testertest.Data
+namespace PReMaSys.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
-using Testertest.Data;
-using Testertest.Models;
-using Testertest.ViewModel;
+using PReMaSys.Data;
+using PReMaSys.Models;
+using PReMaSys.ViewModel;
 
-namespace RecognitionSystemFinal.Controllers
+namespace PReMaSys.Controllers
 {
     //[Authorize(Roles = "Domain")]
     public class DomainController : Controller

@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Testertest.Data;
+using PReMaSys.Data;
 
-using Testertest.Models;
+using PReMaSys.Models;
 
 
-namespace Testertest.Controllers
+namespace PReMaSys.Controllers
 {
     /*[Authorize(Roles = "Employee")]*/
     public class EmployeeController : Controller

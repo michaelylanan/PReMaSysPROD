@@ -1,6 +1,6 @@
 ﻿using Testertest.Data;
 
-namespace Testertest.ViewModel
+namespace PReMaSys.ViewModel
 {
     public class UserRoleViewModel
     {

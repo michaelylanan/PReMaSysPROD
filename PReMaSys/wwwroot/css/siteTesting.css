@@ -163,7 +163,7 @@ ul.navbar-list {
 /*FOR DOMAIN and SUPPORT*/
 
 
-.create-role-form, .create-se-form, .create-r-form, .edit-r-form, .edit-se-form, .edit-role-form, .approve-r-form, .deduct-points-forn {
+.create-role-form, .create-se-form, .create-r-form, .edit-r-form, .edit-se-form, .edit-role-form, .approve-r-form, .deduct-points-forn, .se-record-form, .add-role-form {
     margin-left: 500px;
     margin-right: 500px;
 }

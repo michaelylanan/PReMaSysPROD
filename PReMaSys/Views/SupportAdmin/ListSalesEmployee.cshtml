@@ -7,7 +7,7 @@
 <h1 class="text-center mt-5">Admin Account and Roles</h1>
 
 <div class="ms-5 mt-5">
- <a asp-action="SERecord" asp-controller="SupportAdmin" class="btn btn-success p-2 mb-3">Add new Sales Employee + </a>
+ <a asp-action="SERecord" asp-controller="SupportAdmin" class="btn btn-success p-2 mb-3">Add New Sales Employee + </a>
  <a asp-action="EmployeeRole" asp-controller="SupportAdmin" class="btn btn-success p-2  mb-3">Assign Role</a>
 </div>
 
@@ -28,10 +28,10 @@
                     <a asp-controller="SupportAdmin" asp-action="EditSalesLC" asp-route-id="@user.Id" class="btn btn-outline-success">Edit</a>
                     <button type="submit" class="btn btn-outline-danger">Delete</button>
                 </form>
-
             </div>
         </div>
       </div>
     }
+    <a asp-action="SupportPage" class="btn btn-outline-success ms-5 mt-5">Back to List</a>
 }
 

@@ -2,37 +2,32 @@
 
 @{
     ViewData["Title"] = "AddRole";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/DomainAdminDash.cshtml";
 }
 
-<h1>AddRole</h1>
+<h1 class="text-center mt-5 mb-5">Add Role</h1>
 
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="AddRole" asp-controller="Domain">
+        <form asp-action="AddRole" class="add-role-form" asp-controller="Domain">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control"/>
+            <div class="form-group mb-3">
+               @* <label asp-for="Email" class="control-label"></label>*@
+                <input asp-for="Email"  placeholder="Email" class="form-control"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
+            <div class="form-group mb-3">
+                @*<label asp-for="Password" class="control-label"></label>*@
+                <input asp-for="Password"  placeholder="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ConfirmPassword" class="control-label"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
+            <div class="form-group mb-3">
+                @*<label asp-for="ConfirmPassword" class="control-label"></label>*@
+                <input asp-for="ConfirmPassword"  placeholder="Confirm Password" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="New Admin" class="btn btn-primary"/>
+                <input type="submit" value="New Admin" class="btn btn-success"/>
+                 <a asp-action="ListAdminRoles" class="btn btn-outline-success">Back to List</a>
             </div>
             <h5>@ViewBag.message</h5>
         </form>
-
-    </div>
-
-</div>
 

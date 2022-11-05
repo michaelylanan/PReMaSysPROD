@@ -20,6 +20,10 @@ html {
     width: 230px;
 }
 
+.nav-item{
+    color:white;
+}
+
 /*CSS COMPILATION HOMEPAGE*/
 
 /* CSS FOR NAVBAR - HOME PAGE*/
@@ -41,6 +45,8 @@ ul.navbar-list {
 }
 
 
+
+
 .navbar-dark {
     background-color: #489c3b;
 }
@@ -51,6 +57,9 @@ ul.navbar-list {
   /*font-size:50px;*/
 }
 
+.logo-img{
+    height: 600px;
+}
 
 /* CSS FOR LOGIN and REGISTER PAGE*/
 

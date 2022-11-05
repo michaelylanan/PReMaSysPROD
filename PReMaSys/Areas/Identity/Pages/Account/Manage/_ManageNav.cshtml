@@ -3,6 +3,26 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
+
+<style>
+    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+        color: white;
+        background-color:green;
+    }
+    .btn-primary {
+    color: white;
+    background-color: green;
+    border-color: green;
+    }
+
+    a:visited {
+        color: black;
+        background-color: transparent;
+        text-decoration: none;
+}
+
+</style>
+
 <ul class="nav nav-pills flex-column">
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Login Credentials</a></li>
     @if(SignInManager.IsSignedIn(User) && User.IsInRole("Sales")){

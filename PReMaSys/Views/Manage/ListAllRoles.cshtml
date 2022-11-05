@@ -5,12 +5,12 @@
     ViewData["Title"] = "All roles";
 }
 
-<h1>All Roles</h1>
+<h1 class="text-center mt-5">All Roles</h1>
 @*<a class="btn btn-primary mb-2" asp-action="AddRoles"><i class="fa-solid fa-users"></i>Add role</a>*@
 
 @if(Model.Any())
 {
-    <a class="btn btn-primary mb-3" asp-action="AddRoles" style="width:auto" asp-controller="Manage">Add role</a>
+    <a class="btn btn-success mb-3 mt-4" asp-action="AddRoles" style="width:auto" asp-controller="Manage">Add Role +</a>
     @foreach( var role in Model){
         <div class="card mb-3">
             <div class="card-header">
@@ -19,9 +19,9 @@
             <div class="card-body">
                 <h5 class="card-title">@role.Name</h5>
             </div>
-            <div class="footer" style="padding:20px">
-                <a asp-controller="Manage" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-primary btn-sm"> Edit Role</a>
-                <a asp-controller="Manage" asp-action="DeleteRole" asp-route-id="@role.Id" class="btn btn-danger btn-sm"> Delete Role</a>
+            <div class="card-footer" style="padding:20px">
+                <a asp-controller="Manage" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-outline-success"> Edit Role</a>
+                <a asp-controller="Manage" asp-action="DeleteRole" asp-route-id="@role.Id" class="btn btn-outline-danger"> Delete Role</a>
             </div>
 
         </div>

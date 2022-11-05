@@ -59,23 +59,7 @@ ul.navbar-list {
 
 .logo-img {
     height: 600px;
-    position: relative;
-    animation-name: myanimation;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
 }
-
-@keyframes myanimation {
-    from {
-        left: 0px;
-    }
-
-    to {
-        left: 30px;
-        
-    }
-}
-
 
 
 

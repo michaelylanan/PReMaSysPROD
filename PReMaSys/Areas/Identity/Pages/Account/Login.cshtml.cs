@@ -83,22 +83,22 @@ namespace PReMaSys.Areas.Identity.Pages.Account
                     var user = await _userManager.FindByEmailAsync(Input.Email);
                     var roles = await _userManager.GetRolesAsync(user);
 
-                    //if (roles.Contains("Domain"))
-                    //{
-                    //    return Redirect("~/Domain/DomainPage");
-                    //}
-                    //else if (roles.Contains("Support"))
-                    //{
-                    //    return Redirect("~/SupportAdmin/SupportPage");
-                    //}
-                    //else if (roles.Contains("Sales"))
-                    //{
-                    //    return Redirect("~/Employee/EmployeeHomePage");
-                    //}
-                    //else if (roles.Contains("Admin"))
-                    //{
-                    //    return Redirect("~/Admin/AdminDashboard");
-                    //}
+                    if (roles.Contains("Domain"))
+                    {
+                        return Redirect("~/Domain/DomainPage");
+                    }
+                    else if (roles.Contains("Support"))
+                    {
+                        return Redirect("~/SupportAdmin/SupportPage");
+                    }
+                    else if (roles.Contains("Sales"))
+                    {
+                        return Redirect("~/Employee/EmployeeHomePage");
+                    }
+                    else if (roles.Contains("Admin"))
+                    {
+                        return Redirect("~/Admin/AdminDashboard");
+                    }
                     /* else if (roles.Contains("Admin"))
                      {
                          return Redirect("~/Admin/AdminDashboard");

@@ -3,29 +3,11 @@
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-
-<style>
-    .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-        color: white;
-        background-color:green;
-    }
-    .btn-primary {
-    color: white;
-    background-color: green;
-    border-color: green;
-    }
-
-    a:visited {
-        color: black;
-        background-color: transparent;
-        text-decoration: none;
-}
-
-</style>
-
 <ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
-    <li class="nav-item">Other Details: Profile</li>
+    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Login Credentials</a></li>
+    @if(SignInManager.IsSignedIn(User) && User.IsInRole("Sales")){
+        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Update Profile</a></li>
+    }   
     <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
     <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
     @if (hasExternalLogins)

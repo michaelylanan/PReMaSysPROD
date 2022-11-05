@@ -30,25 +30,30 @@
        
             else
             {
-              <div class="row"> 
+            <div class="row"> 
                 @foreach (var item in Model)
                 {
-               
                     <div class="col-lg-3 col-md-4 col-sm-12">
-                    <div class="card text-bg-light border-success text-center card-rewards mb-4 mt-5">
-                      <div class="card-header text-bg-success">Travel Reward</div>
-                      <img src="@Url.Content(item.Picture)" class="card-img-top mx-auto" id="reward-img" alt="...">
-                      <div class="card-body text-center">
-                        <figure>
-                          <h5 class="card-title text-success"><figcaption>@Html.DisplayFor(modelItem => item.RewardName)</figcaption></h5>
-                          <p class="card-text mt-3 mb-4"><figcaption>@Html.DisplayFor(modelItem => item.PointsCost) Points</figcaption></p>
-                         <figcaption><button type="button" class="btn btn-success mt-3">Purchase</button>@*<input type="submit" value="Purchase" class="btn btn hover btn btn-secondary" style="background-color:#ecf0dd; border-radius:8px; border-color:black" />*@</figcaption>
-                       </figure>
-                     </div>
-                    </div> 
-                  </div>
+                        <div class="card text-bg-light border-success text-center card-rewards mb-4 mt-5">
+                            <div class="card-header text-bg-success">Travel Reward</div>
+                            <img src="@Url.Content(item.Picture)" class="card-img-top mx-auto" id="reward-img" alt="...">
+                            <div class="card-body text-center">
+                                <figure>
+                                    <h5 class="card-title text-success"><figcaption>@Html.DisplayFor(modelItem => item.RewardName)</figcaption></h5>
+                                    <p class="card-text mt-3 mb-4"><figcaption>@Html.DisplayFor(modelItem => item.PointsCost) Points</figcaption></p> 
+                                    <figcaption style="margin-top:30px">
+                                            <span class="btn btn hover btn btn-success mt-3" style="background-color:#ecf0dd;
+                                                border-radius:8px; border-color:black;">
+                                            @Html.ActionLink("Purchase", "AddToCart", new { id = item.RewardsInformationId})
+                                        </span>
+                                    </figcaption>
+                                        <!--<figcaption><button type="button" class="btn btn-success mt-3">Purchase</button>@*<input type="submit" value="Purchase" class="btn btn hover btn btn-secondary" style="background-color:#ecf0dd; border-radius:8px; border-color:black" />*@</figcaption>-->
+                                </figure>
+                            </div>
+                        </div> 
+                    </div>
                 }
-             </div>
+            </div>
             }
        </table>
     </div>

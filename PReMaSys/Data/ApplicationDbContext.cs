@@ -20,7 +20,7 @@ namespace PReMaSys.Data
         public DbSet<AdminRoles> AdminRoles { get; set; }
         public DbSet<AccLoginSE> AccLoginSE { get; set; }
 
-
+        public DbSet<AddToCart> AddToCart { get; set; }
 
 
         //This Code block enables developer to custom/rename identity tables in sql

@@ -65,4 +65,19 @@ namespace PReMaSys.Models
         Approved = 2,
         Reject = 3,
     }
+
+    public class AddToCart
+    {
+        [Key]
+        public int CartId { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        public Rewards Reward { get; set; }
+        public string RewardImage { get; set; }
+        public string RewardName { get; set; }
+        public Category Category { get; set; }
+        public string RewardDescription { get; set; }
+        public decimal RewardPrice { get; set; }
+        public decimal TotalCost { get; set; }
+    }
+
 }

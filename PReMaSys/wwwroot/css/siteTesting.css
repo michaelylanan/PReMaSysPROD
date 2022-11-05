@@ -57,9 +57,27 @@ ul.navbar-list {
   /*font-size:50px;*/
 }
 
-.logo-img{
+.logo-img {
     height: 600px;
+    position: relative;
+    animation-name: myanimation;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
 }
+
+@keyframes myanimation {
+    from {
+        left: 0px;
+    }
+
+    to {
+        left: 30px;
+        
+    }
+}
+
+
+
 
 /* CSS FOR LOGIN and REGISTER PAGE*/
 

@@ -27,8 +27,48 @@ namespace PReMaSys.Controllers
         }
         public IActionResult NotificationPage()
         {
-            return View();
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+
+            var list = _context.Purchase.ToList();
+            return View(list);
         }
+
+        public IActionResult EditStatus(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("NotificationPage");
+            }
+
+            //variable product that retrieves the existing record from the Rewards table.
+            var status = _context.Purchase.Where(r => r.PurchaseId == id).SingleOrDefault();
+
+            //if the reward record is not present the view will redirect to the Index action.
+            if (status == null)
+            {
+                return RedirectToAction("IndexSE");
+            }
+
+            //Rewards model object will be included to be rendered by the View method
+            return View(status);
+        }
+
+        [HttpPost]
+        public IActionResult EditStatus(int? id, Purchase record)
+        {   
+            var status = _context.Purchase.Where(s => s.PurchaseId == id).SingleOrDefault();
+
+            status.EmployeeName = record.EmployeeName;
+            status.RewardName = record.RewardName;
+            status.Stat = record.Stat;
+            status.DateModified = DateTime.Now;
+            _context.Purchase.Update(status);
+            _context.SaveChanges();
+
+            return RedirectToAction("NotificationPage");
+        }
+
+
 
         /*New Methods*/
         public IActionResult EmployeeRole()

@@ -1,11 +1,83 @@
-﻿@{ 
-    ViewData["Title"] = "Notification Page"; 
-      //Layout = "~/Views/Shared/_LayoutLoggedin.cshtml"; 
-  Layout = "~/Views/Shared/SupportAdminDash.cshtml";
-   
+﻿@model IEnumerable<PReMaSys.Models.Purchase>
+@{ 
+    ViewData["Title"] = "Notification Page";    
 } 
+<h1>Reward Status</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stat)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" style="color:red; font-family:'Franklin Gothic Book'"> <h1>Cart is Empty</h1></td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmployeeName)
+                    </td>
+                    <td>
+                        <img style="height:2em" src="@Url.Content(item.RewardImage)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPayment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateModified)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stat)
+                    </td>
+                    <td>
+                        <a asp-action="EditStatus" asp-route-id="@item.PurchaseId" class="btn btn-info"><i class="fa-regular fa-pen-to-square"></i></a>
+                        
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
 
-<div class="px-5">
+<div class="form-group mb-3 mt-5">
+    <a asp-action="SupportPage" class="btn btn-outline-success">Go Back To Home Page</a>
+</div>
+
+@*<div class="px-5">
   <h1 class="page-title-header text-center mt-5"> Notifications</h1>
   <table class="table table-hover border-success mt-3" id="notifTable">
     <thead>
@@ -83,4 +155,4 @@
 
  <button type="button" class="btn btn-success mt-3 p-2">Update</button>
   <a class="notificationback-link btn btn-outline-success mt-3 p-2 " href="SupportPage" type="button">Back</a>
-</div>
+</div>*@

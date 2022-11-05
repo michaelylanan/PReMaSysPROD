@@ -50,12 +50,32 @@ namespace PReMaSys.Controllers
                 return View(list);
             }
         }
+        //Display Add To Cart Rewards
+        public IActionResult AddToCartDisplay()
+        {            
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+    
 
+            var list = _context.AddToCart.Where(c => c.ApplicationUser == user).ToList();
+
+            decimal x = 0;
+            if (list != null)
+            {
+                foreach (var item in list)
+                {
+                    x += item.TotalCost;
+                }
+                TempData["Total"] = x;
+            }
+
+            return View(list);
+        }
+
+        //Purchase Button
         public IActionResult AddToCart(int? id)
         {
             Rewards reward = _context.Rewards.Where(r => r.RewardsInformationId == id).SingleOrDefault();
             return View(reward);
-
         }
 
         [HttpPost]
@@ -84,7 +104,79 @@ namespace PReMaSys.Controllers
             _context.AddToCart.Add(cart);
             _context.SaveChanges();
 
-            return RedirectToAction("DisplayView");
+            return RedirectToAction("EmployeeHomePage");
+        }
+
+        //Delete Item from Cart
+        public IActionResult DeleteItem(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("AddToCartDisplay");
+            }
+
+            var cart = _context.AddToCart.Where(i => i.CartId == id).SingleOrDefault();
+            if (cart == null)
+            {
+                return RedirectToAction("AddToCartDisplay");
+            }
+
+            _context.AddToCart.Remove(cart);
+            _context.SaveChanges();
+
+            return RedirectToAction("AddToCartDisplay");
+        }
+
+        public IActionResult PurchaseView()
+        {
+            ViewBag.userId = _userManager.GetUserName(HttpContext.User);
+
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+
+            var list = _context.Purchase.Where(c => c.ApplicationUser == user).ToList();
+            return View(list);
+        }
+
+        public IActionResult Transaction()
+        {
+            ViewBag.userId = _userManager.GetUserName(HttpContext.User);
+
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+
+            var list = _context.Purchase.Where(c => c.ApplicationUser == user).ToList();
+            return View(list);
+        }
+
+        //Check Out
+        public IActionResult Purchase(int? id)
+        {
+            AddToCart purchase = _context.AddToCart.Where(c => c.CartId == id).SingleOrDefault();
+            return View(purchase);
+        }
+        [HttpPost]
+        public IActionResult Purchase(Purchase record, int id)
+        {
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+
+            AddToCart addCart = _context.AddToCart.Where(a => a.CartId == id).SingleOrDefault();
+
+            Purchase purchase = new Purchase();
+
+            purchase.ApplicationUser = user;
+            purchase.EmployeeName = user.UserName;
+            purchase.AddToCart = addCart;
+            purchase.RewardImage = addCart.RewardImage;
+            purchase.RewardName = addCart.RewardName;
+            purchase.RewardPrice = addCart.RewardPrice;
+            purchase.TotalPayment = addCart.RewardPrice;
+            purchase.DateAdded = DateTime.Now;
+            purchase.Stat = record.Stat;
+
+            _context.Purchase.Add(purchase);
+            _context.SaveChanges();
+
+            return RedirectToAction("PurchaseView");
+
         }
 
     }

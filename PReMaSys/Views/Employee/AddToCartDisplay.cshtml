@@ -1,0 +1,74 @@
+﻿@model IEnumerable<PReMaSys.Models.AddToCart>
+
+@{
+    ViewData["Title"] = "AddToCartDisplay";
+
+}
+
+<h1>Purchases</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RewardPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="4" style="color:red; font-family:'Franklin Gothic Book'"> <h1>Cart is Empty</h1></td>
+            </tr>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img style="height:2em" src="@Url.Content(item.RewardImage)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RewardPrice)
+                    </td>
+                    <td>
+                        <a asp-action="DeleteItem" asp-route-id="@item.CartId">Delete</a>
+                    </td>
+                    <td>
+                        <a asp-action="Purchase" asp-route-id="@item.CartId">Purchase</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3"></td>
+            <td><b>Total</b></td>
+            <td>@TempData["Total"]</td>
+        </tr>
+    </tfoot>
+</table>

@@ -35,6 +35,9 @@
                         <li class="navbar-item">
                             <a class="nav-link-admin text-dark" asp-area="" asp-controller="Employee" asp-action="TransactionHistory">Transaction</a>
                         </li>
+                        <li class="navbar-item">
+                            <a class="nav-link-admin text-dark" asp-area="" asp-controller="Employee" asp-action="AddToCartDisplay">Cart</a>
+                        </li>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
@@ -67,10 +70,10 @@
 
              <table class="emp-main-page-table w-100 fs-4 text-center">
                  <tr>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="RewardStatus">Reward Status</a></th>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="PurchaseView">Reward Status</a></th>
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeRank">Rankings</a></th>
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage">Rewards</a></th>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="TransactionHistory">Transaction History</a></th>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="Transaction">Transaction History</a></th>
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="ContactUs">Contact Us</a></th>
                  </tr>
              </table>

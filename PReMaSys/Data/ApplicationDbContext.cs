@@ -22,6 +22,10 @@ namespace PReMaSys.Data
 
         public DbSet<AddToCart> AddToCart { get; set; }
 
+        public DbSet<Purchase> Purchase { get; set; }
+
+    
+
 
         //This Code block enables developer to custom/rename identity tables in sql
         protected override void OnModelCreating(ModelBuilder builder)

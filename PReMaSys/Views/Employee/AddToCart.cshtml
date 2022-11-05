@@ -6,7 +6,21 @@
 
 @using (@Html.BeginForm())
 {
-    <div class="container">
+
+<div class="card border-success mx-auto w-75 mt-5 mb-3"> 
+  <img src="@Url.Content(Model.Picture)" class="card-img-top reward-addtocart-img mx-auto mt-3" alt="...">
+  <div class="card-body">
+    <h1 class="card-title text-center"> @Model.RewardName</h1>
+  </div>
+   <ul class="list-group list-group-flush">
+    <li class="list-group-item"><h4>Reward Category Name: @Model.Category</h4></li>
+    <li class="list-group-item"><h4>Reward Description: @Model.Description</h4></li>
+    <li class="list-group-item"> <h4>Reward Points Cost: @Model.PointsCost</h4></li>
+     <li class="list-group-item text-center"><input type="submit" value="Submit" class="btn btn-success w-25"/></li>
+  </ul>
+</div>
+
+ @*   <div class="container">
         <div class="row">
             <div class=" col-lg-10 col-md-10 col-sm-10">
                 <img style="min-height: 200px; width:200px" src="@Url.Content(Model.Picture)" />
@@ -16,13 +30,13 @@
             cart.Category = reward.Category;
             cart.RewardDescription = reward.Description;
             <div>
-                <h1>Reward Name: @Model.RewardName</h1>
+                <h1>Reward Name:</h1>
                 <h1>Reward Category Name: @Model.Category</h1>
                 <h1>Reward Description: @Model.Description</h1>
                 <h1>Reward Points Cost: @Model.PointsCost</h1>
                 <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </div>
-    </div>
+    </div>*@
 }
 

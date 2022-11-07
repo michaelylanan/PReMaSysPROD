@@ -5,8 +5,8 @@
 
 }
 
-<h1>Purchases</h1>
-<table class="table">
+<h1 class="text-center mt-5">Purchases</h1>
+<table class="table table-hover border-success mt-5" id="cartTable">
     <thead>
         <tr>
             <th>
@@ -55,10 +55,10 @@
                         @Html.DisplayFor(modelItem => item.RewardPrice)
                     </td>
                     <td>
-                        <a asp-action="DeleteItem" asp-route-id="@item.CartId">Delete</a>
+                        <a asp-action="DeleteItem" class="btn btn-danger" asp-route-id="@item.CartId">Delete</a>
                     </td>
                     <td>
-                        <a asp-action="Purchase" asp-route-id="@item.CartId">Purchase</a>
+                        <a asp-action="Purchase"  class="btn btn-success"  asp-route-id="@item.CartId">Purchase</a>
                     </td>
                 </tr>
             }
@@ -72,3 +72,11 @@
         </tr>
     </tfoot>
 </table>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#cartTable').DataTable();
+});
+</script>

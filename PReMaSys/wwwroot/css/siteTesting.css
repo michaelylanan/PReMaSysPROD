@@ -65,16 +65,16 @@ ul.navbar-list {
 
 /* CSS FOR LOGIN and REGISTER PAGE*/
 
-.register-form{
+/*.register-form{
     border: 1px solid green;
     border-radius: 5px;
     padding: 15px;
-    margin:  80px 200px 0px 200px/*80px 600px 0px 600px;*/;
+    margin:  80px 200px 0px 200px*//*80px 600px 0px 600px;*//*;
     text-align: center
-}
+}*/
 
 
-.login-form {
+.login-form, .register-form {
     border: 1px solid green;
     border-radius: 5px;
     padding: 15px;

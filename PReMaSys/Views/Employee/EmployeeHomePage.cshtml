@@ -34,7 +34,7 @@
                 @foreach (var item in Model)
                 {
                     <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card text-bg-light border-success text-center card-rewards mb-4 mt-5">
+                        <div class="card text-bg-light border border-success border-2 text-center card-rewards mb-4 mt-5">
                             <div class="card-header text-bg-success">Travel Reward</div>
                             <img src="@Url.Content(item.Picture)" class="card-img-top mx-auto" id="reward-img" alt="...">
                             <div class="card-body text-center">
@@ -43,11 +43,9 @@
                                     <p class="card-text mt-3 mb-4"><figcaption>@Html.DisplayFor(modelItem => item.PointsCost) Points</figcaption></p> 
 
                                     <!-- Calls AddToCart method in Employee Controller to execute instruction-->
-                                    <figcaption style="margin-top:30px">
-                                            <span class="btn btn hover btn btn-success mt-3" style="background-color:#ecf0dd;
-                                                border-radius:8px; border-color:black;">
-                                            @Html.ActionLink("Purchase", "AddToCart", new { id = item.RewardsInformationId})
-                                        </span>
+                                   <figcaption>
+                                        <a class="btn btn-success" href="@Url.Action("AddToCart", "Employee", new { id = item.RewardsInformationId})">View Reward Details</a>
+
                                     </figcaption>
                                         <!--<figcaption><button type="button" class="btn btn-success mt-3">Purchase</button>@*<input type="submit" value="Purchase" class="btn btn hover btn btn-secondary" style="background-color:#ecf0dd; border-radius:8px; border-color:black" />*@</figcaption>-->
                                 </figure>

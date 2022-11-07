@@ -4,8 +4,11 @@
     ViewData["Title"] = "Register";
 }
 
-
-<form id="registerForm" class="register-form" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+<div class="d-flex align-items-center justify-content-center" style="height:calc(100vh - 170px)">
+    <div class="d-flex" style="width:992px">
+    <img src="~/img/registerimage.png" class="login-pic-bg"alt=""/>
+    <div class="d-flex align-items-center register-form px-5" style="width:600px;">
+<form id="registerForm" class="W-100" asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
     <div class="row">
         <div class="col-md-6">
             <h1>@ViewData["Title"]</h1>
@@ -38,7 +41,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mt-5">
                 <label asp-for="Input.Pic" style="width: 100%;"></label>
-                <img id="imgPicture" style="width:250px;height:250px; object-fit:cover" src="">
+                <img id="imgPicture" style="width:250px;height:250px; object-fit:cover" class="mr-5" src="">
                 <input type="file"
                        accept=".png,.jpg,.jpeg"
                        asp-for="Input.Pic"
@@ -50,7 +53,9 @@
         </div>
     </div>
 </form>
-
+    </div>
+</div>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -7,16 +7,17 @@
 @using (@Html.BeginForm())
 {
 
-<div class="card border-success mx-auto w-75 mt-5 mb-3"> 
-  <img src="@Url.Content(Model.Picture)" class="card-img-top reward-addtocart-img mx-auto mt-3" alt="...">
-  <div class="card-body">
-    <h1 class="card-title text-center"> @Model.RewardName</h1>
+<div class="card border border-success mx-auto w-50 border-2 mt-5 mb-3"> 
+  <div class="card-body mx-auto">
+    <img src="@Url.Content(Model.Picture)" class="card-img-top reward-addtocart-img " alt="...">
   </div>
    <ul class="list-group list-group-flush">
-    <li class="list-group-item"><h4>Reward Category Name: @Model.Category</h4></li>
-    <li class="list-group-item"><h4>Reward Description: @Model.Description</h4></li>
-    <li class="list-group-item"> <h4>Reward Points Cost: @Model.PointsCost</h4></li>
-     <li class="list-group-item text-center"><input type="submit" value="Submit" class="btn btn-success w-25"/></li>
+     <li class="list-group-item border-success"> <h1 class="text-center fw-bold"> @Model.RewardName</h1></li>
+    <li class="list-group-item border-success"><h4>Reward Category: @Model.Category</h4></li>
+    <li class="list-group-item border-success"><h4>Reward Description: @Model.Description</h4></li>
+    <li class="list-group-item border-success"> <h4>Reward Points Cost: @Model.PointsCost</h4></li>
+    <li class="list-group-item text-center border-success "><input type="submit" value="Purchase" class="btn btn-success w-25"/></li>
+
   </ul>
 </div>
 

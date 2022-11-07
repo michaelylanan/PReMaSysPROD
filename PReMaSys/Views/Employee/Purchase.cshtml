@@ -4,17 +4,28 @@
     ViewData["Title"] = "Check Out";
     ViewBag.Title = "Purchase";
 }
-<h1>Purchased</h1>
+
 @using (@Html.BeginForm())
 {
-    <div class="container">
+  @*  <div class="container">
         <div class="row">
             <div>
                 <h1>Reward Image:</h1><img src="@Url.Content(Model.RewardImage)"/>
-                <h1>Reward Name: @Model.RewardName</h1>
+                <h1>Rewards Name: @Model.RewardName</h1>
                 <h1>Reward Price: @Model.RewardPrice</h1>
                 <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </div>
-    </div>
+    </div>*@
+    <h1 class="text-center mt-5">Rewards Purchased</h1>
+    <div class="card border border-success mx-auto w-50 border-2 mt-5 mb-3"> 
+     <div class="card-body mx-auto">
+      <img src="@Url.Content(Model.RewardImage)" class="card-img-top reward-addtocart-img " alt="...">
+     </div>
+     <ul class="list-group list-group-flush">
+      <li class="list-group-item border-success"> <h1 class="text-center fw-bold">@Model.RewardName</h1></li>
+      <li class="list-group-item border-success"><h4>Reward Price: @Model.RewardPrice</h4></li>
+      <li class="list-group-item text-center border-success "> <input type="submit" value="Submit" class="btn btn-success w-25" /></li>
+     </ul>
+   </div>
 }

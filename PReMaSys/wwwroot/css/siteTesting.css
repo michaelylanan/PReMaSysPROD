@@ -65,12 +65,27 @@ ul.navbar-list {
 
 /* CSS FOR LOGIN and REGISTER PAGE*/
 
-.login-form, .register-form{
+.register-form{
     border: 1px solid green;
     border-radius: 5px;
     padding: 15px;
     margin:  80px 200px 0px 200px/*80px 600px 0px 600px;*/;
     text-align: center
+}
+
+
+.login-form {
+    border: 1px solid green;
+    border-radius: 5px;
+    padding: 15px;
+    /*margin: 80px 200px 0px 200px*/ /* 80px 600px 0px 600px;*/ /*;*/
+    text-align: center;
+    /* background-color:rgb(82,158,90, 0.2);*/
+}
+
+.login-pic-bg {
+    height: 650px;
+    width: 50%;
 }
 
 .nav-link-employee, .nav-link-admin, .nav-link-form {

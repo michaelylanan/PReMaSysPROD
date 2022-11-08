@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using PReMaSys.Data
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Testertest</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/siteTesting.css" asp-append-version="true" />
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+</head>
+<body>
+    
+             <table class="emp-main-page-table w-100 fs-4 text-center">
+                 <tr>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="PurchaseView">Reward Status</a></th>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeRank">Rankings</a></th>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage">Rewards</a></th>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="Transaction">Transaction History</a></th>
+                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="ContactUs">Contact Us</a></th>
+                 </tr>
+             </table>
+
+        
+    @*<footer class="border-top footer text-muted" style="bottom:0; height:60px;width:100%; padding:20px">
+        <div class="container">
+            &copy; 2022 - PReMaSys - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>*@
+</body>
+</html>

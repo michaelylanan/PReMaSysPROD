@@ -2,21 +2,22 @@
 @{
     ViewData["Title"] = "AddToCart";
     ViewBag.Title = "AddToCart";
+    
 }
 
 @using (@Html.BeginForm())
 {
 
-<div class="card border border-success mx-auto w-50 border-2 mt-5 mb-3"> 
+<div class="card border border-success addToCart-card mx-auto border-2 mt-5 mb-3"> 
   <div class="card-body mx-auto">
-    <img src="@Url.Content(Model.Picture)" class="card-img-top reward-addtocart-img " alt="...">
+    <img src="@Url.Content(Model.Picture)" class="card-img-top" alt="...">
   </div>
    <ul class="list-group list-group-flush">
      <li class="list-group-item border-success"> <h1 class="text-center fw-bold"> @Model.RewardName</h1></li>
     <li class="list-group-item border-success"><h4>Reward Category: @Model.Category</h4></li>
     <li class="list-group-item border-success"><h4>Reward Description: @Model.Description</h4></li>
     <li class="list-group-item border-success"> <h4>Reward Points Cost: @Model.PointsCost</h4></li>
-    <li class="list-group-item text-center border-success "><input type="submit" value="Add to Cart" class="btn btn-success w-25"/></li>
+    <li class="list-group-item text-center border-success "><input type="submit" value="Add to Cart" class="btn add-to-cart-btn btn-success"/></li>
 
   </ul>
 </div>

@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using PReMaSys.Data;
 using PReMaSys.Models;
 using PReMaSys.ViewModel;
+using System.Data;
 
 namespace PReMaSys.Controllers
 {
-    //[Authorize(Roles = "Support")]
+    [Authorize(Roles = "Support")]
     public class SupportAdminController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -55,7 +56,7 @@ namespace PReMaSys.Controllers
 
         [HttpPost]
         public IActionResult EditStatus(int? id, Purchase record)
-        {   
+        {
             var status = _context.Purchase.Where(s => s.PurchaseId == id).SingleOrDefault();
 
             status.EmployeeName = record.EmployeeName;

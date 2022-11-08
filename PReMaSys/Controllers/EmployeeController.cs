@@ -8,7 +8,7 @@ using PReMaSys.Models;
 
 namespace PReMaSys.Controllers
 {
-    /*[Authorize(Roles = "Employee")]*/
+    [Authorize(Roles = "Sales")]
     public class EmployeeController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -52,9 +52,9 @@ namespace PReMaSys.Controllers
         }
         //Display Add To Cart Rewards
         public IActionResult AddToCartDisplay()
-        {            
+        {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
-    
+
 
             var list = _context.AddToCart.Where(c => c.ApplicationUser == user).ToList();
 

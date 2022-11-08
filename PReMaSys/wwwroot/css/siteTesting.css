@@ -148,13 +148,14 @@ ul.navbar-list {
     margin-top: 80px;
 }
 
+.addToCart-card {
+    max-width: 700px;
+}
+
 .person-img, .transaction-reward-img{
     width: 50px;
 }
 
-/*#table-rewards, #transaction-table, #rank-table, #status-table{
-    border-color: #489c3b;
-}*/
 
 .emp-main-page-table {
     background-color: #C9F8D1;
@@ -174,10 +175,6 @@ ul.navbar-list {
     margin-left:27px;
 }
 
-.reward-addtocart-img{
-    height:400px;
-    width: 400px;
-}
 
 /*FOR ADMIN*/
 
@@ -200,6 +197,14 @@ ul.navbar-list {
 }
 
 
+/*MEDIA QUERY*/
+
+/*employee side*/
+/*@media (max-width:880px){
+    .add-to-cart-card{
+        width:100px;
+    }
+}*/
 
 
 

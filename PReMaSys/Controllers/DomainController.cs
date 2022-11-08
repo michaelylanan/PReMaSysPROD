@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
 using PReMaSys.Data;
 using PReMaSys.Models;
 using PReMaSys.ViewModel;
+using System.Data;
 
 namespace PReMaSys.Controllers
 {
-    //[Authorize(Roles = "Domain")]
+    [Authorize(Roles = "Domain")]
     public class DomainController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;

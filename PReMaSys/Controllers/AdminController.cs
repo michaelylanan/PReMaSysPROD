@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using PReMaSys.Data;
 using PReMaSys.Models;
+using System.Data;
 
 namespace PReMaSys.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;

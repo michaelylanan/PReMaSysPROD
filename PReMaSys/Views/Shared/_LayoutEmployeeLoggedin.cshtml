@@ -32,9 +32,9 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="navbar-item">
+                      @*  <li class="navbar-item">
                             <a class="nav-link-admin text-dark" asp-area="" asp-controller="Employee" asp-action="TransactionHistory">Transaction</a>
-                        </li>
+                        </li>*@
                         <li class="navbar-item d-flex">
                             <a class="nav-link-admin text-dark" asp-area="" asp-controller="Employee" asp-action="AddToCartDisplay">Cart<i class="ms-2 fa-solid fa-cart-shopping"></i></a>
                         </li>
@@ -58,16 +58,7 @@
                
             }
         
-         @*   <table width="100%" style="font-size:20px; margin-top:10px; background-color:#C9F8D1 /*#FDD880*/; border-radius:4px">
-                <tr style="font-family:'Barlow', sans-serif;color:#FFFFFF">
-                    <th width="21%"><a class="nav-link  page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="RewardStatus">Status</a></th>
-                    <th width="22%"><a class="nav-link  page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeRank">Rankings</a></th>
-                    <th width="22%"><a class="nav-link  page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage">Rewards</a></th>
-                    <th width="21%"><a class="nav-link  page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="TransactionHistory">Transaction History</a></th>
-                    <th><a class="nav-link  page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="ContactUs">Contact Us</a></th>
-                </tr>
-            </table>*@
-
+@*
              <table class="emp-main-page-table w-100 fs-4 text-center">
                  <tr>
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="PurchaseView">Reward Status</a></th>
@@ -76,7 +67,7 @@
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="Transaction">Transaction History</a></th>
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="ContactUs">Contact Us</a></th>
                  </tr>
-             </table>
+             </table>*@
             <main role="main" class="pb-3">
                 @RenderBody()
             </main>
@@ -86,7 +77,10 @@
             @RenderBody()
         </main>
     </div>*@
-  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

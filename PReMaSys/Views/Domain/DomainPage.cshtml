@@ -5,15 +5,34 @@
 }
 
 <h1>DomainPage</h1>
-<body class="overflow-hidden">
-<div class="performance-options-container">
-    <div class="performance-options d-flex">
-
-       @*<a class="option-link" href="~/Domain/AdminRoles"  role="button" >
-          <h1>Admin Roles</h1>    
-          <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
-       </a>*@
-       <a class="option-link" href="~/Domain/ListAdminRoles"  role="button" >
+@*<body class="overflow-hidden">*@
+<div class="performance-options-container-domain">
+    <div class="performance-options d-flex row">
+        <div class="col-lg-5 option-link text-center border border-success rounded p-2 mb-3">
+          <a class="option-text " href="~/Domain/ListAdminRoles"  role="button" >
+            <h1>Admin Roles</h1>    
+            <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
+          </a>
+        </div>
+        <div class="col-lg-5 option-link text-center border border-success rounded p-2 ms-3 me-3 mb-3">
+          <a class="option-text" href="~/Domain/DomainPage" role="button">
+            <h1>Reports</h1>
+            <img src="~/img/reportspic.png" class="mainpage-usrs-pic"/>
+          </a>
+        </div>
+         <div class="col-lg-5 option-link text-center border border-success rounded p-2 me-3 mb-5">
+           <a class="option-text" href="~/Domain/SEPoints" role="button">
+            <h1>Sales Profit Points</h1>
+            <img src="~/img/profitspic.png" class="mainpage-usrs-pic"/>
+          </a>
+        </div>
+          <div class="col-lg-5 option-link text-center border border-success rounded p-2 mb-5">
+           <a class="option-text" href="~/Domain/ApproveRewards" role="button">
+             <h1>Rewards</h1>
+             <img src="~/img/rewardspic.png" class="mainpage-usrs-pic"/>
+           </a>
+        </div>
+      @* <a class="option-link" href="~/Domain/ListAdminRoles"  role="button" >
           <h1>Admin Roles</h1>    
           <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
        </a>
@@ -28,14 +47,10 @@
        <a class="option-link" href="~/Domain/ApproveRewards" role="button">
           <h1>Rewards</h1>
           <img src="~/img/rewardspic.png" class="mainpage-usrs-pic"/>
-      </a>
-   @*     <a class="option-link" href="~/Domain/AdminRoles">Admin Roles</a> <br />
-        <a class="option-link" href="~/Domain/DomainPage">Reports</a> <br />
-        <a class="option-link between" href="~/Domain/SEPoints">Sales-Profit Points</a> <br />
-        <a class="option-link" href="~/Domain/ApproveRewards">Rewards</a> <br />*@
+      </a>*@
     </div>
 </div>
-</body>
+@*</body>*@
 
 
  

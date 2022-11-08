@@ -24,6 +24,20 @@ html {
     color:white;
 }
 
+.performance-options-container {
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.performance-options-container-domain {
+    height: calc(90vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /*CSS COMPILATION HOMEPAGE*/
 
 /* CSS FOR NAVBAR - HOME PAGE*/
@@ -119,20 +133,22 @@ ul.navbar-list {
 
 
 .option-link {
-    text-decoration: none;
-    color: black;
-    border: 1px solid green;
+  /*  border: 1px solid green;
     padding: 20px;
     border-radius: 10px;
-    text-align: center;
+    text-align: center;*/
 }
 
-.performance-options-container {
-    height: calc(100vh - 70px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.option-text {
+    text-decoration: none;
+    color: black;
 }
+
+.option-text:hover{
+    color:black;
+}
+
+
 
 .between{
     margin-right: 30px;

@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<PReMaSys.Models.AddToCart>
 
 @{
+    Layout = "~/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
     ViewData["Title"] = "AddToCartDisplay";
-     Layout = "~/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
 
 }
 
+
+
 <h1 class="text-center mt-5">Purchases</h1>
-<table class="table table-hover border-success mt-5" id="cartTable">
+<table class="table table-hover border-success mt-5" id="cart">
     <thead>
         <tr>
             <th>
@@ -26,6 +28,7 @@
                 @Html.DisplayNameFor(model => model.RewardPrice)
             </th>
             <th></th>
+             <th></th>
         </tr>
     </thead>
     <tbody>
@@ -73,11 +76,20 @@
         </tr>
     </tfoot>
 </table>
+
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function () {
-    $('#cartTable').DataTable();
+    $('#cart').DataTable();
 });
 </script>
+
+
+
+
+
+
+
+

@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500&display=swap" rel="stylesheet">
     
 
-      <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
 
 
@@ -43,9 +43,10 @@
                 </div>
             </div>
         </nav>
-    </header>        
-        <div class="container-fluid" style="position: relative; font-family: 'Courier New', monospace; flex-grow: 1; margin-bottom: 50px; max-width:1500px">
-            @using (Html.BeginForm("EmployeeHomePage", "Employee", FormMethod.Get))
+    </header>   
+ 
+         <div class="container-fluid" style="position: relative; font-family: 'Courier New', monospace; flex-grow: 1; margin-bottom: 50px; max-width:1500px">
+          @*  @using (Html.BeginForm("EmployeeHomePage", "Employee", FormMethod.Get))
             {
                 <div class="mt-5 mb-5">
                   <b>Search By:</b>
@@ -56,22 +57,15 @@
                   <a asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage" class="btn btn-warning btn-sm">Display All</a>
                 </div>
                
-            }
-        
-@*
-             <table class="emp-main-page-table w-100 fs-4 text-center">
-                 <tr>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="PurchaseView">Reward Status</a></th>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeRank">Rankings</a></th>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage">Rewards</a></th>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="Transaction">Transaction History</a></th>
-                     <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="ContactUs">Contact Us</a></th>
-                 </tr>
-             </table>*@
+            }*@
+       
+          
             <main role="main" class="pb-3">
                 @RenderBody()
-            </main>
+            </main> 
         </div>
+
+ 
     @* <div class="main-container">
         <main role="main" class="container">
             @RenderBody()

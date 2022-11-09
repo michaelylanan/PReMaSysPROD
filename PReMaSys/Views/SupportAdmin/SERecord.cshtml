@@ -5,11 +5,12 @@
      Layout = "~/Views/Shared/SupportAdminDash.cshtml";
 }
 
-<h1 class="text-center mt-5 mb-5">Sales Employee Credentials</h1>
+
 
 
         <form asp-action="SERecord" class="se-record-form" asp-controller="SupportAdmin">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h1 class="text-center mt-5 mb-5">Sales Employee Credentials</h1>
             <div class="form-group mb-3 mt-3">
                @* <label asp-for="Email" class="control-label"></label>*@
                 <input asp-for="Email" placeholder="Email" class="form-control" />

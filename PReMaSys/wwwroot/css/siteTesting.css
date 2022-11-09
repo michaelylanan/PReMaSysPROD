@@ -39,16 +39,38 @@ html {
 }
 
 
-.main-pg-card-whole {
+.main-pg-card-whole, .main-pg-card-whole-domain, .main-pg-card-whole-support {
     max-width: 1200px;
     margin: 0 auto;
     display: grid;
     gap: 1rem;
 }
 
+
 @media (min-width: 900px) {
     .main-pg-card-whole {
         grid-template-columns: repeat(3, 1fr);
+    }
+    .main-pg-card-whole-domain {
+        grid-template-columns: repeat(4, 2fr);
+    }
+    .main-pg-card-whole-support {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .mainpg-card-first {
+        margin-top: 160px;
+    }
+    .mainpg-card-first-support{
+        margin-top:60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .mainpg-card-last {
+        margin-bottom: 60px;
     }
 }
 

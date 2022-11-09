@@ -57,6 +57,7 @@ html {
     .main-pg-card-whole-support {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
 @media (max-width: 900px) {
@@ -66,13 +67,24 @@ html {
     .mainpg-card-first-support{
         margin-top:60px;
     }
-}
-
-@media (max-width: 900px) {
     .mainpg-card-last {
         margin-bottom: 60px;
     }
+    .login-pic-bg {
+        display: none;
+    }
+     .login-form{
+       margin:auto;
+       flex:none;
+    }
+
+    .form-login{
+        max-width:500px;
+    }
+    
 }
+
+
 
 
 /*CSS COMPILATION HOMEPAGE*/
@@ -94,8 +106,6 @@ html {
 ul.navbar-list {
     list-style-type: none;
 }
-
-
 
 
 .navbar-dark {
@@ -132,6 +142,11 @@ ul.navbar-list {
     /*margin: 80px 200px 0px 200px*/ /* 80px 600px 0px 600px;*/ /*;*/
     text-align: center;
     /* background-color:rgb(82,158,90, 0.2);*/
+    width:500px;
+}
+
+.form-login {
+   width:992px;
 }
 
 .login-pic-bg {

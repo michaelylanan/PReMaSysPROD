@@ -73,15 +73,7 @@ html {
     .login-pic-bg {
         display: none;
     }
-     .login-form{
-       margin:auto;
-       flex:none;
-    }
-
-    .form-login{
-        max-width:500px;
-    }
-    
+   
 }
 
 
@@ -146,7 +138,7 @@ ul.navbar-list {
 }
 
 .form-login {
-   width:992px;
+   max-width:992px;
 }
 
 .login-pic-bg {
@@ -158,6 +150,9 @@ ul.navbar-list {
     margin: 5px;
 }
 
+/*.whole-login-form {
+    display: flex;
+}*/
 
 .nav-link-admin:hover, .nav-link-employee:hover, .nav-link-form:hover, .option-link:hover {
     background-color: #75ab6c;

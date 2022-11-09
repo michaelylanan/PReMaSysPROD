@@ -38,6 +38,21 @@ html {
     align-items: center;
 }
 
+
+.main-pg-card-whole {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 900px) {
+    .main-pg-card-whole {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
 /*CSS COMPILATION HOMEPAGE*/
 
 /* CSS FOR NAVBAR - HOME PAGE*/

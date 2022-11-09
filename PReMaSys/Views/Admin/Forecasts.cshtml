@@ -2,7 +2,180 @@
     ViewData["Title"] = "Forecasts";
     Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
 }
-@*<a class="option-link" href ="~/Admin/ReportsPage" style="width:15%">< Go Back to Reports</a>*@
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    .chartMenu {
+        width: auto;
+        height: auto;
+        background: #69cc00;
+        text-align:center;
+        color:white;
+    }
+
+        .chartMenu p {
+            padding: 10px;
+            font-size: 80px;
+        }
+
+    .chartCard {
+        width: auto;
+        height: auto;
+        padding:20px;
+        background: #e6ffcc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chartBox {
+        width: 1000px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px #4f9900;
+        background: white;
+    }
+    .chartjs-table, th, td {
+        border-collapse: collapse;
+        border: 1px solid green;
+        padding: 10px;
+    }
+    .chartjs-thead{
+        font-weight: bold;
+    }
+    .chartjs-tbody{
+        text-align:center;
+    }
+
+</style>
+
+<div class="chartMenu">
+    <p>PROFIT FORECAST</p>
+</div>
+<div class="chartCard">
+    <div class="chartBox">
+        <div class="mb-3" style="margin-top:20px">
+            <label for="period">Choose Time Frame :</label>
+
+            <select name="period" id="period" style="font-size:15px">
+                <option value="weekly">Weekly</option>
+                <option value="monthly">Montly</option>
+                <option value="quarterly">Quarterly</option>
+                <option value="Yearly">Yearly</option>
+            </select>
+        </div>
+        <canvas id="myChart"></canvas>
+    </div>
+</div>
+<a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // setup
+    const data = {
+        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'], //Get Columns from excel
+        datasets: [{
+        label: 'Monthly Sales',
+        data: [1800, 1201, 600, 900, 1210, 3100, 9090, 1010,9010,1801,1210,10101,], //Get data from excel
+        backgroundColor: [
+            'rgb(79, 153, 0)', // legend color
+            'rgb(79, 153, 0)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(0, 0, 0, 0.2)'
+        ],
+        borderColor: [
+            'rgb(53, 102, 0)', // line color
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(0, 0, 0, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(0, 0, 0, 1)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(0, 0, 0, 0.2)'
+        ],
+        borderWidth: 0.5
+        }]
+    };
+
+    // config
+    const config = {
+        type: 'line',
+        data,
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    };
+
+    // render init block
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+    function createTable(){
+        console.log('triggered');
+        const chartBox = document.querySelector('.chartBox');
+        const tableDiv = document.createElement('DIV');
+        tableDiv.setAttribute('id', 'tableDiv');//assign ID
+
+        //add Table
+        const table = document.createElement('TABLE');
+        table.classList.add('chartjs-table');
+
+        //add thead
+        const thead = table.createTHead();
+        thead.classList.add('chartjs-thead');
+        
+        //add Column Headers using data
+        thead.insertRow(0);
+        console.log(data.labels)
+        for(let i = 0; i < data.labels.length; i++){
+            thead.rows[0].insertCell(i).innerText = data.labels[i];
+            thead.rows[0].cells[i].style.color = data.datasets[0].borderColor[i];
+        };
+        thead.rows[0].insertCell(0).innerText = 'Months';
+
+        //tbody
+        const tbody = table.createTBody();
+        tbody.classList.add('chartjs-tbody');
+
+        //data
+        console.log(data.datasets)
+        data.datasets.map((dataset, index) => {
+            tbody.insertRow(index);
+            for(let i = 0; i < data.datasets[0].data.length; i++){
+                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
+            };
+            tbody.rows[index].insertCell(0).innerText = dataset.label;
+        })
+
+       
+        //append
+        chartBox.appendChild(tableDiv);
+        tableDiv.appendChild(table);
+    };
+
+    createTable();
+</script>
+
+
+<!-- Old Code Block
 <h1 style="margin-top:20px; text-align:center; background-color:lightgray; padding:20px; border-radius:5px">PROFIT FORECAST</h1>
 <div class="container" style="margin-top:20px; border: 2px forestgreen solid;">
     <img src="~/img/forecast.png" style="padding:5px"/>
@@ -70,5 +243,5 @@
 
      <a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
 
-</div>
+</div> -->
 

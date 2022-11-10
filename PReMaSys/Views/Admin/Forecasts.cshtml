@@ -3,6 +3,14 @@
     Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
 }
 
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+
+<!--Bootstrap-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 <style>
     * {
         margin: 0;
@@ -59,28 +67,84 @@
 </div>
 <div class="chartCard">
     <div class="chartBox">
-        <div class="mb-3" style="margin-top:20px">
-            <label for="period">Choose Time Frame :</label>
-
-            <select name="period" id="period" style="font-size:15px">
-                <option value="weekly">Weekly</option>
-                <option value="monthly">Montly</option>
-                <option value="quarterly">Quarterly</option>
-                <option value="Yearly">Yearly</option>
-            </select>
+        <div class="dropdown">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Choose Time Frame
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" onclick="timeFrame(this)" value="day">Daily</button>
+                <button class="dropdown-item" onclick="timeFrame(this)" value="week">Weekly</button>
+                <button class="dropdown-item" onclick="timeFrame(this)" value="month">Monthly</button>
+                <button class="dropdown-item" onclick="timeFrame(this)" value="quarter">Quarterly</button>
+                <button class="dropdown-item" onclick="timeFrame(this)" value="year">Yearly</button>
+            </div>
         </div>
-        <canvas id="myChart"></canvas>
+        <canvas id="myChart" style="margin-bottom:40px"></canvas>
     </div>
 </div>
 <a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
+    //day
+    //parse means to make something readable depending on the data type
+    //this data should be fetch in excel data
+    //But How? Can be it in a list form, array?
+    const day = [
+        { x: Date.parse('2022-11-01 00:00:00 GMT+0800'), y:10000}, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
+        { x: Date.parse('2022-11-02 00:00:00 GMT+0800'), y: 2000 },
+        { x: Date.parse('2022-11-03 00:00:00 GMT+0800'), y: 4000 },
+        { x: Date.parse('2022-11-04 00:00:00 GMT+0800'), y: 6000 },
+        { x: Date.parse('2022-11-05 00:00:00 GMT+0800'), y: 7000 },
+        { x: Date.parse('2022-11-06 00:00:00 GMT+0800'), y: 10000 },
+        { x: Date.parse('2022-11-07 00:00:00 GMT+0800'), y: 9000 },
+    ];
+
+    //Week
+    const week = [
+        { x: Date.parse('2022-10-30 00:00:00 GMT+0800'), y: 15000 }, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
+        { x: Date.parse('2022-11-06 00:00:00 GMT+0800'), y: 9000 },
+        { x: Date.parse('2022-11-13 00:00:00 GMT+0800'), y: 14000 },
+        { x: Date.parse('2022-11-20 00:00:00 GMT+0800'), y: 16000 },
+        { x: Date.parse('2022-11-27 00:00:00 GMT+0800'), y: 17000 },
+        { x: Date.parse('2022-12-04 00:00:00 GMT+0800'), y: 19000 },
+        { x: Date.parse('2022-12-11 00:00:00 GMT+0800'), y: 29000 },
+    ];
+
+    //Month
+    const month = [
+        { x: Date.parse('2022-06-01 00:00:00 GMT+0800'), y: 15000 }, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
+        { x: Date.parse('2022-07-01 00:00:00 GMT+0800'), y: 9000 },
+        { x: Date.parse('2022-08-01 00:00:00 GMT+0800'), y: 14000 },
+        { x: Date.parse('2022-09-01 00:00:00 GMT+0800'), y: 16000 },
+        { x: Date.parse('2022-10-01 00:00:00 GMT+0800'), y: 17000 },
+        { x: Date.parse('2022-11-01 00:00:00 GMT+0800'), y: 19000 },
+        { x: Date.parse('2022-12-01 00:00:00 GMT+0800'), y: 29000 },
+    ];
+
+    //Quarter
+    const quarter = [
+        { x: Date.parse('2022-01-01 00:00:00 GMT+0800'), y: 150000 }, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
+        { x: Date.parse('2022-04-01 00:00:00 GMT+0800'), y: 90000 },
+        { x: Date.parse('2022-08-01 00:00:00 GMT+0800'), y: 140000 },
+        { x: Date.parse('2022-12-01 00:00:00 GMT+0800'), y: 160000 },
+    ];
+
+    //Yearly
+    const year = [
+        { x: Date.parse('2018-01-01 00:00:00 GMT+0800'), y: 180000 }, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
+        { x: Date.parse('2019-01-01 00:00:00 GMT+0800'), y: 150000 },
+        { x: Date.parse('2020-01-01 00:00:00 GMT+0800'), y: 130000 },
+        { x: Date.parse('2021-01-01 00:00:00 GMT+0800'), y: 160000 },
+        { x: Date.parse('2022-01-01 00:00:00 GMT+0800'), y: 190000 },
+    ];
+
     // setup
     const data = {
-        labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'], //Get Columns from excel
+        /* labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],*/ //Get Columns from excel //now will be commented out
+        /* data: [1800, 1201, 600, 900, 12  10, 3100, 9090, 1010,9010,1801,1210,10101,],*/ //Get data from excel // now will be commented out
         datasets: [{
-        label: 'Monthly Sales',
-        data: [1800, 1201, 600, 900, 1210, 3100, 9090, 1010,9010,1801,1210,10101,], //Get data from excel
+        label: 'Weekly Sales',
+            data: day, // from the const day //will be changed to user choice dropdown
         backgroundColor: [
             'rgb(79, 153, 0)', // legend color
             'rgb(79, 153, 0)',
@@ -115,6 +179,13 @@
         data,
         options: {
         scales: {
+            //add a new scale for time
+            x:{
+                type:'time',
+                time:{
+                    unit: 'day' //therefore, data should be changed in the setup which is why dev should create a const that stores dates //will be changed to user choice dropdown
+                }
+            },
             y: {
             beginAtZero: true
             }
@@ -128,6 +199,35 @@
         config
     );
 
+    //function for change to timeline
+    function timeFrame(period){
+        console.log(period.value);
+        if(period.value =='day'){
+            myChart.config.options.scales.x.time.unit = period.value; //value
+            myChart.config.data.datasets[0].data = day; //x Axis legend
+        }
+        if (period.value == 'week') {
+            myChart.config.options.scales.x.time.unit = period.value;
+            myChart.config.data.datasets[0].data = week;
+        }
+        if (period.value == 'month') {
+            myChart.config.options.scales.x.time.unit = period.value;
+            myChart.config.data.datasets[0].data = month;
+        }
+        if (period.value == 'quarter') {
+            myChart.config.options.scales.x.time.unit = period.value;
+            myChart.config.data.datasets[0].data = quarter;
+        }
+        if (period.value == 'year') {
+            myChart.config.options.scales.x.time.unit = period.value;
+            myChart.config.data.datasets[0].data = year;
+        }
+
+        myChart.update();
+    }
+
+
+    //Fix Error
     function createTable(){
         console.log('triggered');
         const chartBox = document.querySelector('.chartBox');

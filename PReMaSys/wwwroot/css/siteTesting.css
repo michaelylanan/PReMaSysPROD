@@ -40,7 +40,7 @@ html {
 
 
 .main-pg-card-whole, .main-pg-card-whole-domain, .main-pg-card-whole-support {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     display: grid;
     gap: 1rem;
@@ -52,7 +52,7 @@ html {
         grid-template-columns: repeat(3, 1fr);
     }
     .main-pg-card-whole-domain {
-        grid-template-columns: repeat(4, 2fr);
+        grid-template-columns: repeat(4, 1fr);
     }
     .main-pg-card-whole-support {
         grid-template-columns: repeat(2, 1fr);
@@ -61,7 +61,7 @@ html {
 }
 
 @media (max-width:  1000px) {
-    .mainpg-card-first {
+  /*  .mainpg-card-first {
         margin-top: 160px;
     }
     .mainpg-card-first-support{
@@ -69,11 +69,22 @@ html {
     }
     .mainpg-card-last {
         margin-bottom: 60px;
-    }
+    }*/
     .login-pic-bg {
         display: none;
     }
-   
+    .main-pg-card-whole {
+       max-width:500px;
+    }
+}
+
+@media (max-width: 767px) {
+    .genrep-img {
+        width: 290px;
+        margin:auto;
+        display:block;
+    }
+    
 }
 
 

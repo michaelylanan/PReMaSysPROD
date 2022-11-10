@@ -47,7 +47,7 @@ html {
 }
 
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
     .main-pg-card-whole {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -60,7 +60,7 @@ html {
 
 }
 
-@media (max-width: 900px) {
+@media (max-width:  1000px) {
     .mainpg-card-first {
         margin-top: 160px;
     }
@@ -134,11 +134,11 @@ ul.navbar-list {
     /*margin: 80px 200px 0px 200px*/ /* 80px 600px 0px 600px;*/ /*;*/
     text-align: center;
     /* background-color:rgb(82,158,90, 0.2);*/
-    width:500px;
+    /*width:500px;*/
 }
 
 .form-login {
-   max-width:992px;
+   width:992px;
 }
 
 .login-pic-bg {

@@ -10,7 +10,8 @@
 @*<p class="mt-5 mb-5">
     <a href="#" class="btn btn-success p-2">Create New +</a>
 </p>*@
-<table class="table table-hover" id="espoints">
+<div class="table-responsive">
+<table class="table table-hover" id="salesppoints">
     <thead>
         <tr>
             <th>
@@ -82,17 +83,16 @@
                     </td>
                 </tr>
         }
-
-}
+      }
     </tbody>
 </table>
-
- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>"
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>"
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function () {
-    $('#espoints').DataTable();
+    $('#salespoints').DataTable();
 });
 </script>
+</div>
 <a class="notificationback-link btn btn-outline-success p-2" href="AdminDashboard" type="button">Back</a>

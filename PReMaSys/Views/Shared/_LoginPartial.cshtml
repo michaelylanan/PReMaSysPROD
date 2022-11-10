@@ -9,16 +9,16 @@
   
     @if(UserManager.GetUserAsync(User).Result.Pic != null){
         <li class="nav-item">
-                <img class="rounded-circle" style="height:40px; width:40px" alt="logo" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.Pic))">
+           <img class="rounded-circle" style="height:40px; width:40px" alt="logo" src="data:image/*;base64,@(Convert.ToBase64String(UserManager.GetUserAsync(User).Result.Pic))">
         </li>
     }
     <li class="nav-item">
-        <a  class="nav-link-form text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
+        <a  class="nav-link @*-form*@ text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">@User.Identity?.Name</a>
     </li>
     <li class="nav-item">
-        <form  class="form-inline nav-link" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-           @* <button  type="submit" class=" btn btn-link text-dark">Logout</button>*@
-           <a class="nav-link-form" role="button">Link</a>
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+          @* <a class="nav-link-form">Link</a>*@
         </form>
     </li>
     

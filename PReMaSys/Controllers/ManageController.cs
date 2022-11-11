@@ -165,6 +165,7 @@ namespace PReMaSys.Controllers
             {
                 if(user.user == user2)
                 {
+
                     var userRoleViewModel = new UserRoleViewModel
                     {
                         UserId = user.Id,

@@ -17,7 +17,14 @@
     <li class="list-group-item border-success"><h4>Reward Category: @Model.Category</h4></li>
     <li class="list-group-item border-success"><h4>Reward Description: @Model.Description</h4></li>
     <li class="list-group-item border-success"> <h4>Reward Points Cost: @Model.PointsCost</h4></li>
-    <li class="list-group-item text-center border-success "><input type="submit" value="Add to Cart" class="btn add-to-cart-btn btn-success"/></li>
+    <li class="list-group-item text-center border-success ">
+     <div>
+          <input type="submit" value="Add to Cart" class="btn add-to-cart-btn btn-success"/>
+          <a asp-action="EmployeeHomePage" asp-controller="Employee" type="button" class="btn btn-outline-success">Back to List</a>
+          
+     </div>
+      </li>
+  
 
   </ul>
 </div>

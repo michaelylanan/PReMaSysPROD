@@ -323,7 +323,7 @@ namespace PReMaSys.Controllers
         }
 
         /*REWARDS CRUD--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-        public IActionResult IndexR()
+        public IActionResult RewardsRecord()
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var list = _context.Rewards.Where(c => c.ApplicationUser == user).ToList();
@@ -371,7 +371,7 @@ namespace PReMaSys.Controllers
             _context.Rewards.Add(rewards);
             _context.SaveChanges();
 
-            return RedirectToAction("IndexR");
+            return RedirectToAction("RewardsRecord");
         }
 
         //(2) Edit Reward Informaiton
@@ -379,7 +379,7 @@ namespace PReMaSys.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("IndexR");
+                return RedirectToAction("RewardsRecord");
             }
 
             //variable product that retrieves the existing record from the Rewards table.
@@ -388,7 +388,7 @@ namespace PReMaSys.Controllers
             //if the reward record is not present the view will redirect to the Index action.
             if (rewards == null)
             {
-                return RedirectToAction("IndexR");
+                return RedirectToAction("RewardsRecord");
             }
 
             //Rewards model object will be included to be rendered by the View method
@@ -411,25 +411,25 @@ namespace PReMaSys.Controllers
             _context.Rewards.Update(rewards);
             _context.SaveChanges();
 
-            return RedirectToAction("IndexR");
+            return RedirectToAction("RewardsRecord");
         }
 
         public IActionResult DeleteR(int? id)
         {
             if (id == null)
             {
-                return RedirectToAction("IndexR");
+                return RedirectToAction("RewardsRecord");
             }
 
             var rewards = _context.Rewards.Where(r => r.RewardsInformationId == id).SingleOrDefault();
             if (rewards == null)
             {
-                return RedirectToAction("IndexR");
+                return RedirectToAction("RewardsRecord");
             }
             _context.Rewards.Remove(rewards);
             _context.SaveChanges();
 
-            return RedirectToAction("IndexR");
+            return RedirectToAction("RewardsRecord");
         }
     }
 }

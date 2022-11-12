@@ -25,7 +25,14 @@
      <ul class="list-group list-group-flush">
       <li class="list-group-item border-success"> <h1 class="text-center fw-bold">@Model.RewardName</h1></li>
       <li class="list-group-item border-success"><h4>Reward Price: @Model.RewardPrice</h4></li>
-      <li class="list-group-item text-center border-success "> <input type="submit" value="Submit" class="btn btn-success" /></li>
+      <li class="list-group-item text-center border-success ">
+        <div>
+        <input type="submit" value="Submit" class="btn btn-success" />
+          <a asp-action="AddToCartDisplay" asp-controller="Employee" type="button" class="btn btn-outline-success">Back to List</a>
+          
+     </div>    
+      
+      </li>
      </ul>
    </div>
 }

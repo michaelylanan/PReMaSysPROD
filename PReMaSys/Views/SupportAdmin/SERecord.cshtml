@@ -4,6 +4,8 @@
     ViewData["Title"] = "SERecord";
      Layout = "~/Views/Shared/SupportAdminDash.cshtml";
 }
+
+<div class="container">
   <h1 class="text-center mt-5 mb-5">Sales Employee Credentials</h1>
         <form asp-action="SERecord" class="se-record-form" asp-controller="SupportAdmin">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -29,4 +31,4 @@
             <h5>@ViewBag.message</h5>
         </form>
 
- 
+</div>

@@ -66,8 +66,8 @@ h1{
   
     <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-12">
-           <div class="card ranking-card text-center mb-3">
-             <img src="~/img/mike.png" class="card-img-top" alt="..." style="width:100%; height:280px">
+           <div class="card ranking-card text-center mb-3 mx-auto">
+             <img src="~/img/mike.png" class="img-fluid card-img-top" alt="..." style="width:100%; height:280px">
              <div class="card-body">
                <h5 class="card-title"><b>Michael Ylanan</b></h5>
                <p class="card-text"> Rank 1 Employee</p>
@@ -117,8 +117,8 @@ h1{
         </div>
 
        <div class="col-lg-4 col-md-6 col-sm-12">
-         <div class="card ranking-card text-center mb-3 r">
-           <img src="~/img/girl.png" class="card-img-top" alt="..."  style="width:100%; height:280px">
+         <div class="card ranking-card text-center mb-3 mx-auto">
+           <img src="~/img/girl.png" class="card-img-top img-fluid" alt="..."  style="width:100%; height:280px">
            <div class="card-body">
             <h5 class="card-title"><b>Nicole Cepria</b></h5>
             <p class="card-text">Rank 2 Employee</p>
@@ -148,8 +148,8 @@ h1{
         </div>
        </div>
        <div class="col-lg-4 col-md-6 col-sm-12">
-        <div class="card ranking-card text-center mb-3">
-          <img src="~/img/mig.png" class="card-img-top" alt="..."  style="width:100%; height:280px">
+        <div class="card ranking-card text-center mb-3 mx-auto">
+          <img src="~/img/mig.png" class="img-fluid card-img-top" alt="..."  style="width:100%; height:280px">
           <div class="card-body">
             <h5 class="card-title"><b>Migo Del Rosario</b></h5>
             <p class="card-text">Rank 3 Employee</p>
@@ -272,7 +272,7 @@ h1{
   
 </div>
 
-
+<div class="table-responsive">
  <div class="mt-5 table-hover">
         <table class="table">
             <tr>
@@ -286,7 +286,7 @@ h1{
             </tr>
             <tr>
                 <td>4th</td>
-                <td><img src=~/img/boy.png style="height:3em"/></td>
+                <td><img src=~/img/boy.png class="img-fluid" style="height:3em"/></td>
                 <td>Miguel Magallanes</td>
                 <td>70</td>
                 <td>Php 400K</td>
@@ -305,7 +305,7 @@ h1{
             </tr>
              <tr>
                 <td>5th</td>
-                <td><img src=~/img/girl.png style="height:3em"/></td>
+                <td><img src=~/img/girl.png  class="img-fluid" style="height:3em"/></td>
                 <td>Girl Girly</td>
                 <td>60</td>
                 <td>Php 300K</td>
@@ -325,9 +325,10 @@ h1{
                 </td>
             </tr>
         </table>
-
-         <a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
     </div>
+</div>
+
+  <a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
 
 <script>
     var dt = new Date();

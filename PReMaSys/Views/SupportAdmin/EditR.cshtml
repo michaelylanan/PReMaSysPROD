@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/SupportAdminDash.cshtml";
 }
 
-<h1 class="text-center mt-5">EditR</h1>
+<div class="container">
 
+<h1 class="text-center mt-5">EditR</h1>
 <h4 class="text-center mb-4">Rewards</h4>
 <hr />
-
         <form asp-action="EditR" class="edit-r-form mt-5">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="RewardsInformationId" />
@@ -50,6 +50,6 @@
         </form>
   
 
-
+</div>
 
 

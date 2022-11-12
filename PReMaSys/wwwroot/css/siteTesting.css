@@ -12,28 +12,28 @@ html {
     
 }
 
-
 .page-title-header, .point-title-header, .point-total-header, table, .rewards-tab, .login-form, .register-form, .nav-link-form, .nav-link-employee, .nav-link-admin, .reward-option, .option-link, h1,h2,h3,p, h5, button, .card, .partial {
     font-family: 'Barlow', sans-serif;
 }
 
 .mainpage-usrs-pic {
     width: 230px;
+    height: 230px;
 }
 
-.nav-item{
-    color:white;
+.nav-item {
+    color: white;
 }
 
 .performance-options-container {
-    height: calc(100vh - 70px);
+    min-height: calc(100vh - 105px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .performance-options-container-domain {
-    height: calc(90vh - 70px);
+    min-height: calc(90vh - 70px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -257,7 +257,7 @@ ul.navbar-list {
 
 
 .create-role-form, .create-se-form, .create-r-form, .edit-r-form, .edit-se-form, .edit-role-form, .approve-r-form, .deduct-points-forn, .se-record-form, .add-role-form {
-    margin: 0 500px;
+    margin:auto;
 }
 
 

@@ -3,88 +3,42 @@
     ViewData["Title"] = "DomainPage";
     Layout = "~/Views/Shared/DomainAdminDash.cshtml";
 }
-
-<h1>DomainPage</h1>
-
-    <div class="performance-options-container">
-    <div class="performance-options main-pg-card-whole-domain w-lg-50 w-50">
-      <div class="mainpg-card-first option-link text-center border border-success rounded p-3">
-           <a class="option-text " href="~/Domain/ListAdminRoles"  role="button" >
-            <h1>Admin Roles</h1>    
-            <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
-          </a>
-        </div>
-        <div class="mainpg-card option-link text-center border border-success rounded p-3 ms-3 me-3">
-           <a class="option-text" href="~/Domain/DomainPage" role="button">
-            <h1>Reports</h1>
-            <img src="~/img/reportspic.png" class="mainpage-usrs-pic"/>
-          </a>
-        </div>
-        <div class="mainpg-card option-link text-center border border-success rounded p-3">
-          <a class="option-text" href="~/Domain/SEPoints" role="button">
-            <h1>Sales Profit Points</h1>
-            <img src="~/img/profitspic.png" class="mainpage-usrs-pic"/>
-          </a>
+<div class="performance-options-container">
+  <div>
+      <h1 class="text-center mb-5">Domain Page</h1>
+    <div>
+    <div class="d-sm-flex mb-5 d-block">
+      <div class="mainpg-card-first mb-5 mb-sm-0 me-sm-5 option-link text-center border border-success rounded p-3">
+        <a class="option-text " href="~/Domain/ListAdminRoles" role="button">
+          <h3>Admin Roles</h3>
+          <img src="~/img/roleadminpic.png" class="img-fluid mainpage-usrs-pic" />
+        </a>
       </div>
-       <div class="mainpg-card-last option-link text-center border border-success rounded p-3">
-         <a class="option-text" href="~/Domain/ApproveRewards" role="button">
-             <h1>Rewards</h1>
-             <img src="~/img/rewardspic.png" class="mainpage-usrs-pic"/>
-           </a>
+      <div class="mainpg-card option-link text-center border border-success rounded p-3">
+        <a class="option-text" href="~/Domain/DomainPage" role="button">
+          <h3>Reports</h3>
+          <img src="~/img/reportspic.png" class="img-fluid mainpage-usrs-pic" />
+        </a>
       </div>
+    </div>
+    <div class="d-sm-flex d-block">
+      <div class="mainpg-card mb-5 mb-sm-0 me-sm-5 option-link text-center border border-success rounded p-3">
+        <a class="option-text" href="~/Domain/SEPoints" role="button">
+          <h3>Profit Points</h3>
+          <img src="~/img/profitspic.png" class="img-fluid mainpage-usrs-pic" />
+        </a>
       </div>
+      <div class="mainpg-card-last option-link text-center border border-success rounded p-3">
+        <a class="option-text" href="~/Domain/ApproveRewards" role="button">
+          <h3>Rewards</h3>
+          <img src="~/img/rewardspic.png" class="img-fluid mainpage-usrs-pic" />
+        </a>
+      </div>
+    </div>
+    </div>
   </div>
+</div>
 
-
-@*<body class="overflow-hidden">*@
-@*<div class="performance-options-container-domain">
-    <div class="performance-options d-flex row">
-        <div class="col-lg-5 option-link text-center border border-success rounded p-2 mb-3">
-          <a class="option-text " href="~/Domain/ListAdminRoles"  role="button" >
-            <h1>Admin Roles</h1>    
-            <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
-          </a>
-        </div>
-        <div class="col-lg-5 option-link text-center border border-success rounded p-2 ms-3 me-3 mb-3">
-          <a class="option-text" href="~/Domain/DomainPage" role="button">
-            <h1>Reports</h1>
-            <img src="~/img/reportspic.png" class="mainpage-usrs-pic"/>
-          </a>
-        </div>
-         <div class="col-lg-5 option-link text-center border border-success rounded p-2 me-3 mb-5">
-           <a class="option-text" href="~/Domain/SEPoints" role="button">
-            <h1>Sales Profit Points</h1>
-            <img src="~/img/profitspic.png" class="mainpage-usrs-pic"/>
-          </a>
-        </div>
-          <div class="col-lg-5 option-link text-center border border-success rounded p-2 mb-5">
-           <a class="option-text" href="~/Domain/ApproveRewards" role="button">
-             <h1>Rewards</h1>
-             <img src="~/img/rewardspic.png" class="mainpage-usrs-pic"/>
-           </a>
-        </div>*@
-
-
-
-      @* <a class="option-link" href="~/Domain/ListAdminRoles"  role="button" >
-          <h1>Admin Roles</h1>    
-          <img src="~/img/roleadminpic.png" class="mainpage-usrs-pic" />
-       </a>
-       <a class="option-link ms-3 me-3" href="~/Domain/DomainPage" role="button">
-          <h1>Reports</h1>
-          <img src="~/img/reportspic.png" class="mainpage-usrs-pic"/>
-      </a>
-      <a class="option-link me-3" href="~/Domain/SEPoints" role="button">
-          <h1>Sales Profit Points</h1>
-          <img src="~/img/profitspic.png" class="mainpage-usrs-pic"/>
-      </a>
-       <a class="option-link" href="~/Domain/ApproveRewards" role="button">
-          <h1>Rewards</h1>
-          <img src="~/img/rewardspic.png" class="mainpage-usrs-pic"/>
-      </a>*@
-@*    </div>
-</div>*@
-@*</body>*@
 
 
  

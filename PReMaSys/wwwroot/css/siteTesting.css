@@ -144,7 +144,7 @@ ul.navbar-list {
     /*width:500px;*/
 }
 
-.form-login {
+.form-login, .form-register {
    width:992px;
 }
 

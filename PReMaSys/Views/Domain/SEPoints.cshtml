@@ -10,7 +10,7 @@
 
 <div class= "px-5">
 <div class="table-responsive">
-<table class="table table-hover" id="example">
+<table class="table table-hover" id="se-points">
     <thead>
         <tr>
             <th>
@@ -40,9 +40,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.EmployeePoints)
             </th>
-            <th>
+       @*     <th>
                 @Html.DisplayNameFor(model => model.DateAdded)
-            </th>
+            </th>*@
             @*<th>
                 @Html.DisplayNameFor(model => model.DateModified)
             </th>*@
@@ -87,28 +87,28 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.EmployeePoints)
                     </td>
-                    <td>
+                   @* <td>
                         @Html.DisplayFor(modelItem => item.DateAdded)
-                    </td>
-                    <td>
+                    </td>*@
+                  @*  <td>
                         @Html.DisplayFor(modelItem => item.DateModified)
-                    </td>
+                    </td>*@
                 </tr>
         }
 
     }
     </tbody>
 </table>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
     $(document).ready(function () {
-    $('#example').DataTable();
+    $('#se-points').DataTable();
 });
 </script>
-</div>
 </div>
 
  <a class="notificationback-link btn btn-outline-success p-2 mt-3 ms-5 " href="DomainPage" type="button">Back</a>

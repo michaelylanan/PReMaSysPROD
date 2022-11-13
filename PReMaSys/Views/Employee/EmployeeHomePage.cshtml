@@ -4,18 +4,6 @@
     Layout = "~/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
 
 }
-   @using (Html.BeginForm("EmployeeHomePage", "Employee", FormMethod.Get))
-            {
-                <div class="mt-5 mb-5">
-                  <b>Search By:</b>
-                     @Html.RadioButton("searchBy", "RewardName", true) <text>Rewards</text>
-                  <br />
-                  @Html.TextBox("search")
-                  <button type="submit" class="btn btn-success btn-sm; fa fa-search"></button>
-                  <a asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage" class="btn btn-warning btn-sm">Display All</a>
-                </div>
-               
-            }
 
 
 <partial name="_EmployeePageTablePartial" />  
@@ -48,10 +36,10 @@
             <div class="row"> 
                 @foreach (var item in Model)
                 {
-                    <div class="col-lg-3 col-md-4 col-sm-12">
-                        <div class="card text-bg-light border border-success border-2 text-center card-rewards mb-4 mt-5">
+                    <div class="col-lg-3">  
+                        <div class="card text-bg-light border border-success border-2 text-center card-rewards mx-auto mb-3">
                             <div class="card-header text-bg-success">@Html.DisplayFor(modelItem => item.Category)</div>
-                            <img src="@Url.Content(item.Picture)" class="card-img-top mx-auto" id="reward-img" alt="...">
+                            <img src="@Url.Content(item.Picture)" class="img-fluid card-img-top mx-auto" id="reward-img" alt="...">
                             <div class="card-body text-center">
                                 <figure>
                                     <h5 class="card-title text-success"><figcaption>@Html.DisplayFor(modelItem => item.RewardName)</figcaption></h5>

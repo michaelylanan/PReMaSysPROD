@@ -236,10 +236,13 @@ ul.navbar-list {
 }
 
 .card-rewards{
-    width: 295px;
-    margin-left:27px;
+    max-width: 295px;
+    /*margin-left:27px;*/
 }
 
+#carouselCaptions{
+    max-width:600px;
+}
 
 /*FOR ADMIN*/
 

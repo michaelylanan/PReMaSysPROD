@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<PReMaSys.Models.Purchase>
 
 @{
-    ViewData["Title"] = "PurchaseView";
+    ViewData["Title"] = "Purchase View";
 }
 
 <partial name="_EmployeePageTablePartial" />   
 
+<div class="table-responsive">
 <h1>Transaction History</h1>
-<table class="table">
+<table class= "table table-for-rewards table-hover  border-success text-center mt-5 border-2" id="transaction-table" >
     <thead>
         <tr>
             <th>
@@ -52,7 +53,16 @@
         }
     </tbody>
 </table>
-
-<div class="form-group mb-3 mt-5">
-    <a asp-action="EmployeeHomePage" class="btn btn-outline-success">Go Back To Home Page</a>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>"
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    $(document).ready(function () {
+    $('#transaction-table').DataTable();
+});
+</script>
+
+@*<div class="form-group mb-3 mt-5">
+    <a asp-action="EmployeeHomePage" class="btn btn-outline-success">Go Back To Home Page</a>
+</div>*@

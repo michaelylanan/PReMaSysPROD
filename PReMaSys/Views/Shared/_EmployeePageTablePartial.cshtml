@@ -16,8 +16,21 @@
 
 </head>
 <body>
-    
 
+       @using (Html.BeginForm("EmployeeHomePage", "Employee", FormMethod.Get))
+            {
+                <div class="mt-5 mb-5">
+                  <b>Search By:</b>
+                     @Html.RadioButton("searchBy", "RewardName", true) <text>Rewards</text>
+                  <br />
+                  @Html.TextBox("search")
+                  <button type="submit" class="btn btn-success btn-sm; fa fa-search"></button>
+                  <a asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage" class="btn btn-warning btn-sm">Display All</a>
+                </div>
+               
+            }
+    
+    <div class="table-responsive">
              <table class="emp-main-page-table w-100 fs-4 text-center">
                  <tr>
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="PurchaseView">Reward Status</a></th>
@@ -27,7 +40,7 @@
                      <th><a class="nav-link p-2 page-title-header text-dark" asp-area="" asp-controller="Employee" asp-action="ContactUs">Contact Us</a></th>
                  </tr>
              </table>
-
+    </div>
         
     @*<footer class="border-top footer text-muted" style="bottom:0; height:60px;width:100%; padding:20px">
         <div class="container">

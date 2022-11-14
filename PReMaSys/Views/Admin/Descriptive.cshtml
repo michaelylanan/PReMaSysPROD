@@ -1,9 +1,275 @@
 ﻿@{
-    ViewData["Title"] = "Forecasts";
+    ViewData["Title"] = "Descriptive Analysis";
     Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
 }
 
-@*<a class="option-link" href ="~/Admin/ReportsPage" style="width:30%">< Go Back to Reports</a>*@
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+    }
+
+    .chartMenu {
+        width: auto;
+        height: auto;
+        padding:20px;
+        background: #69cc00;
+        text-align: center;
+        color: white;
+    }
+
+        .chartMenu p {
+            padding: 10px;
+            font-size: 30px;
+        }
+
+    .chartCard {
+        width: auto;
+        height: auto;
+        padding: 20px;
+        background: #e6ffcc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chartBox {
+        width: 1000px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px #4f9900;
+        background: white;
+    }
+
+    .chartBox2 {
+        width: 1000px;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px #4f9900;
+        background: white;
+    }
+
+    .chartjs-table, th, td {
+        border-collapse: collapse;
+        border: 1px solid green;
+        padding: 10px;
+    }
+
+    .chartjs-thead {
+        font-weight: bold;
+    }
+
+    .chartjs-tbody {
+        text-align: center;
+    }
+
+</style>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="back-button" style="margin-bottom:20px">
+    <a class="notificationback-link btn btn-outline-success p-2 mt-5" href="ReportsPage" type="button">Back</a>
+    <a class="notificationback-link btn btn-outline-success p-2 mt-5" onClick="window.print()" style="width:20%">Print/Save File</a>
+</div>
+
+    <div class="chartMenu">
+    <p>SUMMARY OF NET PROFIT: DESCRIPTIVE ANALYSIS</p>
+    </div>
+    <div class="chartCard">
+        <div class="chartBox">
+            <div>Bar Graph: UNIT SOLD PER PRODUCT</div>
+            <canvas id="myChart"></canvas>
+        </div>   
+    </div>
+
+     <div class="chartCard">
+        <div class="chartBox">
+            <div>Line Graph: PROFIT GENERATED PER PRODUCT</div>
+            <canvas id="lineChart"></canvas>
+        </div>
+    </div>  
+    <div class="chartCard">
+        <div class="chartBox2">
+            <div>Table: Data Interpretation</div>
+        </div>
+    </div> 
+
+    <script>
+        // setup
+        const data = {
+        labels: ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6', 'Product 7', 'Product 8', 'Product 9', 'Product 10'],
+            datasets: [{ // Employee 1
+                label: 'Michael Ylanan',
+                data: [18000, 15000, 18000, 19000, 11200, 13000, 1900, 15000, 12002, 10000],
+                backgroundColor: [
+                'rgb(255, 255, 77)', // legend color
+                ],
+                borderColor: [
+                'rgb(255, 255, 77)', // line color
+                ],
+                borderWidth: 1
+            },
+        { // Employee 2
+                label: 'Nicole Cepria',
+                data: [1210, 11200, 6510, 12300, 9800, 1200, 1200, 8100, 9802, 1400],
+                backgroundColor: [
+                'rgb(77, 121, 255)', // legend color
+                ],
+                borderColor: [
+                    'rgb(77, 121, 255)', // line color
+                ],
+                borderWidth: 1
+            },
+        { // Employee 3
+                label: 'Miguel Magallanes',
+                data: [900, 9800, 3510, 11300, 8800, 900, 1100, 7100, 12002, 1200],
+                backgroundColor: [
+                'rgb(179, 179, 204)', // legend color
+                ],
+                borderColor: [
+                    'rgb(179, 179, 204)', // line color
+                ],
+                borderWidth: 1
+            },
+        { // Employee 4
+            label: 'Migo Del Rosario',
+            data: [1110, 13100, 1101, 13002, 5400, 7200, 1200, 1100, 18002, 1400],
+            backgroundColor: [
+                'rgb(255, 173, 51)', // legend color
+            ],
+            borderColor: [
+                'rgb(255, 173, 51)', // line color
+            ],
+            borderWidth: 1
+        }]
+        };
+
+        // config
+        const config = {
+            type: 'bar',
+            data,
+            options: {
+                indexAxis: 'y', // Horizontal Bar
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+        //LINE CHART ---------------------------------------------------------------------------------------------------------------------------------
+        // render line chart
+         const profit = {
+            labels: ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6', 'Product 7', 'Product 8', 'Product 9', 'Product 10'],
+            datasets: [{
+                label: 'Unit Sold',
+            data: [12110, 112002, 651120, 1230120, 980120, 120120, 120120, 811200, 980212, 140120],
+                backgroundColor: [
+                    'orange', // legend color
+                ],
+                borderColor: [
+                    'orange', // line color
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'Gross Sales',
+                data: [121070, 11700, 651730, 1271200, 917800, 117200, 127200, 811700, 971202, 171200],
+                backgroundColor: [
+                    'gray', // legend color
+                ],
+                borderColor: [
+                    'gray', // line color
+                ],
+                borderWidth: 1
+            },
+            {
+                label: 'Net Profit',
+                data: [18120, 1212111, 601200, 912001, 121212, 351200, 90120,100011,12312,12312],
+                backgroundColor: [
+                'rgb(0, 38, 153)', // legend color
+                ],
+                borderColor: [
+                'rgb(0, 38, 153)', // line color
+                ],
+                borderWidth: 1
+            }]
+        };
+
+
+        // config
+        const config2 = {
+            type: 'line',
+            data: profit,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+        const lineChart = new Chart(
+            document.getElementById('lineChart'),
+            config2
+        );
+
+    function createTable() {
+        console.log('triggered');
+        const chartBox = document.querySelector('.chartBox2');
+        const tableDiv = document.createElement('DIV');
+        tableDiv.setAttribute('id', 'tableDiv');//assign ID
+
+        //add Table
+        const table = document.createElement('TABLE');
+        table.classList.add('chartjs-table');
+
+        //add thead
+        const thead = table.createTHead();
+        thead.classList.add('chartjs-thead');
+
+        //add Column Headers using data
+        thead.insertRow(0);
+        console.log(profit.labels)
+        for (let i = 0; i < profit.labels.length; i++) {
+            thead.rows[0].insertCell(i).innerText = profit.labels[i];
+            thead.rows[0].cells[i].style.color = 'orange';
+        };
+        thead.rows[0].insertCell(0).innerText = 'Metrics';
+
+        //tbody
+        const tbody = table.createTBody();
+        tbody.classList.add('chartjs-tbody');
+
+        //data
+        console.log(profit.datasets)
+        profit.datasets.map((dataset, index) => {
+            tbody.insertRow(index);
+            for (let i = 0; i < profit.datasets[0].data.length; i++) {
+                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
+            };
+            tbody.rows[index].insertCell(0).innerText = dataset.label;
+        })
+
+
+        //append
+        chartBox.appendChild(tableDiv);
+        tableDiv.appendChild(table);
+    };
+
+    createTable();
+
+    </script>
+
+@*<a class="option-link" href ="~/Admin/ReportsPage" style="width:30%">< Go Back to Reports</a>
 <div class="container" style="background-color:forestgreen">
      <div style="text-align:center; font-size:30px; padding:20px; background-color:white; border:1px forestgreen solid">SUMMARY OF NET PROFIT: DESCRIPTIVE ANALYSIS</div>
      <div style="padding:10px">
@@ -89,12 +355,7 @@
               </tr>
           </table>
      </div>
-</div>
- <button onClick="window.print()">Print/Save File</button>
- <div class="back-button">
-      <a class="notificationback-link btn btn-outline-success p-2 mt-5" href="ReportsPage" type="button">Back</a>
- </div>
-
+</div>*@
  <script>
      function printFunction() { 
          window.print(); 

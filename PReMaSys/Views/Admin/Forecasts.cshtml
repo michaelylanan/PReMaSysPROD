@@ -48,6 +48,15 @@
         border: solid 3px #4f9900;
         background: white;
     }
+
+    .chartBox2 {
+        width: auto;
+        padding: 20px;
+        border-radius: 20px;
+        border: solid 3px #4f9900;
+        background: white;
+    }
+
     .chartjs-table, th, td {
         border-collapse: collapse;
         border: 1px solid green;
@@ -61,7 +70,10 @@
     }
 
 </style>
-
+<div class="back-button" style="margin-bottom:20px">
+    <a class="notificationback-link btn btn-outline-success p-2 mt-5" href="ReportsPage" type="button">Back</a>
+    <a class="notificationback-link btn btn-outline-success p-2 mt-5" onClick="window.print()" style="width:20%">Print/Save File</a>
+</div>
 <div class="chartMenu">
     <p>PROFIT FORECAST</p>
 </div>
@@ -80,9 +92,12 @@
             </div>
         </div>
         <canvas id="myChart" style="margin-bottom:40px"></canvas>
+        <div class="chartBox2">
+            <div>Table: Data Interpretation</div>
+        </div>
     </div>
 </div>
-<a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
+
 
 <script>
     //day
@@ -199,6 +214,118 @@
         config
     );
 
+    //Table Net Profit CHART ---------------------------------------------------------------------------------------------------------------------------------
+    const profit = {
+        labels: ['Net Profit'],
+        datasets: [{
+            label: 'Net Profit Current Month',
+            data: ['The generated over all sales is Php:' + 1211],
+            backgroundColor: [
+                'orange', // legend color
+            ],
+            borderColor: [
+                'orange', // line color
+            ],
+            borderWidth: 1
+        },
+        {
+            label: 'Net Profit Last Month',
+            data: ['The generated over all sales is Php:' + 121070],
+            backgroundColor: [
+                'gray', // legend color
+            ],
+            borderColor: [
+                'gray', // line color
+            ],
+            borderWidth: 1
+        },
+        {
+            label: 'Net Profit Current Year',
+            data: ['The generated over all sales is Php:' + 18120],
+            backgroundColor: [
+                'rgb(0, 38, 153)', // legend color
+            ],
+            borderColor: [
+                'rgb(0, 38, 153)', // line color
+            ],
+            borderWidth: 1
+        },
+        {
+            label: 'Net Profit Last Year',
+            data: ['The generated over all sales is Php:' + 18120],
+            backgroundColor: [
+                'rgb(0, 38, 153)', // legend color
+            ],
+            borderColor: [
+                'rgb(0, 38, 153)', // line color
+            ],
+            borderWidth: 1
+        }]
+    };
+
+
+    // config
+    const config2 = {
+        type: 'line',
+        data: profit,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+    const lineChart = new Chart(
+        document.getElementById('lineChart'),
+        config2
+    );
+
+    function createTable() {
+        console.log('triggered');
+        const chartBox = document.querySelector('.chartBox2');
+        const tableDiv = document.createElement('DIV');
+        tableDiv.setAttribute('id', 'tableDiv');//assign ID
+
+        //add Table
+        const table = document.createElement('TABLE');
+        table.classList.add('chartjs-table');
+
+        //add thead
+        const thead = table.createTHead();
+        thead.classList.add('chartjs-thead');
+
+        //add Column Headers using data
+        thead.insertRow(0);
+        console.log(units.labels)
+        for (let i = 0; i < units.labels.length; i++) {
+            thead.rows[0].insertCell(i).innerText = units.labels[i];
+            thead.rows[0].cells[i].style.color = 'orange';
+        };
+        thead.rows[0].insertCell(0).innerText = 'Metrics';
+
+        //tbody
+        const tbody = table.createTBody();
+        tbody.classList.add('chartjs-tbody');
+
+        //data
+        console.log(units.datasets)
+        units.datasets.map((dataset, index) => {
+            tbody.insertRow(index);
+            for (let i = 0; i < units.datasets[0].data.length; i++) {
+                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
+            };
+
+            tbody.rows[index].insertCell(0).innerText = dataset.label;
+        })
+        //append
+        chartBox.appendChild(tableDiv);
+        tableDiv.appendChild(table);
+    };
+
+    createTable();
+
+
     //function for change to timeline
     function timeFrame(period){
         console.log(period.value);
@@ -227,51 +354,7 @@
     }
 
 
-    //Fix Error
-    function createTable(){
-        console.log('triggered');
-        const chartBox = document.querySelector('.chartBox');
-        const tableDiv = document.createElement('DIV');
-        tableDiv.setAttribute('id', 'tableDiv');//assign ID
-
-        //add Table
-        const table = document.createElement('TABLE');
-        table.classList.add('chartjs-table');
-
-        //add thead
-        const thead = table.createTHead();
-        thead.classList.add('chartjs-thead');
-        
-        //add Column Headers using data
-        thead.insertRow(0);
-        console.log(data.labels)
-        for(let i = 0; i < data.labels.length; i++){
-            thead.rows[0].insertCell(i).innerText = data.labels[i];
-            thead.rows[0].cells[i].style.color = data.datasets[0].borderColor[i];
-        };
-        thead.rows[0].insertCell(0).innerText = 'Months';
-
-        //tbody
-        const tbody = table.createTBody();
-        tbody.classList.add('chartjs-tbody');
-
-        //data
-        console.log(data.datasets)
-        data.datasets.map((dataset, index) => {
-            tbody.insertRow(index);
-            for(let i = 0; i < data.datasets[0].data.length; i++){
-                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
-            };
-            tbody.rows[index].insertCell(0).innerText = dataset.label;
-        })
-
-       
-        //append
-        chartBox.appendChild(tableDiv);
-        tableDiv.appendChild(table);
-    };
-
-    createTable();
+    
 </script>
 
 

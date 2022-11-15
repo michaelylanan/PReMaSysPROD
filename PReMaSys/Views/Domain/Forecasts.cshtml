@@ -22,8 +22,8 @@
         width: auto;
         height: auto;
         background: #69cc00;
-        text-align:center;
-        color:white;
+        text-align: center;
+        color: white;
     }
 
         .chartMenu p {
@@ -34,7 +34,7 @@
     .chartCard {
         width: auto;
         height: auto;
-        padding:20px;
+        padding: 20px;
         background: #e6ffcc;
         display: flex;
         align-items: center;
@@ -62,16 +62,18 @@
         border: 1px solid green;
         padding: 10px;
     }
-    .chartjs-thead{
+
+    .chartjs-thead {
         font-weight: bold;
     }
-    .chartjs-tbody{
-        text-align:center;
+
+    .chartjs-tbody {
+        text-align: center;
     }
 
 </style>
 <div class="back-button" style="margin-bottom:20px">
-    <a class="notificationback-link btn btn-outline-success p-2 mt-5" href="ReportsPage" type="button">Back</a>
+    <a class="notificationback-link btn btn-outline-success p-2 mt-5" asp-action="ReportsPage" asp-controller="Domain" type="button">Back</a>
     <a class="notificationback-link btn btn-outline-success p-2 mt-5" onClick="window.print()" style="width:20%">Print/Save File</a>
 </div>
 <div class="chartMenu">
@@ -92,7 +94,7 @@
             </div>
         </div>
         <canvas id="myChart" style="margin-bottom:40px"></canvas>
-      @*  <div class="chartBox2">
+        @*<div class="chartBox2">
             <div>Table: Data Interpretation</div>
         </div>*@
         <div class="container">
@@ -143,7 +145,6 @@
                     <td>Php 300,000</td>
                 </tr>
             </table>
-        </div>
     </div>
 </div>
 
@@ -154,7 +155,7 @@
     //this data should be fetch in excel data
     //But How? Can be it in a list form, array?
     const day = [
-        { x: Date.parse('2022-11-01 00:00:00 GMT+0800'), y:10000}, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
+        { x: Date.parse('2022-11-01 00:00:00 GMT+0800'), y: 10000 }, //fixed Time format: HH:MM:SS (GMT: Greenwhich MeanTime)
         { x: Date.parse('2022-11-02 00:00:00 GMT+0800'), y: 2000 },
         { x: Date.parse('2022-11-03 00:00:00 GMT+0800'), y: 4000 },
         { x: Date.parse('2022-11-04 00:00:00 GMT+0800'), y: 6000 },
@@ -207,33 +208,33 @@
         /* labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],*/ //Get Columns from excel //now will be commented out
         /* data: [1800, 1201, 600, 900, 12  10, 3100, 9090, 1010,9010,1801,1210,10101,],*/ //Get data from excel // now will be commented out
         datasets: [{
-        label: 'Weekly Sales',
+            label: 'Weekly Sales',
             data: day, // from the const day //will be changed to user choice dropdown
-        backgroundColor: [
-            'rgb(79, 153, 0)', // legend color
-            'rgb(79, 153, 0)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(0, 0, 0, 0.2)'
-        ],
-        borderColor: [
-            'rgb(53, 102, 0)', // line color
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-            'rgba(0, 0, 0, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
-            'rgba(0, 0, 0, 1)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(0, 0, 0, 0.2)'
-        ],
-        borderWidth: 0.5
+            backgroundColor: [
+                'rgb(79, 153, 0)', // legend color
+                'rgb(79, 153, 0)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(0, 0, 0, 0.2)'
+            ],
+            borderColor: [
+                'rgb(53, 102, 0)', // line color
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 0, 0, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(0, 0, 0, 1)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(0, 0, 0, 0.2)'
+            ],
+            borderWidth: 0.5
         }]
     };
 
@@ -242,18 +243,18 @@
         type: 'line',
         data,
         options: {
-        scales: {
-            //add a new scale for time
-            x:{
-                type:'time',
-                time:{
-                    unit: 'day' //therefore, data should be changed in the setup which is why dev should create a const that stores dates //will be changed to user choice dropdown
+            scales: {
+                //add a new scale for time
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day' //therefore, data should be changed in the setup which is why dev should create a const that stores dates //will be changed to user choice dropdown
+                    }
+                },
+                y: {
+                    beginAtZero: true
                 }
-            },
-            y: {
-            beginAtZero: true
             }
-        }
         }
     };
 
@@ -330,55 +331,55 @@
         config2
     );
 
-    function createTable() {
-        console.log('triggered');
-        const chartBox = document.querySelector('.chartBox2');
-        const tableDiv = document.createElement('DIV');
-        tableDiv.setAttribute('id', 'tableDiv');//assign ID
+    //function createTable() {
+    //    console.log('triggered');
+    //    const chartBox = document.querySelector('.chartBox2');
+    //    const tableDiv = document.createElement('DIV');
+    //    tableDiv.setAttribute('id', 'tableDiv');//assign ID
 
-        //add Table
-        const table = document.createElement('TABLE');
-        table.classList.add('chartjs-table');
+    //    //add Table
+    //    const table = document.createElement('TABLE');
+    //    table.classList.add('chartjs-table');
 
-        //add thead
-        const thead = table.createTHead();
-        thead.classList.add('chartjs-thead');
+    //    //add thead
+    //    const thead = table.createTHead();
+    //    thead.classList.add('chartjs-thead');
 
-        //add Column Headers using data
-        thead.insertRow(0);
-        console.log(units.labels)
-        for (let i = 0; i < units.labels.length; i++) {
-            thead.rows[0].insertCell(i).innerText = units.labels[i];
-            thead.rows[0].cells[i].style.color = 'orange';
-        };
-        thead.rows[0].insertCell(0).innerText = 'Metrics';
+    //    //add Column Headers using data
+    //    thead.insertRow(0);
+    //    console.log(units.labels)
+    //    for (let i = 0; i < units.labels.length; i++) {
+    //        thead.rows[0].insertCell(i).innerText = units.labels[i];
+    //        thead.rows[0].cells[i].style.color = 'orange';
+    //    };
+    //    thead.rows[0].insertCell(0).innerText = 'Metrics';
 
-        //tbody
-        const tbody = table.createTBody();
-        tbody.classList.add('chartjs-tbody');
+    //    //tbody
+    //    const tbody = table.createTBody();
+    //    tbody.classList.add('chartjs-tbody');
 
-        //data
-        console.log(units.datasets)
-        units.datasets.map((dataset, index) => {
-            tbody.insertRow(index);
-            for (let i = 0; i < units.datasets[0].data.length; i++) {
-                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
-            };
+    //    //data
+    //    console.log(units.datasets)
+    //    units.datasets.map((dataset, index) => {
+    //        tbody.insertRow(index);
+    //        for (let i = 0; i < units.datasets[0].data.length; i++) {
+    //            tbody.rows[index].insertCell(i).innerText = dataset.data[i];
+    //        };
 
-            tbody.rows[index].insertCell(0).innerText = dataset.label;
-        })
-        //append
-        chartBox.appendChild(tableDiv);
-        tableDiv.appendChild(table);
-    };
+    //        tbody.rows[index].insertCell(0).innerText = dataset.label;
+    //    })
+    //    //append
+    //    chartBox.appendChild(tableDiv);
+    //    tableDiv.appendChild(table);
+    //};
 
-    createTable();
+    //createTable();
 
 
     //function for change to timeline
-    function timeFrame(period){
+    function timeFrame(period) {
         console.log(period.value);
-        if(period.value =='day'){
+        if (period.value == 'day') {
             myChart.config.options.scales.x.time.unit = period.value; //value
             myChart.config.data.datasets[0].data = day; //x Axis legend
         }
@@ -403,77 +404,5 @@
     }
 
 
-    
+
 </script>
-
-
-<!-- Old Code Block
-<h1 style="margin-top:20px; text-align:center; background-color:lightgray; padding:20px; border-radius:5px">PROFIT FORECAST</h1>
-<div class="container" style="margin-top:20px; border: 2px forestgreen solid;">
-    <img src="~/img/forecast.png" style="padding:5px"/>
-</div>
-
-<div class="mb-3" style="margin-top:20px">
-    <label for="period">Choose Time Frame :</label>
-
-    <select name="period" id="period" style="font-size:15px">
-        <option value="weekly">Weekly</option>
-        <option value="monthly">Montly</option>
-        <option value="quarterly">Quarterly</option>
-        <option value="Yearly">Yearly</option>
-    </select>
-</div>
-
-<div class="container">
-    <table class="table">
-        <tr>
-            <th>Products Sold</th>
-            <th>July 2020</th>
-            <th>August 2020</th>
-            <th>September 2020</th>
-            <th>October 2020</th>
-            <th>November 2020</th>
-            <th>December 2020</th>
-        </tr>
-        <tr>
-            <td>Product 1</td>
-            <td>Php 100,000</td>
-            <td>Php 200,000</td>
-            <td>Php 300,000</td>
-            <td>Php 150,000</td>
-            <td>Php 280,000</td>
-            <td>Php 400,000</td>
-        </tr>
-        <tr>
-            <td>Product 2</td>
-            <td>Php 110,000</td>
-            <td>Php 280,000</td>
-            <td>Php 350,000</td>
-            <td>Php 250,000</td>
-            <td>Php 180,000</td>
-            <td>Php 300,000</td>
-        </tr>
-         <tr>
-            <td>Product 3</td>
-            <td>Php 90,000</td>
-            <td>Php 210,000</td>
-            <td>Php 290,000</td>
-            <td>Php 170,000</td>
-            <td>Php 180,000</td>
-            <td>Php 500,000</td>
-        </tr>
-        <tr>
-            <td>Product 4</td>
-            <td>Php 110,000</td>
-            <td>Php 280,000</td>
-            <td>Php 350,000</td>
-            <td>Php 250,000</td>
-            <td>Php 180,000</td>
-            <td>Php 300,000</td>
-        </tr>
-    </table>
-
-     <a class="notificationback-link btn btn-outline-success p-2 mt-3" href="ReportsPage" type="button">Back</a>
-
-</div> -->
-

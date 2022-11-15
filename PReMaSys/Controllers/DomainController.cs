@@ -27,6 +27,33 @@ namespace PReMaSys.Controllers
             return View();
         }
 
+        //Reports
+
+        public IActionResult ReportsPage()
+        {
+            return View();
+        }
+
+        public IActionResult Ranking()
+        {
+            return View();
+        }
+
+        public IActionResult Forecasts()
+        {
+            return View();
+        }
+
+        public IActionResult Diagnostic()
+        {
+            return View();
+        }
+
+        public IActionResult Descriptive()
+        {
+            return View();
+        }
+
         /*APPROVAL OF REWARDS-------------------------------------------------------------------------------------------------------------------------------------*/
         public IActionResult ApproveRewards()
         {

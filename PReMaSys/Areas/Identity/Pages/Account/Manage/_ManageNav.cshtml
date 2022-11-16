@@ -31,6 +31,7 @@
  
 </style>
 <ul class="nav nav-pills flex-column">
+  
     <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Update Profile</a></li>
     @if(SignInManager.IsSignedIn(User) && User.IsInRole("Sales")){
         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Update Profile</a></li>

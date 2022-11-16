@@ -1,3 +1,24 @@
-﻿@{
-    Layout = "/Views/Shared/_Layout.cshtml";
-}
+﻿@using PReMaSys.Data
+@inject SignInManager<ApplicationUser> SignInManager
+
+
+
+     @if(SignInManager.IsSignedIn(User) && User.IsInRole("Sales")){
+
+    Layout = "/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
+        
+    }   
+      @if(SignInManager.IsSignedIn(User) && User.IsInRole("Admin")){
+    Layout = "/Views/Shared/_LayoutLoggedin.cshtml";
+       
+    }  
+       @if(SignInManager.IsSignedIn(User) && User.IsInRole("Domain")){
+    Layout = "/Views/Shared/DomainAdminDash.cshtml";
+
+      
+    }  
+       @if(SignInManager.IsSignedIn(User) && User.IsInRole("Support")){
+    Layout = "/Views/Shared/SupportAdminDash.cshtml";
+        
+    } 
+    

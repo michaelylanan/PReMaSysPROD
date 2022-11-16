@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Admin Roles</h1>
+<h1 class="text-center mt-5 mb-5">Admin Roles</h1>
 
 @if (Model.Any())
 {
@@ -19,9 +19,9 @@
                 <div class="card-body">
                     <h5 class="card-title">@role.Name</h5>
                 </div>
-                <div class="footer" style="padding:20px">
-                    <a asp-controller="Manage" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-primary btn-sm"> Edit Role</a>
-                    <a asp-controller="Manage" asp-action="DeleteRole" asp-route-id="@role.Id" class="btn btn-danger btn-sm"> Delete Role</a>
+                <div class="card-footer" style="padding:20px">
+                    <a asp-controller="Manage" asp-action="EditRole" asp-route-id="@role.Id" class="btn btn-outline-success"> Edit Role</a>
+                    <a asp-controller="Manage" asp-action="DeleteRole" asp-route-id="@role.Id" class="btn btn-outline-danger"> Delete Role</a>
                 </div>
             </div>
         }
@@ -36,4 +36,4 @@ else
     </div>
 }
 
- <a class="notificationback-link btn btn-outline-success p-2 mt-3 ms-5 " href="DomainPage" type="button">Back</a>
+ <a class="notificationback-link btn btn-outline-success p-2 mt-3 " href="ListAdminRoles" type="button">Back</a>

@@ -70,11 +70,11 @@ html {
     }
 }
 
-@media (max-width: 1270px) {
+/*@media (max-width: 1270px) {
     .se-record-form, .create-r-form {
         margin: unset unset;
     }
-}
+}*/
 
 @media (max-width: 767px) {
     .genrep-img {
@@ -259,8 +259,8 @@ ul.navbar-list {
 /*FOR DOMAIN and SUPPORT*/
 
 
-.create-role-form, .create-se-form, .create-r-form, .edit-r-form, .edit-se-form, .edit-role-form, .approve-r-form, .deduct-points-forn, .se-record-form, .add-role-form {
-    margin:auto;
+.create-role-form, .create-se-form, .create-r-form, .edit-r-form, .edit-se-form, .edit-role-form, .approve-r-form, .deduct-points-forn, .se-record-form, .add-role-form, .resend-email-form, forgot-password-form {
+    margin: auto;
 }
 
 

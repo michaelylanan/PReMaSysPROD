@@ -1,5 +1,8 @@
 ﻿@page
 @model IndexModel
+@using Microsoft.AspNetCore.Identity
+@using PReMaSys.Data
+@inject SignInManager<ApplicationUser> signInManager;
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
@@ -12,41 +15,80 @@
     <div class="row">
         <div class="col-md-6">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-floating">
-                <input asp-for="Username" class="form-control" disabled />
-                <label asp-for="Username" class="form-label"></label>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.CompanyName" class="form-control" />
-                <label asp-for="Input.CompanyName" class="form-label"></label>
-                <span asp-validation-for="Input.CompanyName" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.CompanyAddress" class="form-control" />
-                <label asp-for="Input.CompanyAddress" class="form-label"></label>
-                <span asp-validation-for="Input.CompanyAddress" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.CompanyAffiliation" class="form-control" />
-                <label asp-for="Input.CompanyAffiliation" class="form-label"></label>
-                <span asp-validation-for="Input.CompanyAffiliation" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.NatureOfBusiness" class="form-control" />
-                <label asp-for="Input.NatureOfBusiness" class="form-label"></label>
-                <span asp-validation-for="Input.NatureOfBusiness" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.CompanyBday" class="form-control"/>
-                <label asp-for="Input.CompanyBday" class="form-label"></label>
-                <span asp-validation-for="Input.CompanyBday" class="text-danger"></span>
-            </div>
-            <div class="form-floating">
-                <input asp-for="Input.PhoneNumber" class="form-control" />
-                <label asp-for="Input.PhoneNumber" class="form-label"></label>
-                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
-            </div>
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            @if(signInManager.IsSignedIn(User) && User.IsInRole("Domain")){
+                <div class="form-floating">
+                    <input asp-for="Username" class="form-control" disabled />
+                    <label asp-for="Username" class="form-label"></label>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.CompanyName" class="form-control" />
+                    <label asp-for="Input.CompanyName" class="form-label"></label>
+                    <span asp-validation-for="Input.CompanyName" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.CompanyAddress" class="form-control" />
+                    <label asp-for="Input.CompanyAddress" class="form-label"></label>
+                    <span asp-validation-for="Input.CompanyAddress" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.CompanyAffiliation" class="form-control" />
+                    <label asp-for="Input.CompanyAffiliation" class="form-label"></label>
+                    <span asp-validation-for="Input.CompanyAffiliation" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.NatureOfBusiness" class="form-control" />
+                    <label asp-for="Input.NatureOfBusiness" class="form-label"></label>
+                    <span asp-validation-for="Input.NatureOfBusiness" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.CompanyBday" class="form-control" />
+                    <label asp-for="Input.CompanyBday" class="form-label"></label>
+                    <span asp-validation-for="Input.CompanyBday" class="text-danger"></span>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.PhoneNumber" class="form-control"/>
+                    <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            }
+            else if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <div class="form-floating">
+                    <input asp-for="Username" class="form-control" disabled />
+                    <label asp-for="Username" class="form-label"></label>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            }
+            else if (signInManager.IsSignedIn(User) && User.IsInRole("Support"))
+            {
+                <div class="form-floating">
+                    <input asp-for="Username" class="form-control" disabled />
+                    <label asp-for="Username" class="form-label"></label>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            }
+            else if (signInManager.IsSignedIn(User) && User.IsInRole("Sales"))
+            {
+                <div class="form-floating">
+                    <input asp-for="Username" class="form-control" disabled />
+                    <label asp-for="Username" class="form-label"></label>
+                </div>
+                <div class="form-floating">
+                    <input asp-for="Input.PhoneNumber" class="form-control" />
+                    <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                </div>
+            }
+           
             <br />
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-success">Update</button>
         </div>

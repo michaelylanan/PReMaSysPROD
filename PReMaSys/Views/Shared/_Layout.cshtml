@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@using PReMaSys.Data
+@inject SignInManager<ApplicationUser> signInManager;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +20,25 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+
+                @if(signInManager.IsSignedIn(User) && User.IsInRole("Domain")){
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Domain" asp-action="DomainPage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                }
+                else if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Admin" asp-action="AdminDashboard"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                }
+                else if (signInManager.IsSignedIn(User) && User.IsInRole("Support"))
+                {
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="SupportAdmin" asp-action="SupportPage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                }
+                else if (signInManager.IsSignedIn(User) && User.IsInRole("Sales"))
+                {
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Employee" asp-action="EmployeeHomePage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                }else{
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                }
+              
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

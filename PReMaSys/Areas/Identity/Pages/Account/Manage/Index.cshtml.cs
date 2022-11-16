@@ -40,29 +40,30 @@ namespace PReMaSys.Areas.Identity.Pages.Account.Manage
         {
             [Phone]
             [Display(Name = "Phone number")]
+            [RegularExpression(@"^\(?([0-9]{3})\)?[.]?([0-9]{4})[. ]?([0-9]{4})$", ErrorMessage = "Entered phone format is not valid. Must be 11 digits and numeric")]
             public string PhoneNumber { get; set; }
 
             [Display(Name = "Company Logo")]
             public byte[] Pic { get; set; }
 
-            [Required]
+            //[Required]
             [StringLength(25, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 10)]
             [Display(Name = "Company Name")]
             public string CompanyName { get; set; }
-        
-            [Required]
+
+            //[Required]
             [Display(Name = "Company Address")]
             public string CompanyAddress { get; set; }
 
-            [Required]
+            //[Required]
             [Display(Name = "Company Affiliation")]
             public string CompanyAffiliation { get; set; }
 
-            [Required]
+            //[Required]
             [Display(Name = "Nature of Business")]
             public string NatureOfBusiness { get; set; }
 
-            [Required]
+            //[Required]
             [Display(Name = "Company Foundation Day")]
             [DataType(DataType.Date)]
             public DateTime CompanyBday { get; set; }

@@ -185,6 +185,7 @@ namespace PReMaSys.Controllers
         [HttpPost]
         public async Task<IActionResult> EditAdminRole(EditAdminUserViewModel model)
         {
+
             var admin = await _userManager.FindByIdAsync(model.Id);
 
             if (admin == null)
@@ -196,6 +197,19 @@ namespace PReMaSys.Controllers
             {
                 admin.UserName = model.Email;
                 admin.Email = model.Email;
+                var insertrec = await _userManager.ChangePasswordAsync(admin, model.Password,model.Password);
+                if (insertrec.Succeeded)
+                {
+                    ViewBag.message = "Successfully Updated";
+                }
+                else
+                {
+                    foreach (var error in insertrec.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
+
                 var result = await _userManager.UpdateAsync(admin);
                 if (result.Succeeded)
                 {

@@ -70,17 +70,17 @@ html {
     }
 }
 
-/*@media (max-width: 1270px) {
-    .se-record-form, .create-r-form {
-        margin: unset unset;
-    }
-}*/
+
 
 @media (max-width: 767px) {
     .genrep-img {
         width: 290px;
         margin:auto;
         display:block;
+    }
+
+    .whole-register-form{
+        margin-top:20px;
     }
     
 }

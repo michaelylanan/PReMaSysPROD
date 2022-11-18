@@ -2,36 +2,33 @@
 
 @{
     ViewData["Title"] = "Check Out";
-    ViewBag.Title = "Purchase";
+    Layout = "~/Views/Shared/_LayoutEmployeeLoggedin.cshtml";
 }
-<div><h5>@ViewBag.message</h5></div>
 
-@using (@Html.BeginForm())
-{
-  @*  <div class="container">
-        <div class="row">
-            <div>
-                <h1>Reward Image:</h1><img src="@Url.Content(Model.RewardImage)"/>
-                <h1>Rewards Name: @Model.RewardName</h1>
-                <h1>Reward Price: @Model.RewardPrice</h1>
-                <input type="submit" value="Submit" class="btn btn-primary" />
+<div>
+    <div class="point-container text-center mt-5">
+        <h2 class="point-total-header" style="font-size:30px; color:green">@TempData["ResultMessage"]</h2>
+        <h2 class="point-total-header" style="font-size:30px; color:red">@TempData["ResultMessage2"]</h2>
+    </div>
+    <div>
+        @using (@Html.BeginForm())
+        {
+            <h1 class="text-center mt-5">Rewards Purchased</h1>
+            <div class="card addToCart-card border border-success mx-auto border-2 mt-5 mb-3">
+                <div class="card-body mx-auto">
+                    <img src="@Url.Content(Model.RewardImage)" class="card-img-top " alt="...">
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item border-success"> <h1 class="text-center fw-bold">@Model.RewardName</h1></li>
+                    <li class="list-group-item border-success"><h4>Reward Price: @Model.RewardPrice</h4></li>
+                    <li class="list-group-item text-center border-success ">
+                        <div>
+                            <input type="submit" value="Submit" class="btn btn-success" />
+                            <a asp-action="AddToCartDisplay" asp-controller="Employee" type="button" class="btn btn-outline-success">Back to List</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </div>*@
-    <h1 class="text-center mt-5">Rewards Purchased</h1>
-    <div class="card addToCart-card border border-success mx-auto border-2 mt-5 mb-3"> 
-    <div class="card-body mx-auto">
-        <img src="@Url.Content(Model.RewardImage)" class="card-img-top " alt="...">
+        }
     </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item border-success"> <h1 class="text-center fw-bold">@Model.RewardName</h1></li>
-            <li class="list-group-item border-success"><h4>Reward Price: @Model.RewardPrice</h4></li>
-            <li class="list-group-item text-center border-success ">
-                <div>
-                    <input type="submit" value="Submit" class="btn btn-success" />
-                    <a asp-action="AddToCartDisplay" asp-controller="Employee" type="button" class="btn btn-outline-success">Back to List</a>
-                </div>       
-            </li>
-        </ul>
-    </div>
-}
+</div>

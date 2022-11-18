@@ -5,6 +5,8 @@ using PReMaSys.Data;
 
 using PReMaSys.Models;
 
+using PagedList;
+
 
 namespace PReMaSys.Controllers
 {
@@ -56,6 +58,7 @@ namespace PReMaSys.Controllers
                 return View(list);
             }
         }
+    
         //Display Add To Cart Rewards
         public IActionResult AddToCartDisplay()
         {
@@ -188,13 +191,19 @@ namespace PReMaSys.Controllers
                 var SEmployees = _context.SERecord.Where(s => s.SERId == user).SingleOrDefault();
                 SEmployees.EmployeePoints = temp.ToString();
 
+
+                
                 _context.SERecord.Update(SEmployees);
                 _context.Purchase.Add(purchase);
                 _context.SaveChanges();
-                return RedirectToAction("PurchaseView");
+
+                TempData["ResultMessage"]= "Thank you for your Purchase!";
+                return RedirectToAction("Purchase");
+               
             }
             else
             {
+                TempData["ResultMessage2"] = "Sorry! Insufficient Points!";
                 return RedirectToAction("Purchase");
             }
 

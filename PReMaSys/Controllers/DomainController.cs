@@ -140,18 +140,26 @@ namespace PReMaSys.Controllers
                 EmailConfirmed = true,
                 user = userz
             };
-            var insertrec = await _userManager.CreateAsync(user, admin.Password);
-            if (insertrec.Succeeded)
+            if(admin.Password == admin.ConfirmPassword)
             {
-                ViewBag.message = "The User " + admin.Email + "Is Saved Succesfully..!!";
+                var insertrec = await _userManager.CreateAsync(user, admin.Password);
+                if (insertrec.Succeeded)
+                {
+                    ViewBag.message = "The User \t " + admin.Email + "\tIs Saved Succesfully..!!";
+                }
+                else
+                {
+                    foreach (var error in insertrec.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
             else
             {
-                foreach (var error in insertrec.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                ViewBag.message2 = "Password Mismatch";
             }
+           
 
             return View();
         }
@@ -197,7 +205,9 @@ namespace PReMaSys.Controllers
             {
                 admin.UserName = model.Email;
                 admin.Email = model.Email;
-                var insertrec = await _userManager.ChangePasswordAsync(admin, model.Password,model.Password);
+
+                //Password
+               /* var insertrec = await _userManager.ChangePasswordAsync(admin, model.Password,model.Password);
                 if (insertrec.Succeeded)
                 {
                     ViewBag.message = "Successfully Updated";
@@ -208,7 +218,7 @@ namespace PReMaSys.Controllers
                     {
                         ModelState.AddModelError("", error.Description);
                     }
-                }
+                }*/
 
                 var result = await _userManager.UpdateAsync(admin);
                 if (result.Succeeded)
@@ -354,7 +364,7 @@ namespace PReMaSys.Controllers
 
         public IActionResult SEPoints()
         {
-            var list = _context.SalesEmployeeRecords.ToList();
+            var list = _context.SERecord.ToList();
             return View(list);
         }
 

@@ -4,6 +4,7 @@
     ViewData["Title"] = "Check Out";
     ViewBag.Title = "Purchase";
 }
+<div><h5>@ViewBag.message</h5></div>
 
 @using (@Html.BeginForm())
 {
@@ -19,20 +20,18 @@
     </div>*@
     <h1 class="text-center mt-5">Rewards Purchased</h1>
     <div class="card addToCart-card border border-success mx-auto border-2 mt-5 mb-3"> 
-     <div class="card-body mx-auto">
-      <img src="@Url.Content(Model.RewardImage)" class="card-img-top " alt="...">
-     </div>
-     <ul class="list-group list-group-flush">
-      <li class="list-group-item border-success"> <h1 class="text-center fw-bold">@Model.RewardName</h1></li>
-      <li class="list-group-item border-success"><h4>Reward Price: @Model.RewardPrice</h4></li>
-      <li class="list-group-item text-center border-success ">
-        <div>
-        <input type="submit" value="Submit" class="btn btn-success" />
-          <a asp-action="AddToCartDisplay" asp-controller="Employee" type="button" class="btn btn-outline-success">Back to List</a>
-          
-     </div>    
-      
-      </li>
-     </ul>
-   </div>
+    <div class="card-body mx-auto">
+        <img src="@Url.Content(Model.RewardImage)" class="card-img-top " alt="...">
+    </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item border-success"> <h1 class="text-center fw-bold">@Model.RewardName</h1></li>
+            <li class="list-group-item border-success"><h4>Reward Price: @Model.RewardPrice</h4></li>
+            <li class="list-group-item text-center border-success ">
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-success" />
+                    <a asp-action="AddToCartDisplay" asp-controller="Employee" type="button" class="btn btn-outline-success">Back to List</a>
+                </div>       
+            </li>
+        </ul>
+    </div>
 }

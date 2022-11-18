@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PReMaSys.Models.SalesEmployeeRecord>
+﻿@model IEnumerable<PReMaSys.Models.SERecord>
 
 @{
     ViewData["Title"] = "E-Sales Profit Points";
@@ -16,12 +16,6 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeePicture)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmployeeUsername)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EmployeeFirstname)
@@ -55,12 +49,6 @@
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.EmployeeNo)
-                    </td>
-                    <td>
-                        <img style="height:2em" src="@Url.Content(item.EmployeePicture)" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EmployeeUsername)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.EmployeeFirstname)

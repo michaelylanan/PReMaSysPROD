@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using PReMaSys.Data;
 using PReMaSys.Models;
 using PReMaSys.ViewModel;
 using System.Data;
+using System.Linq;
 
 namespace PReMaSys.Controllers
 {
@@ -142,8 +145,15 @@ namespace PReMaSys.Controllers
 
         //DELETE ADMIN ACCOUNT
         public async Task<IActionResult> DeleteSLC(string id)
-        {
+        {            
             var se = await _userManager.FindByIdAsync(id);
+
+            /*var check = _context.SERecord.FirstOrDefault(s => s.SERId == se).SEmployeeRecordsID;
+            rec = _context.SERecord.FirstOrDefault(r => r.SEmployeeRecordsID == check);*/
+
+            /*var check = _context.SERecord.FirstOrDefault(s => s.SERId == se).SEmployeeRecordsID;*/
+            var emp = _context.SERecord.Where(s => s.SERId == se).SingleOrDefault();
+
             if (User == null)
             {
                 ViewBag.ErrorMessage = $"User with Id = {id} cannot be found";
@@ -162,11 +172,13 @@ namespace PReMaSys.Controllers
                 {
                     ModelState.AddModelError("", error.Description);
                 }
+                
+                _context.SERecord.Remove(emp);
+                _context.SaveChanges();
 
-                return View("ListAdminRoles");
+                return View("ListAdminRoles");              
             }
         }
-
 
 
         /*CREATE NEW ADMIN ROLE*/
@@ -178,6 +190,7 @@ namespace PReMaSys.Controllers
         [HttpPost]
         public async Task<ActionResult> SERecord(SalesUser se)
         {
+            
             ApplicationUser userz = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
             var user = new ApplicationUser
@@ -185,20 +198,43 @@ namespace PReMaSys.Controllers
                 UserName = se.Email,
                 Email = se.Email,
                 EmailConfirmed = true,
-                user = userz
+                user = userz,
+
             };
-            var insertrec = await _userManager.CreateAsync(user, se.Password);
-            if (insertrec.Succeeded)
+            if (se.Password == se.ConfirmPassword)
             {
-                ViewBag.message = "The User " + se.Email + "Is Saved Succesfully..!!";
+                var insertrec = await _userManager.CreateAsync(user, se.Password);
+                if (insertrec.Succeeded)
+                {
+                    ViewBag.message = "The User \t " + se.Email + "\tIs Saved Succesfully..!!";
+                }
+                else
+                {
+                    foreach (var error in insertrec.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                }
             }
             else
             {
-                foreach (var error in insertrec.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+                ViewBag.message2 = "Password Mismatch";
             }
+
+            var latest = user.Id;
+            var getId = _context.ApplicationUsers.FirstOrDefault(u => u.Id == latest);
+            var userzz = new SERecord   
+            {
+               /* SERId = latest,*/
+                SERId = getId,
+                EmployeeNo = se.EmployeeNo,
+                EmployeeFirstname = se.EmployeeFirstname,
+                EmployeeLastname = se.EmployeeLastname,
+                EmployeeAddress = se.EmployeeAddress,
+                EmployeeBirthdate = se.EmployeeBirthdate,
+            };
+            _context.SERecord.Add(userzz);
+            _context.SaveChanges();
 
             return View();
         }

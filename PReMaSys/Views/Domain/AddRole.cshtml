@@ -9,10 +9,10 @@
 
         <form asp-action="AddRole" class="add-role-form" asp-controller="Domain" method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <h5>@ViewBag.message</h5>
+            <h5 class="text-success">@ViewBag.message</h5><h5 class="text-danger">@ViewBag.message1</h5>
             <div class="form-group mb-3">
                @* <label asp-for="Email" class="control-label"></label>*@
-                <input asp-for="Email"  placeholder="Email" class="form-control" aria-required="true"/>
+                <input asp-for="Email"  placeholder="Email" class="form-control" aria-required="true" type="email"/>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">

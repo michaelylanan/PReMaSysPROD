@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PReMaSys.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace PReMaSys.ViewModel
 {
@@ -11,6 +12,8 @@ namespace PReMaSys.ViewModel
 
         public string Id { get; set; }
 
+        
+
         [Required]
         public string UserName { get; set; }
 
@@ -22,11 +25,11 @@ namespace PReMaSys.ViewModel
         public IList<string> Roles { get; set; }
 
 
-        [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "New password")]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
+        
     }
 }

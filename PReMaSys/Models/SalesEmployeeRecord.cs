@@ -15,7 +15,7 @@ namespace PReMaSys.Models
         [Key]
         public int SEmployeeRecordsID { get; set; }
         //Foreign Key of Id in AspNetUsers
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser? ApplicationUser { get; set; }
 
         [Required(ErrorMessage ="Required")]
         [Display(Name = "Employee No.")]
@@ -64,7 +64,6 @@ namespace PReMaSys.Models
         [Range(0, 10000000000, ErrorMessage = "Must be a valid number!")]
         [Display(Name = "Employee Points")]
         public string? EmployeePoints { get; set; }
-
 
         [Display(Name ="Date Added")]
         public DateTime DateAdded { get; set; }

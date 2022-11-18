@@ -7,12 +7,38 @@
 
 <div class="container">
   <h1 class="text-center mt-5 mb-5">Sales Employee Credentials</h1>
-        <h5>@ViewBag.message</h5>
-        <form asp-action="SERecord" class="se-record-form" asp-controller="SupportAdmin">
+        <h5 class="text-success">@ViewBag.message</h5><h5 class="text-danger">@ViewBag.message1</h5>
+        <form asp-action="SERecord" class="se-record-form" asp-controller="SupportAdmin" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3 mt-3">
                @* <label asp-for="Email" class="control-label"></label>*@
-                <input asp-for="Email" placeholder="Email" class="form-control" />
+                <input asp-for="EmployeeNo" placeholder="EmployeeNo" class="form-control" />
+                <span asp-validation-for="EmployeeNo" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 mt-3">
+               @* <label asp-for="Email" class="control-label"></label>*@
+                <input asp-for="EmployeeFirstname" placeholder="EmployeeFirstname" class="form-control" />
+                <span asp-validation-for="EmployeeFirstname" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 mt-3">
+               @* <label asp-for="Email" class="control-label"></label>*@
+                <input asp-for="EmployeeLastname" placeholder="EmployeeLastname" class="form-control" />
+                <span asp-validation-for="EmployeeLastname" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 mt-3">
+               @* <label asp-for="Email" class="control-label"></label>*@
+                <input asp-for="EmployeeAddress" placeholder="EmployeeAddress" class="form-control" />
+                <span asp-validation-for="EmployeeAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 mt-3">
+               @* <label asp-for="Email" class="control-label"></label>*@
+                <input asp-for="EmployeeBirthdate" placeholder="EmployeeBirthdate" class="form-control" />
+                <span asp-validation-for="EmployeeBirthdate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3 mt-3">
+               @* <label asp-for="Email" class="control-label"></label>*@
+            <input asp-for="Email" placeholder="Email" class="form-control" type="email" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">

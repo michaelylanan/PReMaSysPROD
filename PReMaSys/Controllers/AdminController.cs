@@ -118,7 +118,7 @@ namespace PReMaSys.Controllers
         /*Allocation of Sales-Profit Points-----------------------------------------------------------------------------------------------------------*/
         public IActionResult ESalesProfitPoints()
         {
-            var list = _context.SalesEmployeeRecords.ToList();
+            var list = _context.SERecord.ToList();
             return View(list);
         }
 
@@ -130,7 +130,7 @@ namespace PReMaSys.Controllers
                 return RedirectToAction("ESalesProfitPoints");
             }
 
-            var SEmployees = _context.SalesEmployeeRecords.Where(r => r.SEmployeeRecordsID == id).SingleOrDefault();
+            var SEmployees = _context.SERecord.Where(r => r.SEmployeeRecordsID == id).SingleOrDefault();
 
             if (SEmployees == null)
             {
@@ -143,17 +143,17 @@ namespace PReMaSys.Controllers
         [HttpPost]
         public IActionResult AddPoints(int? id, SalesEmployeeRecord record, decimal temp)
         {
-            var SEmployees = _context.SalesEmployeeRecords.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
+            var SEmployees = _context.SERecord.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
 
             SEmployees.EmployeeNo = record.EmployeeNo;
-            SEmployees.EmployeeUsername = record.EmployeeUsername;
+            SEmployees.EmployeeLastname = record.EmployeeLastname;
 
             temp = Convert.ToDecimal(SEmployees.EmployeePoints) + Convert.ToDecimal(record.EmployeePoints);
 
             SEmployees.EmployeePoints = temp.ToString();
             SEmployees.DateModified = DateTime.Now;
 
-            _context.SalesEmployeeRecords.Update(SEmployees);
+            _context.SERecord.Update(SEmployees);
             _context.SaveChanges();
 
             return RedirectToAction("ESalesProfitPoints");
@@ -166,7 +166,7 @@ namespace PReMaSys.Controllers
                 return RedirectToAction("ESalesProfitPoints");
             }
 
-            var SEmployees = _context.SalesEmployeeRecords.Where(r => r.SEmployeeRecordsID == id).SingleOrDefault();
+            var SEmployees = _context.SERecord.Where(r => r.SEmployeeRecordsID == id).SingleOrDefault();
 
             if (SEmployees == null)
             {
@@ -179,17 +179,17 @@ namespace PReMaSys.Controllers
         [HttpPost]
         public IActionResult DeductPoints(int? id, SalesEmployeeRecord record, decimal temp)
         {
-            var SEmployees = _context.SalesEmployeeRecords.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
+            var SEmployees = _context.SERecord.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
 
             SEmployees.EmployeeNo = record.EmployeeNo;
-            SEmployees.EmployeeUsername = record.EmployeeUsername;
+            SEmployees.EmployeeLastname = record.EmployeeLastname;
 
             temp = Convert.ToDecimal(SEmployees.EmployeePoints) - Convert.ToDecimal(record.EmployeePoints);
 
             SEmployees.EmployeePoints = temp.ToString();
             SEmployees.DateModified = DateTime.Now;
 
-            _context.SalesEmployeeRecords.Update(SEmployees);
+            _context.SERecord.Update(SEmployees);
             _context.SaveChanges();
 
             return RedirectToAction("ESalesProfitPoints");

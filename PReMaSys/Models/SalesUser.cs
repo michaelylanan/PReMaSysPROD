@@ -5,6 +5,29 @@ namespace PReMaSys.Models
 {
     public class SalesUser
     {
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Employee No.")]
+        public string EmployeeNo { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Employee First Name")]
+        public string EmployeeFirstname { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Employee Last Name")]
+        public string EmployeeLastname { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Employee Address")]
+        public string EmployeeAddress { get; set; }
+
+        [Required(ErrorMessage = "Required")]
+        [Display(Name = "Employee Birthdate")]
+        public string EmployeeBirthdate { get; set; }
+
+        //Login Credentials
+
+
         [Required]
         [Display(Name = "Email")]
         public string? Email { get; set; }

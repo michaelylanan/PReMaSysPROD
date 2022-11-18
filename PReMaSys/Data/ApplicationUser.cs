@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using PReMaSys.Models;
 
 namespace PReMaSys.Data
 {
@@ -16,6 +17,5 @@ namespace PReMaSys.Data
         public DateTime CompanyBday { get; set; }
         public DateTime DateAdded { get; set; } = DateTime.Now;
         public virtual ApplicationUser? user { get; set; }
-
     }
 }

@@ -1,4 +1,8 @@
-﻿@model PReMaSys.ViewModel.EditRoleViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@using PReMaSys.Data
+@inject SignInManager<ApplicationUser> SignInManager
+
+@model PReMaSys.ViewModel.EditRoleViewModel
 
 
 @{
@@ -26,7 +30,18 @@
     <div class="form-group row" style="padding:20px">
         <div class="col-sm-10">
             @*<button type="submit" class="btn btn-success"> Update</button>*@
-            <a asp-action="ListAllRoles" class="btn btn-danger"> Go Back </a>
+
+            @if (SignInManager.IsSignedIn(User) && User.IsInRole("Domain")){
+                <a asp-controller="Domain" asp-action="AdminAllRoles" class="btn btn-danger"> Go Back </a>
+            }
+            else if (SignInManager.IsSignedIn(User) && User.IsInRole("Support"))
+            {
+                <a asp-controller="SupportAdmin" asp-action="EmployeeRole" class="btn btn-danger"> Go Back </a>
+            }
+            else{
+                <a asp-action="ListAllRoles" class="btn btn-danger"> Go Back </a>
+            }
+          
         </div>
     </div>
 

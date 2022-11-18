@@ -1,4 +1,4 @@
-﻿@model PReMaSys.Models.SalesEmployeeRecord
+﻿@model PReMaSys.Models.SERecord
 
 @{
     ViewData["Title"] = "AddPoints";
@@ -20,14 +20,14 @@
             </div>
 
             <div class="form-group mb-3">
-                <label asp-for="EmployeeUsername" class="control-label"></label>
-                <input asp-for="EmployeeUsername" class="form-control" />
-                <span asp-validation-for="EmployeeUsername" class="text-danger"></span>
+                <label asp-for="EmployeeLastname" class="control-label"></label>
+                <input asp-for="EmployeeLastname" class="form-control" />
+                <span asp-validation-for="EmployeeLastname" class="text-danger"></span>
             </div>
 
             <div class="form-group mb-3">
                 <label asp-for="EmployeePoints" class="control-label"></label>
-                <input asp-for="EmployeePoints" class="form-control" />
+                <input asp-for="EmployeePoints" class="form-control" type="number" min="0" max="10000000"/>
                 <span asp-validation-for="EmployeePoints" class="text-danger"></span>
             </div>
 

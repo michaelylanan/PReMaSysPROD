@@ -40,6 +40,12 @@ namespace PReMaSys.Controllers
 
         public IActionResult EmployeeHomePage(String searchby, String search)
         {
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+            var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
+
+            //My Points
+            ViewBag.Balance = balance;
+
             var list = _context.Rewards.ToList();
             if (searchby == "RewardName" && search != null)
             {
@@ -110,6 +116,7 @@ namespace PReMaSys.Controllers
         //Delete Item from Cart
         public IActionResult DeleteItem(int? id)
         {
+
             if (id == null)
             {
                 return RedirectToAction("AddToCartDisplay");
@@ -124,7 +131,7 @@ namespace PReMaSys.Controllers
             _context.AddToCart.Remove(cart);
             _context.SaveChanges();
 
-            return RedirectToAction("AddToCartDisplay");
+            return RedirectToAction("AddToCartDisplay");         
         }
 
         public IActionResult PurchaseView()
@@ -162,21 +169,36 @@ namespace PReMaSys.Controllers
 
             Purchase purchase = new Purchase();
 
-            purchase.ApplicationUser = user;
-            purchase.EmployeeName = user.UserName;
-            purchase.AddToCart = addCart;
-            purchase.RewardImage = addCart.RewardImage;
-            purchase.RewardName = addCart.RewardName;
-            purchase.RewardPrice = addCart.RewardPrice;
-            purchase.TotalPayment = addCart.RewardPrice;
-            purchase.DateAdded = DateTime.Now;
-            purchase.Stat = record.Stat;
+            var check = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
 
-            _context.Purchase.Add(purchase);
-            _context.SaveChanges();
+            if(Convert.ToDecimal(check) >= addCart.RewardPrice)
+            {
+                purchase.ApplicationUser = user;
+                purchase.EmployeeName = user.UserName;
+                purchase.AddToCart = addCart;
+                purchase.RewardImage = addCart.RewardImage;
+                purchase.RewardName = addCart.RewardName;
+                purchase.RewardPrice = addCart.RewardPrice;
+                purchase.TotalPayment = addCart.RewardPrice;
+                purchase.DateAdded = DateTime.Now;
+                purchase.Stat = record.Stat;
+                
+                var temp = Convert.ToDecimal(check) - addCart.RewardPrice;
 
-            return RedirectToAction("PurchaseView");
+                var SEmployees = _context.SERecord.Where(s => s.SERId == user).SingleOrDefault();
+                SEmployees.EmployeePoints = temp.ToString();
 
+                _context.SERecord.Update(SEmployees);
+                _context.Purchase.Add(purchase);
+                _context.SaveChanges();
+                return RedirectToAction("PurchaseView");
+            }
+            else
+            {
+                return RedirectToAction("Purchase");
+            }
+
+       
         }
 
     }

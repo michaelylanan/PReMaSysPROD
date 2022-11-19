@@ -6,6 +6,7 @@ using PReMaSys.Data;
 using PReMaSys.Models;
 
 using PagedList;
+using System.Collections.Generic;
 
 
 namespace PReMaSys.Controllers
@@ -53,12 +54,38 @@ namespace PReMaSys.Controllers
             {
                 return View(list.Where(x => x.RewardName.Contains(search)).ToList());
             }
+            /*else if(list != null)
+            {
+                return View(list.Where(x => ((int)x.Category) == 1).ToList()); // Returns Display Product Per Category
+            }*/
             else
             {
                 return View(list);
             }
         }
-    
+
+        public IActionResult Food()
+        {
+            var list = _context.Rewards.ToList();
+            return View(list.Where(x => ((int)x.Category) == 1).ToList()); // Returns Display Product Per Category
+        }
+        public IActionResult Travel()
+        {
+            var list = _context.Rewards.ToList();
+            return View(list.Where(x => ((int)x.Category) == 2).ToList()); // Returns Display Product Per Category
+        }
+        public IActionResult Discounts()
+        {
+            var list = _context.Rewards.ToList();
+            return View(list.Where(x => ((int)x.Category) == 3).ToList()); // Returns Display Product Per Category
+        }
+        public IActionResult Others()
+        {
+            var list = _context.Rewards.ToList();
+            return View(list.Where(x => ((int)x.Category) == 4).ToList()); // Returns Display Product Per Category
+        }
+
+
         //Display Add To Cart Rewards
         public IActionResult AddToCartDisplay()
         {

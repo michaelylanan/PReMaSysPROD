@@ -5,17 +5,17 @@
 
 }
 
-
 <partial name="_EmployeePageTablePartial" />  
 <div class="point-container text-center mt-5">
     <h1 class="point-title-header">My Points</h1>
     <h2 class="point-total-header" style="font-size:60px"><u>@ViewBag.Balance</u></h2>
 </div>
+
 <div class="rewards-tab text-center">
-    <a href="" class="reward-option btn btn-success p-3">Travel</a>
-    <a asp-action="FoodCategory" class="reward-option middle btn btn-success p-3">Food</a>
-    <a href="" class="reward-option  btn btn-success p-3">Discounts</a>
-    <a href="" class="reward-option  btn btn-success p-3">Others</a>
+    <a asp-action="Travel" class="reward-option btn btn-success p-3">Travel</a>
+    <a asp-action="Food" class="reward-option  btn btn-success p-3">Food</a>
+    <a asp-action="Discounts" class="reward-option  btn btn-success p-3">Discounts</a>
+    <a asp-action="Others" class="reward-option  btn btn-success p-3">Others</a>
 </div>
 
 <section style="margin-bottom: 70px;">

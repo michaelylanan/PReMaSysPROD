@@ -64,23 +64,44 @@ namespace PReMaSys.Controllers
             }
         }
 
+        //Display Rewards per Category
         public IActionResult Food()
         {
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+            var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
+
+            //My Points
+            ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
             return View(list.Where(x => ((int)x.Category) == 1).ToList()); // Returns Display Product Per Category
         }
         public IActionResult Travel()
         {
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+            var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
+
+            //My Points
+            ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
             return View(list.Where(x => ((int)x.Category) == 2).ToList()); // Returns Display Product Per Category
         }
         public IActionResult Discounts()
         {
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+            var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
+
+            //My Points
+            ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
             return View(list.Where(x => ((int)x.Category) == 3).ToList()); // Returns Display Product Per Category
         }
         public IActionResult Others()
         {
+            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
+            var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
+
+            //My Points
+            ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
             return View(list.Where(x => ((int)x.Category) == 4).ToList()); // Returns Display Product Per Category
         }
@@ -232,9 +253,7 @@ namespace PReMaSys.Controllers
             {
                 TempData["ResultMessage2"] = "Sorry! Insufficient Points!";
                 return RedirectToAction("Purchase");
-            }
-
-       
+            }       
         }
 
     }

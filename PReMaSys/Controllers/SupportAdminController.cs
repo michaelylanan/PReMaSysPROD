@@ -25,11 +25,11 @@ namespace PReMaSys.Controllers
             _userManager = userManager;
         }
 
-        public IActionResult SupportPage()
+        public IActionResult SupportPage() //Good
         {
             return View();
         }
-        public IActionResult NotificationPage()
+        public IActionResult NotificationPage() //Good
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
@@ -37,7 +37,7 @@ namespace PReMaSys.Controllers
             return View(list);
         }
 
-        public IActionResult EditStatus(int? id)
+        public IActionResult EditStatus(int? id) //Good
         {
             if (id == null)
             {
@@ -58,7 +58,7 @@ namespace PReMaSys.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditStatus(int? id, Purchase record)
+        public IActionResult EditStatus(int? id, Purchase record) //Good
         {
             var status = _context.Purchase.Where(s => s.PurchaseId == id).SingleOrDefault();
 
@@ -75,7 +75,7 @@ namespace PReMaSys.Controllers
 
 
         /*New Methods*/
-        public IActionResult EmployeeRole()
+        public IActionResult EmployeeRole() //Good
         {
             var roles = _roleManager.Roles;
 
@@ -83,7 +83,7 @@ namespace PReMaSys.Controllers
         }
 
         [HttpGet]
-        public IActionResult ListSalesEmployee()
+        public IActionResult ListSalesEmployee() //Good
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var list = _context.Users.Where(c => c.user == user).ToList();
@@ -92,7 +92,7 @@ namespace PReMaSys.Controllers
 
         /*EDIT ADMIN ROLES Account------------------------------------------------*/
         [HttpGet]
-        public async Task<IActionResult> EditSalesLC(string id)
+        public async Task<IActionResult> EditSalesLC(string id) //Good
         {
             var se = await _userManager.FindByIdAsync(id);
 
@@ -117,7 +117,7 @@ namespace PReMaSys.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditSalesLC(EditSalesUserViewModel model)
+        public async Task<IActionResult> EditSalesLC(EditSalesUserViewModel model) //Good
         {
             var se = await _userManager.FindByIdAsync(model.Id);
 
@@ -144,7 +144,7 @@ namespace PReMaSys.Controllers
         }
 
         //DELETE ADMIN ACCOUNT
-        public async Task<IActionResult> DeleteSLC(string id)
+        public async Task<IActionResult> DeleteSLC(string id) //Good
         {            
             var se = await _userManager.FindByIdAsync(id);
 
@@ -182,13 +182,13 @@ namespace PReMaSys.Controllers
 
 
         /*CREATE NEW ADMIN ROLE*/
-        public IActionResult SERecord()
+        public IActionResult SERecord() //Good
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> SERecord(SalesUser se)
+        public async Task<ActionResult> SERecord(SalesUser se) //Good
         {
             
             ApplicationUser userz = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
@@ -238,128 +238,10 @@ namespace PReMaSys.Controllers
 
             return View();
         }
-
-
-        /*OLD METHODS*/
-        /*SEMPLOYEES CRUD--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-        public IActionResult IndexSE()
-        {
-            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
-            var list = _context.SalesEmployeeRecords.Where(c => c.ApplicationUser == user).ToList();
-            return View(list);
-        }
-
-        public IActionResult CreateSE()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult CreateSE(SalesEmployeeRecord record, IFormFile EmployeePicture)
-        {
-            ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
-
-            var SEmployees = new SalesEmployeeRecord()
-            {
-                ApplicationUser = user,
-                EmployeeNo = record.EmployeeNo,
-                EmployeeUsername = record.EmployeeUsername,
-                EmployeeFirstname = record.EmployeeFirstname,
-                EmployeeLastname = record.EmployeeLastname,
-                Gender = record.Gender,
-                EmployeeAddress = record.EmployeeAddress,
-                EmployeeBirthdate = record.EmployeeBirthdate,
-                EmployeeEmail = record.EmployeeEmail,
-                ContactNo = record.ContactNo,
-                Password = record.Password,
-                EmployeePoints = record.EmployeePoints,
-                DateAdded = DateTime.Now,
-            };
-            if (EmployeePicture != null)
-            {
-                if (EmployeePicture.Length > 0)
-                {
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/SEmployees", EmployeePicture.FileName);
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        EmployeePicture.CopyTo(stream);
-                    }
-                    SEmployees.EmployeePicture = "~/img/SEmployees/" + EmployeePicture.FileName;
-                }
-            }
-
-            _context.SalesEmployeeRecords.Add(SEmployees);
-            _context.SaveChanges();
-
-            return RedirectToAction("IndexSE");
-
-        }
-
-        public IActionResult EditSE(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("IndexSE");
-            }
-
-            //variable product that retrieves the existing record from the Rewards table.
-            var SEmployees = _context.SalesEmployeeRecords.Where(r => r.SEmployeeRecordsID == id).SingleOrDefault();
-
-            //if the reward record is not present the view will redirect to the Index action.
-            if (SEmployees == null)
-            {
-                return RedirectToAction("IndexSE");
-            }
-
-            //Rewards model object will be included to be rendered by the View method
-            return View(SEmployees);
-        }
-
-        [HttpPost]
-        public IActionResult EditSE(int? id, SalesEmployeeRecord record)
-        {
-            var SEmployees = _context.SalesEmployeeRecords.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
-            SEmployees.EmployeeNo = record.EmployeeNo;
-            SEmployees.EmployeeUsername = record.EmployeeUsername;
-            SEmployees.EmployeeFirstname = record.EmployeeFirstname;
-            SEmployees.EmployeeLastname = record.EmployeeLastname;
-            SEmployees.Gender = record.Gender;
-            SEmployees.EmployeeAddress = record.EmployeeAddress;
-            SEmployees.EmployeeBirthdate = record.EmployeeBirthdate;
-            SEmployees.EmployeeEmail = record.EmployeeEmail;
-            SEmployees.ContactNo = record.ContactNo;
-            SEmployees.Password = record.Password;
-            SEmployees.EmployeePoints = record.EmployeePoints;
-            SEmployees.DateModified = DateTime.Now;
-
-            _context.SalesEmployeeRecords.Update(SEmployees);
-            _context.SaveChanges();
-
-            return RedirectToAction("IndexSE");
-        }
-
-        public IActionResult DeleteSE(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("IndexSE");
-            }
-
-            var SEmployees = _context.SalesEmployeeRecords.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
-
-            if (SEmployees == null)
-            {
-                return RedirectToAction("IndexSE");
-            }
-
-            _context.SalesEmployeeRecords.Remove(SEmployees);
-            _context.SaveChanges();
-
-            return RedirectToAction("IndexSE");
-        }
-
+  
+       
         /*REWARDS CRUD--------------------------------------------------------------------------------------------------------------------------------------------------------*/
-        public IActionResult RewardsRecord()
+        public IActionResult RewardsRecord() //Good
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var list = _context.Rewards.Where(c => c.ApplicationUser == user).ToList();
@@ -367,14 +249,14 @@ namespace PReMaSys.Controllers
         }
 
         //(1) Create Reward Information
-        public IActionResult CreateR()
+        public IActionResult CreateR() //Good
         {
             return View();
         }
 
         //Overriding exising Create method through Replica
         [HttpPost]
-        public IActionResult CreateR(Rewards record, IFormFile Picture)
+        public IActionResult CreateR(Rewards record, IFormFile Picture) //Good
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var rewards = new Rewards()
@@ -411,7 +293,7 @@ namespace PReMaSys.Controllers
         }
 
         //(2) Edit Reward Informaiton
-        public IActionResult EditR(int? id)
+        public IActionResult EditR(int? id) //Good
         {
             if (id == null)
             {
@@ -432,7 +314,7 @@ namespace PReMaSys.Controllers
         }
         //2.2 Override Existing Edit Method by a Replica using a nullable integer id and reward object as the parameters.
         [HttpPost]
-        public IActionResult EditR(int? id, Rewards record)
+        public IActionResult EditR(int? id, Rewards record) //Good
         {
             var rewards = _context.Rewards.Where(r => r.RewardsInformationId == id).SingleOrDefault();
             rewards.Picture = record.Picture;
@@ -450,7 +332,7 @@ namespace PReMaSys.Controllers
             return RedirectToAction("RewardsRecord");
         }
 
-        public IActionResult DeleteR(int? id)
+        public IActionResult DeleteR(int? id) //Good
         {
             if (id == null)
             {

@@ -29,27 +29,27 @@ namespace PReMaSys.Controllers
 
         //Reports
 
-        public IActionResult ReportsPage()
+        public IActionResult ReportsPage() 
         {
             return View();
         }
 
-        public IActionResult Ranking()
+        public IActionResult Ranking() 
         {
             return View();
         }
 
-        public IActionResult Forecasts()
+        public IActionResult Forecasts() 
         {
             return View();
         }
 
-        public IActionResult Diagnostic()
+        public IActionResult Diagnostic() 
         {
             return View();
         }
 
-        public IActionResult Descriptive()
+        public IActionResult Descriptive() 
         {
             return View();
         }
@@ -259,110 +259,11 @@ namespace PReMaSys.Controllers
                 return View("ListAdminRoles");
             }
         }
-
-        /*CREATE NEW ADMIN ROLE*/
-
-        /* public IActionResult CreateRole()
-         {
-             return View();
-         }
-
-         [HttpPost]
-         public IActionResult CreateRole( AdminRoles record, IFormFile AdminPicture)
-         {
-             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
-
-             var adminRole = new AdminRoles()
-             {
-                 ApplicationUser = user,
-                 Role = record.Role,
-                 AdminEmployeeNo = record.AdminEmployeeNo,
-                 AdminFirstname = record.AdminFirstname,
-                 AdminLastname = record.AdminLastname,
-                 AdminEmail = record.AdminEmail,
-                 ContactNo = record.ContactNo,
-                 Password = record.Password,
-                 DateAdded = DateTime.Now,
-             };
-             if (AdminPicture != null)
-             {
-                 if (AdminPicture.Length > 0)
-                 {
-                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/img/adminrole", AdminPicture.FileName);
-                     using (var stream = new FileStream(filePath, FileMode.Create))
-                     {
-                         AdminPicture.CopyTo(stream);
-                     }
-                     adminRole.AdminPicture = "~/img/adminrole/" + AdminPicture.FileName;
-                 }
-             }
-
-             _context.AdminRoles.Add(adminRole);
-             _context.SaveChanges();
-
-             return RedirectToAction("AdminRoles");
-
-         }*/
-        public IActionResult EditRole(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("AdminRoles");
-            }
-
-            var adminRoles = _context.AdminRoles.Where(r => r.AdminRoleId == id).SingleOrDefault();
-
-            if (adminRoles == null)
-            {
-                return RedirectToAction("AdminRoles");
-            }
-            return View(adminRoles);
-
-        }
-
-        [HttpPost]
-        public IActionResult EditRole(int? id, AdminRoles record)
-        {
-            var adminRoles = _context.AdminRoles.Where(s => s.AdminRoleId == id).SingleOrDefault();
-            adminRoles.Role = record.Role;
-            adminRoles.AdminEmployeeNo = record.AdminEmployeeNo;
-            adminRoles.AdminFirstname = record.AdminFirstname;
-            adminRoles.AdminLastname = record.AdminLastname;
-            adminRoles.AdminEmail = record.AdminEmail;
-            adminRoles.ContactNo = record.ContactNo;
-            adminRoles.Password = record.Password;
-            adminRoles.DateModified = DateTime.Now;
-
-            _context.AdminRoles.Update(adminRoles);
-            _context.SaveChanges();
-
-            return RedirectToAction("AdminRoles");
-
-        }
-
-        public IActionResult DeleteRole(int? id)
-        {
-            if (id == null)
-            {
-                return RedirectToAction("AdminRoles");
-            }
-
-            var adminRoles = _context.AdminRoles.Where(s => s.AdminRoleId == id).SingleOrDefault();
-
-            if (adminRoles == null)
-            {
-                return RedirectToAction("AdminRoles");
-            }
-
-            _context.AdminRoles.Remove(adminRoles);
-            _context.SaveChanges();
-
-            return RedirectToAction("AdminRoles");
-        }
+       
 
         /*SALES-POINTS PROFIT CRUD---------------------------------------------------------------------------------------------------------------------------------*/
 
-        public IActionResult SEPoints()
+        public IActionResult SEPoints() 
         {
             var list = _context.SERecord.ToList();
             return View(list);

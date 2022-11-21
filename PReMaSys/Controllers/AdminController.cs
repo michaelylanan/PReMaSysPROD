@@ -17,98 +17,38 @@ namespace PReMaSys.Controllers
             _context = context;
         }
 
-        /*  //For Excel
-          private IHostingEnvironment Environment;
-          public AdminController(IHostingEnvironment _environment)
-          {
-              Environment = _environment;   
-          }*/
-        public IActionResult ReportsPage()
+        public IActionResult ReportsPage() 
+        {
+            return View();
+        }
+      
+        public IActionResult AdminDashboard() 
         {
             return View();
         }
 
-        /*  [HttpPost]
-          public IActionResult ReportsPage(IFormFile postedFile, IXLWorksheet workSheet, Row row, object cell)
-          {
-              string path = Path.Combine(this.Environment.WebRootPath, "Uploads");
-              if (!Directory.Exists(path))
-              {
-                  Directory.CreateDirectory(path);
-              }
-              string fileName = Path.GetFileName(postedFile.FileName);
-              string filePath = Path.Combine(path, fileName);
-              using (FileStream stream = new FileStream(filePath, FileMode.Create))
-              {
-                  postedFile.CopyTo(stream);
-              }
-              DataTable dt = new DataTable();
-              using (XLWorkbook workBook = new XLWorkbook(filePath))
-              {
-                  workSheet = workBook.Worksheet(1);
-                  bool firstRow = true;
-                  foreach (IXLRow rowin in workSheet.Rows())
-                  {
-                      if (firstRow)
-                      {
-                          foreach (IXLCell cellin in row.Cells())
-                          {
-                              dt.Columns.Add(cell.Value.ToString());
-                          }
-                          firstRow = false;
-                      }
-                      else
-                      {
-                          dt.Rows.Add();
-                          int i = 0;
-                          foreach (IXLCell cellin in row.Cells())
-                          {
-                              dt.Rows[dt.Rows.Count - 1][i] = cell.Value.ToString();
-                              i++;
-                          }
-                      }
-                  }
-              }
-
-              ViewBag.Data = dt;
-
-              System.IO.File.Delete(filePath);
-
-              return View();
-
-          }*/
-
-
-        public IActionResult AdminDashboard()
+        public IActionResult Ranking() 
         {
             return View();
         }
 
-        public IActionResult Ranking()
+        public IActionResult Forecasts() 
         {
             return View();
         }
 
-        public IActionResult Forecasts()
+        public IActionResult Diagnostic() 
         {
             return View();
         }
 
-        public IActionResult Diagnostic()
+        public IActionResult Descriptive() 
         {
             return View();
         }
-
-        public IActionResult Descriptive()
-        {
-            return View();
-        }
-
-        /*Reports Page: EXCEL FILE-----------------------------------------------------------------------------------------------------------*/
-
 
         /*View of Rewards List -----------------------------------------------------------------------------------------------------------*/
-        public IActionResult Reward()
+        public IActionResult Reward() 
         {
             var list = _context.Rewards.ToList();
             return View(list);
@@ -116,14 +56,14 @@ namespace PReMaSys.Controllers
 
 
         /*Allocation of Sales-Profit Points-----------------------------------------------------------------------------------------------------------*/
-        public IActionResult ESalesProfitPoints()
+        public IActionResult ESalesProfitPoints() 
         {
             var list = _context.SERecord.ToList();
             return View(list);
         }
 
 
-        public IActionResult AddPoints(int? id)
+        public IActionResult AddPoints(int? id) 
         {
             if (id == null)
             {
@@ -141,7 +81,7 @@ namespace PReMaSys.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddPoints(int? id, SalesEmployeeRecord record, decimal temp)
+        public IActionResult AddPoints(int? id, SalesEmployeeRecord record, decimal temp) 
         {
             var SEmployees = _context.SERecord.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
 
@@ -159,7 +99,7 @@ namespace PReMaSys.Controllers
             return RedirectToAction("ESalesProfitPoints");
         }
 
-        public IActionResult DeductPoints(int? id)
+        public IActionResult DeductPoints(int? id) 
         {
             if (id == null)
             {
@@ -177,7 +117,7 @@ namespace PReMaSys.Controllers
         }
 
         [HttpPost]
-        public IActionResult DeductPoints(int? id, SalesEmployeeRecord record, decimal temp)
+        public IActionResult DeductPoints(int? id, SalesEmployeeRecord record, decimal temp) 
         {
             var SEmployees = _context.SERecord.Where(s => s.SEmployeeRecordsID == id).SingleOrDefault();
 

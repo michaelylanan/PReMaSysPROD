@@ -94,58 +94,9 @@
             </div>
         </div>
         <canvas id="myChart" style="margin-bottom:40px"></canvas>
-        @*<div class="chartBox2">
+        <div class="chartBox2">
             <div>Table: Data Interpretation</div>
-        </div>*@
-        <div class="container">
-            <table class="table">
-                <tr>
-                    <th>Products Sold</th>
-                    <th>July 2020</th>
-                    <th>August 2020</th>
-                    <th>September 2020</th>
-                    <th>October 2020</th>
-                    <th>November 2020</th>
-                    <th>December 2020</th>
-                </tr>
-                <tr>
-                    <td>Product 1</td>
-                    <td>Php 100,000</td>
-                    <td>Php 200,000</td>
-                    <td>Php 300,000</td>
-                    <td>Php 150,000</td>
-                    <td>Php 280,000</td>
-                    <td>Php 400,000</td>
-                </tr>
-                <tr>
-                    <td>Product 2</td>
-                    <td>Php 110,000</td>
-                    <td>Php 280,000</td>
-                    <td>Php 350,000</td>
-                    <td>Php 250,000</td>
-                    <td>Php 180,000</td>
-                    <td>Php 300,000</td>
-                </tr>
-                <tr>
-                    <td>Product 3</td>
-                    <td>Php 90,000</td>
-                    <td>Php 210,000</td>
-                    <td>Php 290,000</td>
-                    <td>Php 170,000</td>
-                    <td>Php 180,000</td>
-                    <td>Php 500,000</td>
-                </tr>
-                <tr>
-                    <td>Product 4</td>
-                    <td>Php 110,000</td>
-                    <td>Php 280,000</td>
-                    <td>Php 350,000</td>
-                    <td>Php 250,000</td>
-                    <td>Php 180,000</td>
-                    <td>Php 300,000</td>
-                </tr>
-            </table>
-    </div>
+        </div>        
 </div>
 
 
@@ -205,8 +156,8 @@
 
     // setup
     const data = {
-        /* labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],*/ //Get Columns from excel //now will be commented out
-        /* data: [1800, 1201, 600, 900, 12  10, 3100, 9090, 1010,9010,1801,1210,10101,],*/ //Get data from excel // now will be commented out
+        //labels: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'], //Get Columns from excel //now will be commented out
+        //data: [1800, 1201, 600, 900, 12  10, 3100, 9090, 1010,9010,1801,1210,10101,], //Get data from excel // now will be commented out
         datasets: [{
             label: 'Weekly Sales',
             data: day, // from the const day //will be changed to user choice dropdown
@@ -331,51 +282,6 @@
         config2
     );
 
-    //function createTable() {
-    //    console.log('triggered');
-    //    const chartBox = document.querySelector('.chartBox2');
-    //    const tableDiv = document.createElement('DIV');
-    //    tableDiv.setAttribute('id', 'tableDiv');//assign ID
-
-    //    //add Table
-    //    const table = document.createElement('TABLE');
-    //    table.classList.add('chartjs-table');
-
-    //    //add thead
-    //    const thead = table.createTHead();
-    //    thead.classList.add('chartjs-thead');
-
-    //    //add Column Headers using data
-    //    thead.insertRow(0);
-    //    console.log(units.labels)
-    //    for (let i = 0; i < units.labels.length; i++) {
-    //        thead.rows[0].insertCell(i).innerText = units.labels[i];
-    //        thead.rows[0].cells[i].style.color = 'orange';
-    //    };
-    //    thead.rows[0].insertCell(0).innerText = 'Metrics';
-
-    //    //tbody
-    //    const tbody = table.createTBody();
-    //    tbody.classList.add('chartjs-tbody');
-
-    //    //data
-    //    console.log(units.datasets)
-    //    units.datasets.map((dataset, index) => {
-    //        tbody.insertRow(index);
-    //        for (let i = 0; i < units.datasets[0].data.length; i++) {
-    //            tbody.rows[index].insertCell(i).innerText = dataset.data[i];
-    //        };
-
-    //        tbody.rows[index].insertCell(0).innerText = dataset.label;
-    //    })
-    //    //append
-    //    chartBox.appendChild(tableDiv);
-    //    tableDiv.appendChild(table);
-    //};
-
-    //createTable();
-
-
     //function for change to timeline
     function timeFrame(period) {
         console.log(period.value);
@@ -403,6 +309,52 @@
         myChart.update();
     }
 
+    function createTable() {
+        console.log('triggered');
+        const chartBox = document.querySelector('.chartBox2');
+        const tableDiv = document.createElement('DIV');
+        tableDiv.setAttribute('id', 'tableDiv');//assign ID
+
+        //add Table
+        const table = document.createElement('TABLE');
+        table.classList.add('chartjs-table');
+
+        //add thead
+        const thead = table.createTHead();
+        thead.classList.add('chartjs-thead');
+
+        //add Column Headers using data
+        thead.insertRow(0);
+        console.log(units.labels)
+        for (let i = 0; i < units.labels.length; i++) {
+            thead.rows[0].insertCell(i).innerText = units.labels[i];
+            thead.rows[0].cells[i].style.color = 'orange';
+        };
+        thead.rows[0].insertCell(0).innerText = 'Metrics';
+
+        //tbody
+        const tbody = table.createTBody();
+        tbody.classList.add('chartjs-tbody');
+
+        //data
+        console.log(units.datasets)
+        units.datasets.map((dataset, index) => {
+            tbody.insertRow(index);
+            for (let i = 0; i < units.datasets[0].data.length; i++) {
+                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
+            };
+
+            tbody.rows[index].insertCell(0).innerText = dataset.label;
+        })
+        //append
+        chartBox.appendChild(tableDiv);
+        tableDiv.appendChild(table);
+    };
+
+    createTable();
 
 
+    
 </script>
+
+

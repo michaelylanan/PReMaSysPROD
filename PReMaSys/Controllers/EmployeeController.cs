@@ -42,14 +42,11 @@ namespace PReMaSys.Controllers
             ViewBag.Balance = balance;
 
             var list = _context.Rewards.ToList();
+            list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             if (searchby == "RewardName" && search != null)
             {
                 return View(list.Where(x => x.RewardName.Contains(search)).ToList());
             }
-            /*else if(list != null)
-            {
-                return View(list.Where(x => ((int)x.Category) == 1).ToList()); // Returns Display Product Per Category
-            }*/
             else
             {
                 return View(list);
@@ -65,6 +62,7 @@ namespace PReMaSys.Controllers
             //My Points
             ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
+            list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 1).ToList()); // Returns Display Product Per Category
         }
         public IActionResult Travel() 
@@ -75,6 +73,7 @@ namespace PReMaSys.Controllers
             //My Points
             ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
+            list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 2).ToList()); // Returns Display Product Per Category
         }
         public IActionResult Discounts() 
@@ -85,6 +84,7 @@ namespace PReMaSys.Controllers
             //My Points
             ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
+            list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 3).ToList()); // Returns Display Product Per Category
         }
         public IActionResult Others() 
@@ -95,6 +95,7 @@ namespace PReMaSys.Controllers
             //My Points
             ViewBag.Balance = balance;
             var list = _context.Rewards.ToList();
+            list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 4).ToList()); // Returns Display Product Per Category
         }
 

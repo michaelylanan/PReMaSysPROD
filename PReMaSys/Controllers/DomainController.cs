@@ -1,10 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using NuGet.Versioning;
 using PReMaSys.Data;
 using PReMaSys.Models;
 using PReMaSys.ViewModel;
 using System.Data;
+using System.Linq;
 
 namespace PReMaSys.Controllers
 {
@@ -21,15 +24,27 @@ namespace PReMaSys.Controllers
             _context = context;
             _userManager = userManager;
         }
-
         public IActionResult DomainPage()
         {
             return View();
         }
 
         //Reports
-
         public IActionResult ReportsPage() 
+        {
+            return View();
+        }
+
+        public IActionResult Test() //Diagnostic
+        {
+            return View();
+        }
+        public IActionResult Test2() //Descriptive
+        {
+            return View();
+        }
+
+        public IActionResult Test3() //Profit
         {
             return View();
         }
@@ -55,15 +70,25 @@ namespace PReMaSys.Controllers
         }
 
         /*APPROVAL OF REWARDS-------------------------------------------------------------------------------------------------------------------------------------*/
-        public IActionResult ApproveRewards()
+        public IActionResult ApproveRewards(string id)
         {
-            /*  ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
-              var latestCId = _context.Rewards.FirstOrDefault(c => c.ApplicationUser == user).CustomerId;
-              Customer cust = _context.Customers.FirstOrDefault(c => c.CustomerId == latestCId);
+           /* ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
-              var list = _context.AddToCarts.Where(c => c.Customer == cust).ToList();*/
+            //Get all administrators
+            var ad = _context.ApplicationUsers.FirstOrDefault(a => a.user == user).Id;
+
+            //Get ID From Roles
+            var sRole = _context.Roles.FirstOrDefault(r => r.Name.Contains("Support")).Id;
+
+            //Get UserId From UserRoles
+            var checkz = _context.UserRoles.FirstOrDefault(c=> c.RoleId == sRole).UserId;*/
+
+            /*list = _context.Rewards.Where(l => l.ApplicationUser.Id == checkz).ToList();*/
+
+            //Get Reward List
             var list = _context.Rewards.ToList();
             return View(list);
+
         }
 
         public IActionResult ApproveR(int? id)

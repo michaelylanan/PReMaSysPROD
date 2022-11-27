@@ -33,21 +33,7 @@ namespace PReMaSys.Controllers
         public IActionResult ReportsPage() 
         {
             return View();
-        }
-
-        public IActionResult Test() //Diagnostic
-        {
-            return View();
-        }
-        public IActionResult Test2() //Descriptive
-        {
-            return View();
-        }
-
-        public IActionResult Test3() //Profit
-        {
-            return View();
-        }
+        }       
 
         public IActionResult Ranking() 
         {

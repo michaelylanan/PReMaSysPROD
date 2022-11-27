@@ -11,7 +11,7 @@
 {
     @foreach (var role in Model)
     {
-        if(!role.Name.Contains("Domain") && !role.Name.Contains("Sales")){
+        if(!role.Name.Contains("Domain") && !role.Name.Contains("Sales") && !role.Name.Contains("Super")){
             <div class="card mb-3">
                 <div class="card-header">
                     Role Id: @role.Id

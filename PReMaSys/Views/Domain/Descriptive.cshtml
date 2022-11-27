@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Descriptive Analysis";
+    ViewData["Title"] = "Diagnostic Analysis";
     Layout = "~/Views/Shared/_LayoutLoggedin.cshtml";
 }
 
@@ -67,6 +67,12 @@
 
 </style>
 
+<!-- For CSV To ChartJS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="back-button" style="margin-bottom:20px">
@@ -77,285 +83,164 @@
 <div class="chartMenu">
     <p>SUMMARY OF NET PROFIT: DESCRIPTIVE ANALYSIS</p>
 </div>
+
+<!-- INPUT DB SHEET LINK-->
+<div class="container" style="padding:40px">
+    <div class="card">
+        <div class="card-header"><b>Input SHEETDB API URL (CSV FILE)</b></div>
+        <div style="padding:10px">Create new Google Spreadsheet using this template: <a class="card-link" href="https://docs.google.com/spreadsheets/d/1-mp_WubDktjqvG3nSjnc07whRNG8yx6vAliLGjwxsMg/edit#gid=0" target="_blank">Descriptive Template</a></div>
+        <div style="padding:10px">Logged in to Convert Google Spreadsheet link to SheetDB API (CSV): <a class="card-link" href="https://sheetdb.io/apis" target="_blank">SheetDB API</a></div>
+        <div class="card-body" style="margin: 0 auto;margin-left: auto;margin-right: auto;">
+            <input type="text" placeholder="Paste SheetDB API Url Here..." id="myInput" size="50">
+            <button class="btn btn-outline-success" onclick="plotcharts()">Plot Charts</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Visual Charts-->
 <div class="chartCard">
     <div class="chartBox">
         <div>Bar Graph: UNIT SOLD PER PRODUCT</div>
-        <canvas id="myChart"></canvas>
+        <canvas id="barchart"></canvas>
     </div>
 </div>
 
 <div class="chartCard">
     <div class="chartBox">
-        <div>Line Graph: PROFIT GENERATED PER PRODUCT</div>
-        <canvas id="lineChart"></canvas>
-    </div>
-</div>
-<div class="chartCard">
-    <div class="chartBox2">
-        <div>Table: Data Interpretation</div>
+        <div>Line Graph: GROSS, PROFIT, UNIT SOLD</div>
+        <canvas id="linechart"></canvas>
     </div>
 </div>
 
-<script>
-    // setup
-    const data = {
-        labels: ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6', 'Product 7', 'Product 8', 'Product 9', 'Product 10'],
-        datasets: [{ // Employee 1
-            label: 'Michael Ylanan',
-            data: [18000, 15000, 18000, 19000, 11200, 13000, 1900, 15000, 12002, 10000],
-            backgroundColor: [
-                'rgb(255, 255, 77)', // legend color
-            ],
-            borderColor: [
-                'rgb(255, 255, 77)', // line color
-            ],
-            borderWidth: 1
-        },
-        { // Employee 2
-            label: 'Nicole Cepria',
-            data: [1210, 11200, 6510, 12300, 9800, 1200, 1200, 8100, 9802, 1400],
-            backgroundColor: [
-                'rgb(77, 121, 255)', // legend color
-            ],
-            borderColor: [
-                'rgb(77, 121, 255)', // line color
-            ],
-            borderWidth: 1
-        },
-        { // Employee 3
-            label: 'Miguel Magallanes',
-            data: [900, 9800, 3510, 11300, 8800, 900, 1100, 7100, 12002, 1200],
-            backgroundColor: [
-                'rgb(179, 179, 204)', // legend color
-            ],
-            borderColor: [
-                'rgb(179, 179, 204)', // line color
-            ],
-            borderWidth: 1
-        },
-        { // Employee 4
-            label: 'Migo Del Rosario',
-            data: [1110, 13100, 1101, 13002, 5400, 7200, 1200, 1100, 18002, 1400],
-            backgroundColor: [
-                'rgb(255, 173, 51)', // legend color
-            ],
-            borderColor: [
-                'rgb(255, 173, 51)', // line color
-            ],
-            borderWidth: 1
-        }]
-    };
 
-    // config
-    const config = {
-        type: 'bar',
-        data,
-        options: {
-            indexAxis: 'y', // Horizontal Bar
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+<script type="text/javascript">
+    function plotcharts() {
+        var inputVal = document.getElementById("myInput").value;
+        var apiUrl = inputVal;
+        var product = []
+        var unit = [];
+        var gross = [];
+        var net = [];
+        var bgcolor = [
+            'rgba(255, 26, 104, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)',
+            'rgba(0, 0, 0, 0.2)'
+        ];
+
+        var bordercolor = [
+            'rgba(255, 26, 104, 1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)',
+            'rgba(0, 0, 0, 1)'
+        ];
+
+
+
+        fetch(apiUrl).then(response => {
+            return response.json();
+        }).then(data => {
+            for (let i = 0; i < data.length; i++) {
+                product.push(data[i]['Product']);
+                unit.push(parseInt(data[i]['Unit Sold']));
+                gross.push(data[i]['Gross Sales']);
+                net.push(data[i]['Net Profit']);
             }
-        }
-    };
+            //For Bar chart
+            dataset = addData2('Unit Sold', unit, bgcolor, bordercolor);
+            drawchart2(dataset, product, 'bar');
 
-    // render init block
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-    //LINE CHART ---------------------------------------------------------------------------------------------------------------------------------
-    // render line chart
-    const profit = {
-        labels: ['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6', 'Product 7', 'Product 8', 'Product 9', 'Product 10'],
-        datasets: [{
-            label: 'Unit Sold',
-            data: [12110, 112002, 651120, 1230120, 980120, 120120, 120120, 811200, 980212, 140120],
-            backgroundColor: [
-                'orange', // legend color
-            ],
-            borderColor: [
-                'orange', // line color
-            ],
-            borderWidth: 1
+            //For Line chart
+            dataset = addData('Unit Sold', unit, bgcolor, bordercolor, 'Gross Sales', gross, bgcolor, bordercolor, 'Net Profit', net, bgcolor, bordercolor)
+            drawchart(dataset, product, 'line');
+
+        }).catch(err => {
+            console.log(err);
+        });
+
+    }
+    function addData(title, Data, bgcolor, bordercolor, title2, Data2, bgcolor2, bordercolor2, title3, Data3, bgcolor3, bordercolor3) {
+        return [{
+            label: title,
+            data: Data,
+            backgroundColor: bgcolor,
+            borderColor: bordercolor,
+            borderWidth: 1.5
         },
         {
-            label: 'Gross Sales',
-            data: [121070, 11700, 651730, 1271200, 917800, 117200, 127200, 811700, 971202, 171200],
-            backgroundColor: [
-                'gray', // legend color
-            ],
-            borderColor: [
-                'gray', // line color
-            ],
-            borderWidth: 1
+            label: title2,
+            data: Data2,
+            backgroundColor: bgcolor2,
+            borderColor: bordercolor2,
+            borderWidth: 1.5
         },
         {
-            label: 'Net Profit',
-            data: [18120, 1212111, 601200, 912001, 121212, 351200, 90120, 100011, 12312, 12312],
-            backgroundColor: [
-                'rgb(0, 38, 153)', // legend color
-            ],
-            borderColor: [
-                'rgb(0, 38, 153)', // line color
-            ],
-            borderWidth: 1
-        }]
-    };
+            label: title3,
+            data: Data3,
+            backgroundColor: bgcolor3,
+            borderColor: bordercolor3,
+            borderWidth: 1.5
+        }];
+    }
 
-
-    // config
-    const config2 = {
-        type: 'line',
-        data: profit,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+    function drawchart(dataset, Labels, type) {
+        const ctx = document.getElementById(type + 'chart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: type,
+            data: {
+                labels: Labels,
+                datasets: dataset
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
-        }
-    };
-    const lineChart = new Chart(
-        document.getElementById('lineChart'),
-        config2
-    );
+        });
+    }
 
-    function createTable() {
-        console.log('triggered');
-        const chartBox = document.querySelector('.chartBox2');
-        const tableDiv = document.createElement('DIV');
-        tableDiv.setAttribute('id', 'tableDiv');//assign ID
+    function addData2(title, Data, bgcolor, bordercolor, title2, Data2, bgcolor2, bordercolor2) {
+        return [{
+            label: title,
+            data: Data,
+            backgroundColor: bgcolor,
+            borderColor: bordercolor,
+            borderWidth: 1.5,
+        }];
+    }
 
-        //add Table
-        const table = document.createElement('TABLE');
-        table.classList.add('chartjs-table');
-
-        //add thead
-        const thead = table.createTHead();
-        thead.classList.add('chartjs-thead');
-
-        //add Column Headers using data
-        thead.insertRow(0);
-        console.log(profit.labels)
-        for (let i = 0; i < profit.labels.length; i++) {
-            thead.rows[0].insertCell(i).innerText = profit.labels[i];
-            thead.rows[0].cells[i].style.color = 'orange';
-        };
-        thead.rows[0].insertCell(0).innerText = 'Metrics';
-
-        //tbody
-        const tbody = table.createTBody();
-        tbody.classList.add('chartjs-tbody');
-
-        //data
-        console.log(profit.datasets)
-        profit.datasets.map((dataset, index) => {
-            tbody.insertRow(index);
-            for (let i = 0; i < profit.datasets[0].data.length; i++) {
-                tbody.rows[index].insertCell(i).innerText = dataset.data[i];
-            };
-            tbody.rows[index].insertCell(0).innerText = dataset.label;
-        })
-
-
-        //append
-        chartBox.appendChild(tableDiv);
-        tableDiv.appendChild(table);
-    };
-
-    createTable();
+    function drawchart2(dataset, Labels, type) {
+        const ctx = document.getElementById(type + 'chart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: type,
+            data: {
+                labels: Labels,
+                datasets: dataset
+            },
+            options: {
+                indexAxis: 'y',
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }   
 
 </script>
 
-@*<a class="option-link" href ="~/Admin/ReportsPage" style="width:30%">< Go Back to Reports</a>
-<div class="container" style="background-color:forestgreen">
-     <div style="text-align:center; font-size:30px; padding:20px; background-color:white; border:1px forestgreen solid">SUMMARY OF NET PROFIT: DESCRIPTIVE ANALYSIS</div>
-     <div style="padding:10px">
-         <div style="font-weight:bold; padding:10px; color:white">Bar Graph: UNIT SOLD PER PRODUCT</div>
-         <img src="~/img/descript.png" style="width:100%"/>
-     </div>
-     <div style="margin:10px">
-         <div style="font-weight:bold; padding:10px; color:white">Bar Graph: PROFIT GENERATED PER PRODUCT</div>
-         <img src="~/img/linegraph.png" style="width:100%"/>
-     </div>
-     <div>
-
- <div style="text-align:center; font-size:30px; padding:20px; background-color:white">Data Interpretation</div>
-       <table class="table"style="font-size:15px; background-color:white">
-              <tr>
-                  <th colspan="4">GRAPH</th>
-              </tr>
-              <tr>
-                  <th>Product</th>
-                  <th>Units Sold</th>
-                  <th>Gross Sales</th>
-                  <th>Net Profit</th>
-              </tr>
-              <tr>
-                  <td>Product 1</td>
-                  <td>The total number of Unit Sold is: 1,475 </td>
-                  <td>The Gross Sales this month is  PHP 5,000,000.00</td>
-                  <td>The Net Profit Generated this month is  PHP  2,500,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 2</td>
-                  <td>The total number of Unit Sold is: 2,268</td>
-                  <td>The Gross Sales this month is  PHP  4,000,000.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  2,000,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 3</td>
-                  <td>The total number of Unit Sold is: 1,685</td>
-                  <td>The Gross Sales this month is  PHP  4,500,000.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  1,500,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 4</td>
-                  <td>The total number of Unit Sold is: 2,817</td>
-                  <td>The Gross Sales this month is  PHP  12,300,000.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  7,000,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 5</td>
-                  <td>The total number of Unit Sold is: 1,123</td>
-                  <td>The Gross Sales this month is  PHP  1,459,600.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  700,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 6</td>
-                  <td>The total number of Unit Sold is: 1,568</td>
-                  <td>The Gross Sales this month is  PHP  456,987.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  100,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 7</td>
-                  <td>The total number of Unit Sold is: 2,436</td>
-                  <td>The Gross Sales this month is  PHP  1,212,121.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  800,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 8</td>
-                  <td>The total number of Unit Sold is: 1,189</td>
-                  <td>The Gross Sales this month is  PHP  458,712.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  150,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 9</td>
-                  <td>The total number of Unit Sold is: 667</td>
-                  <td>The Gross Sales this month is  PHP  6,587,412.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  3,500,000.00 </td>
-              </tr>
-              <tr>
-                  <td>Product 10</td>
-                  <td>The total number of Unit Sold is: 748</td>
-                  <td>The Gross Sales this month is  PHP  3,333,333.00 </td>
-                  <td>The Net Profit Generated this month is  PHP  1,000,000.00 </td>
-              </tr>
-          </table>
-     </div>
-</div>*@
 <script>
     function printFunction() {
         window.print();

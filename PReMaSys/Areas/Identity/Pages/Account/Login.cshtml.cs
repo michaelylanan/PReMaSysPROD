@@ -99,6 +99,10 @@ namespace PReMaSys.Areas.Identity.Pages.Account
                     {
                         return Redirect("~/Admin/AdminDashboard");
                     }
+                    else if (roles.Contains("Super"))
+                    {
+                        return Redirect("~/Manage/ListAllRoles");
+                    }
                     /* else if (roles.Contains("Admin"))
                      {
                          return Redirect("~/Admin/AdminDashboard");

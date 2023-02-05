@@ -2,7 +2,7 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    ViewData["Title"] = "Login";
      Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,16 +15,38 @@
        <p>Sign in and start managing your employees!</p>
        <hr />
        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+       <div class="form-group mb-3">
+          <div class="input-group input-group-lg ">
+           <input asp-for="Input.Email" class="form-control" autocomplete="username" placeholder="Email" aria-required="true" />
+          </div>
+           <span asp-validation-for="Input.Email" class="text-danger"></span>
+       </div>
+      
+@*
        <div class="form-floating mb-3">
         <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" />
         <label asp-for="Input.Email" class="form-label"></label>
         <span asp-validation-for="Input.Email" class="text-danger"></span>
+       </div>*@
+
+       <div class="form-group mb-3">
+         <div class="input-group input-group-lg" id="show_hide_password">
+          <input asp-for="Input.Password" class="form-control"autocomplete="current-password" aria-required="true" placeholder="Password" aria-describedby="basic-addon2"/> 
+           <div class="input-group-addon input-group-lg">
+            <span class="input-group-text"><a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a></span>
+          </div>
+         </div>
+       <span asp-validation-for="Input.Password" class="text-danger"></span>
        </div>
-       <div class="form-floating mb-3">
-        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" />
+       
+@*       <div class="form-floating mb-3">
+        <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" /> 
         <label asp-for="Input.Password" class="form-label"></label>
         <span asp-validation-for="Input.Password" class="text-danger"></span>
-       </div>
+       </div>*@
+
+     
        <div>
         <div class="checkbox">
          <label asp-for="Input.RememberMe" class="form-label">
@@ -43,9 +65,9 @@
         <p>
          <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
         </p>
-        <p>
+      @*  <p>
          <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-        </p>
+        </p>*@
        </div>
      </form>
     </div>
@@ -53,6 +75,23 @@
     <img src="~/img/loginimage.png" class="login-pic-bg" id="login-pic-bg" alt=""/>
 </div>
 </div>
+<script>
+    $(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
+
     <!--
             <div class="col-md-6 col-md-offset-2">
             <section>
@@ -86,7 +125,8 @@
         </div>
     </div>
     -->
-    
+
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

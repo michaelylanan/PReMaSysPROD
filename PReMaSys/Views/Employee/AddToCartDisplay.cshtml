@@ -8,7 +8,7 @@
 
 
 
-<h1 class="text-center mt-5">Purchases</h1>
+<h1 class="text-center mt-5">Redeem Lists</h1>
 <div class="table-responsive">
 <table class="table table-hover border-success mt-5" id="cart">
     <thead>
@@ -63,7 +63,7 @@
                         <a asp-action="DeleteItem" class="btn btn-danger" asp-route-id="@item.CartId">Delete</a>
                     </td>
                     <td>
-                        <a asp-action="Purchase"  class="btn btn-success"  asp-route-id="@item.CartId">Purchase</a>
+                        <a asp-action="Purchase"  class="btn btn-success"  asp-route-id="@item.CartId">Redeem</a>
                     </td>
                 </tr>
             }
@@ -87,7 +87,7 @@
 });
 </script>
 
- <a href="EmployeeHomePage" type="button" class="btn btn-outline-success mt-5">Back to List</a>
+ <a href="EmployeeHomePage" type="button" class="btn btn-outline-success mt-5">Back to Dashboard</a>
 
 
 

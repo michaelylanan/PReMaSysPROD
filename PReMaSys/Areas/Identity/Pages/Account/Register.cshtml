@@ -27,13 +27,15 @@
                             <span asp-validation-for="Input.Email" class="text-danger"></span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" />
+                            <input asp-for="Input.Password" class="form-control" id="my_pass" autocomplete="new-password" aria-required="true" />
                             <label asp-for="Input.Password"></label>
+                            <p><input type="checkbox" onclick="myPassword()">Show Password</p>
                             <span asp-validation-for="Input.Password" class="text-danger"></span>
                         </div>
                         <div class="form-floating mb-3">
-                            <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" />
+                            <input asp-for="Input.ConfirmPassword" class="form-control" id="my_pass2" autocomplete="new-password" aria-required="true" />
                             <label asp-for="Input.ConfirmPassword"></label>
+                              <p><input type="checkbox" onclick="myPassword2()">Show Password</p>
                             <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                         </div>
                         <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-success mb-3">Register</button>
@@ -57,6 +59,26 @@
         </div>
     </div>
 </div>
+
+<script>
+function myPassword() {
+  var x = document.getElementById("my_pass");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+
+function myPassword2() {
+  var x = document.getElementById("my_pass2");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

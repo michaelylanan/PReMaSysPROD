@@ -16,7 +16,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" rel="stylesheet" /> 
 
-     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 </head>
@@ -24,17 +24,26 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow">
+        <nav class="navbar navbar-expand-xl navbar-toggleable-xl navbar-dark border-bottom box-shadow">
             <div class="container-fluid">
-                <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Admin" asp-action="AdminDashboard"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Admin" asp-action="ReportsPage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+               </button>
+                @*<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                </button>*@
+                <div class="navbar-collapse collapse d-xl-inline-flex justify-content-between" id="navbarTogglerDemo03">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="navbar-item">
-                            @*<a class="nav-link-admin text-dark" asp-area="" asp-controller="SupportAdmin" asp-action="NotificationPage">Notification</a>*@
+                            <a class="nav-link-admin text-dark" asp-area="" asp-controller="Admin" asp-action="ReportsPage">Dashboard</a>
+                        </li>
+                        <li class="navbar-item">
+                            <a class="nav-link-admin text-dark" asp-area="" asp-controller="Admin" asp-action="Reward">Rewards</a>
+                        </li>
+                         <li class="navbar-item">
+                            <a class="nav-link-admin2 text-dark" asp-area="" asp-controller="Admin" asp-action="ESalesProfitPoints">Sales Profit Points</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -49,11 +58,12 @@
         </main>
     </div>
   
- 
 
     @await RenderSectionAsync("Scripts", required: false)
-</body>
 
+    
+</body>
+</html>
 
 <!--
        <body>
@@ -84,4 +94,4 @@
 
 -->
 
-</html>
+

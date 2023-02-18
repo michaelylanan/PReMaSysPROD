@@ -36,12 +36,12 @@
         <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Update Profile</a></li>
         <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
         <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
-        <li class="nav-item mx-auto w-50"><a class="btn btn-outline-success mt-3  w-100" asp-controller="Domain" asp-action="DomainPage">Back</a></li>
+        <li class="nav-item mx-auto w-50"><a class="btn btn-outline-success mt-3  w-100" asp-controller="Domain" asp-action="ReportsPage">Back</a></li>
     }
     else if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
     {
         <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Update Profile</a></li>
-        <li class="nav-item mx-auto w-50"><a class="btn btn-outline-success mt-3 w-100" asp-controller="Admin" asp-action="AdminDashboard">Back</a></li>
+        <li class="nav-item mx-auto w-50"><a class="btn btn-outline-success mt-3 w-100" asp-controller="Admin" asp-action="ReportsPage">Back</a></li>
     }
     else if (SignInManager.IsSignedIn(User) && User.IsInRole("Support"))
     {

@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 using PReMaSys.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace PReMaSys.Areas.Identity.Pages.Account
 {
@@ -85,7 +85,7 @@ namespace PReMaSys.Areas.Identity.Pages.Account
 
                     if (roles.Contains("Domain"))
                     {
-                        return Redirect("~/Domain/DomainPage");
+                        return Redirect("~/Domain/ReportsPage");
                     }
                     else if (roles.Contains("Support"))
                     {
@@ -97,7 +97,7 @@ namespace PReMaSys.Areas.Identity.Pages.Account
                     }
                     else if (roles.Contains("Admin"))
                     {
-                        return Redirect("~/Admin/AdminDashboard");
+                        return Redirect("~/Admin/ReportsPage");
                     }
                     else if (roles.Contains("Super"))
                     {

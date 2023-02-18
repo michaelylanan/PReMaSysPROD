@@ -26,11 +26,11 @@
             <div class="container-fluid">
 
                 @if(signInManager.IsSignedIn(User) && User.IsInRole("Domain")){
-                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Domain" asp-action="DomainPage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Domain" asp-action="ReportsPage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
                 }
                 else if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                 {
-                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Admin" asp-action="AdminDashboard"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
+                    <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Admin" asp-action="ReportsPage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
                 }
                 else if (signInManager.IsSignedIn(User) && User.IsInRole("Support"))
                 {

@@ -27,13 +27,13 @@
 <body>
  <div class="d-flex flex-column min-vh-100">
   <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow">
+    <nav class="navbar navbar-expand-xl navbar-toggleable-xl navbar-dark border-bottom box-shadow"> 
       <div class="container-fluid">
         <a
           class="navbar-brand logoname fs-3"
           asp-area=""
           asp-controller="Domain"
-          asp-action="DomainPage"
+          asp-action="ReportsPage"
         >
           <img
             src="~/img/logo.png"
@@ -42,7 +42,7 @@
           />
           PReMaSys
         </a>
-        <button
+       @* <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
@@ -52,9 +52,28 @@
           aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
-          <partial name="_LoginPartial" />
+        </button>*@
+
+         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+        <div class=" collapse navbar-collapse d-xl-inline-flex justify-content-end" id="navbarTogglerDemo03">
+             <ul class="navbar-nav me-auto mb-2 mb-lg-0">  @*flex-grow-1*@ 
+              <li class="navbar-item">
+                <a class="nav-link-admin text-dark" asp-area="" asp-controller="Domain" asp-action="ReportsPage">Dashboard</a>
+              </li>
+               <li class="navbar-item">
+                <a class="nav-link-admin2 text-dark" asp-area="" asp-controller="Domain" asp-action="ListAdminRoles">Admin Roles</a>
+              </li>
+             <li class="navbar-item">
+                <a class="nav-link-admin text-dark" asp-area="" asp-controller="Domain" asp-action="ApproveRewards">Rewards</a>
+             </li>
+             <li class="navbar-item">
+                <a class="nav-link-admin2 text-dark" asp-area="" asp-controller="Domain" asp-action="SEPoints">Sales Profit Points</a>
+             </li>
+            </ul> 
+                 <partial name="_LoginPartial" />
         </div>
       </div>
     </nav>
@@ -65,6 +84,7 @@
       @RenderBody()
     </div>
 </div>
+
 
     
     @await RenderSectionAsync("Scripts", required: false)

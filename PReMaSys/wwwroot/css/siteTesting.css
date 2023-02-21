@@ -12,7 +12,7 @@ html {
     
 }
 
-.page-title-header, .point-title-header, .point-total-header, table, .rewards-tab, .login-form, .register-form, .nav-link-form, .nav-link-employee, .nav-link-employee2, .nav-link-admin, .nav-link-admin2, .reward-option, .option-link, h1, h2, h3, p, h5, button, .card, .partial {
+.page-title-header, .point-title-header, .point-total-header, table, .rewards-tab, .login-form, .register-form, .nav-link-form, .nav-link-employee, .nav-link-employee2, .nav-link-admin, .nav-link-admin2, .reward-option, .option-link, h1, h2, h3, h4, p, h5, button, .card, .partial {
     font-family: 'Barlow', sans-serif;
 }
 
@@ -278,6 +278,10 @@ ul.navbar-list {
 .ranking-card {
     width: 300px;
 }
+/*
+.subscription-cards{
+    margin-top:300px;
+}*/
 
 /*FOR DOMAIN and SUPPORT*/
 

@@ -26,14 +26,13 @@
 
  <body style="margin-bottom:20px">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-xl navbar-toggleable-xl navbar-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand logoname fs-3" asp-area="" asp-controller="Employee" asp-action="EmployeeHomepage"><img src="~/img/logo.png" class="rounded-circle logopic me-3" width="80" />PReMaSys</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+                <div class="navbar-collapse collapse d-xl-inline-flex justify-content-between id="navbarTogglerDemo03"">
                     <ul class="navbar-nav flex-grow-1">
                       @*  <li class="navbar-item">
                             <a class="nav-link-admin text-dark" asp-area="" asp-controller="Employee" asp-action="TransactionHistory">Transaction</a>
@@ -43,6 +42,9 @@
                         </li>
                         <li class="navbar-item d-flex">
                             <a class="nav-link-employee2 text-dark" asp-area="" asp-controller="Employee" asp-action="AddToCartDisplay">Redeem Lists<i class="ms-2 fa-solid fa-list"></i></a>
+                        </li>
+                         <li class="navbar-item d-flex">
+                            <a class="nav-link-employee2 text-dark" asp-area="" asp-controller="Employee" asp-action="Subscription">Subscriptions</a>
                         </li>
                         
                     </ul>

@@ -5,9 +5,6 @@ using PReMaSys.Data;
 
 using PReMaSys.Models;
 
-using PagedList;
-using System.Collections.Generic;
-
 
 namespace PReMaSys.Controllers
 {
@@ -32,7 +29,12 @@ namespace PReMaSys.Controllers
             return View();
         }
 
-        public IActionResult EmployeeHomePage(String searchby, String search) 
+        public IActionResult Subscription()
+        {
+            return View();
+        }
+
+        public IActionResult EmployeeHomePage(String searchby, String search)
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
@@ -54,7 +56,7 @@ namespace PReMaSys.Controllers
         }
 
         //Display Rewards per Category
-        public IActionResult Food() 
+        public IActionResult Food()
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
@@ -65,7 +67,7 @@ namespace PReMaSys.Controllers
             list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 1).ToList()); // Returns Display Product Per Category
         }
-        public IActionResult Travel() 
+        public IActionResult Travel()
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
@@ -76,7 +78,7 @@ namespace PReMaSys.Controllers
             list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 2).ToList()); // Returns Display Product Per Category
         }
-        public IActionResult Discounts() 
+        public IActionResult Discounts()
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
@@ -87,7 +89,7 @@ namespace PReMaSys.Controllers
             list = _context.Rewards.Where(r => ((int)r.Status) == 2).ToList();
             return View(list.Where(x => ((int)x.Category) == 3).ToList()); // Returns Display Product Per Category
         }
-        public IActionResult Others() 
+        public IActionResult Others()
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
             var balance = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
@@ -101,7 +103,7 @@ namespace PReMaSys.Controllers
 
 
         //Display Add To Cart Rewards
-        public IActionResult AddToCartDisplay() 
+        public IActionResult AddToCartDisplay()
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
@@ -122,14 +124,14 @@ namespace PReMaSys.Controllers
         }
 
         //Purchase Button
-        public IActionResult AddToCart(int? id) 
+        public IActionResult AddToCart(int? id)
         {
             Rewards reward = _context.Rewards.Where(r => r.RewardsInformationId == id).SingleOrDefault();
             return View(reward);
         }
 
         [HttpPost]
-        public IActionResult AddToCart(string qty, int id) 
+        public IActionResult AddToCart(string qty, int id)
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
@@ -158,7 +160,7 @@ namespace PReMaSys.Controllers
         }
 
         //Delete Item from Cart
-        public IActionResult DeleteItem(int? id) 
+        public IActionResult DeleteItem(int? id)
         {
 
             if (id == null)
@@ -175,10 +177,10 @@ namespace PReMaSys.Controllers
             _context.AddToCart.Remove(cart);
             _context.SaveChanges();
 
-            return RedirectToAction("AddToCartDisplay");         
+            return RedirectToAction("AddToCartDisplay");
         }
 
-        public IActionResult PurchaseView() 
+        public IActionResult PurchaseView()
         {
             ViewBag.userId = _userManager.GetUserName(HttpContext.User);
 
@@ -188,7 +190,7 @@ namespace PReMaSys.Controllers
             return View(list);
         }
 
-        public IActionResult Transaction() 
+        public IActionResult Transaction()
         {
             ViewBag.userId = _userManager.GetUserName(HttpContext.User);
 
@@ -199,13 +201,13 @@ namespace PReMaSys.Controllers
         }
 
         //Check Out
-        public IActionResult Purchase(int? id) 
+        public IActionResult Purchase(int? id)
         {
             AddToCart purchase = _context.AddToCart.Where(c => c.CartId == id).SingleOrDefault();
             return View(purchase);
         }
         [HttpPost]
-        public IActionResult Purchase(Purchase record, int id) 
+        public IActionResult Purchase(Purchase record, int id)
         {
             ApplicationUser user = _context.ApplicationUsers.FirstOrDefault(u => u.Id == _userManager.GetUserId(HttpContext.User));
 
@@ -215,7 +217,7 @@ namespace PReMaSys.Controllers
 
             var check = _context.SERecord.FirstOrDefault(c => c.SERId == user).EmployeePoints;
 
-            if(Convert.ToDecimal(check) >= addCart.RewardPrice)
+            if (Convert.ToDecimal(check) >= addCart.RewardPrice)
             {
                 purchase.ApplicationUser = user;
                 purchase.EmployeeName = user.UserName;
@@ -226,27 +228,27 @@ namespace PReMaSys.Controllers
                 purchase.TotalPayment = addCart.RewardPrice;
                 purchase.DateAdded = DateTime.Now;
                 purchase.Stat = record.Stat;
-                
+
                 var temp = Convert.ToDecimal(check) - addCart.RewardPrice;
 
                 var SEmployees = _context.SERecord.Where(s => s.SERId == user).SingleOrDefault();
                 SEmployees.EmployeePoints = temp.ToString();
 
 
-                
+
                 _context.SERecord.Update(SEmployees);
                 _context.Purchase.Add(purchase);
                 _context.SaveChanges();
 
-                TempData["ResultMessage"]= "Thank you for your Purchase!";
+                TempData["ResultMessage"] = "Thank you for your Purchase!";
                 return RedirectToAction("Purchase");
-               
+
             }
             else
             {
                 TempData["ResultMessage2"] = "Sorry! Insufficient Points!";
                 return RedirectToAction("Purchase");
-            }       
+            }
         }
 
     }

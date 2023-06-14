@@ -28,6 +28,8 @@ namespace PReMaSys.Data
 
         public DbSet<SERecord> SERecord { get; set; }
 
+        public DbSet<AuditLogEntry> AuditLogs { get; set; }
+
 
 
         //This Code block enables developer to custom/rename identity tables in sql

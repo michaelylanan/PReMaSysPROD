@@ -12,15 +12,15 @@ using PReMaSys.Data;
 namespace PReMaSys.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221117233741_TestTable")]
-    partial class TestTable
+    [Migration("20230614070422_NewlyAdded")]
+    partial class NewlyAdded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("prms")
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "6.0.18")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -395,6 +395,38 @@ namespace PReMaSys.Migrations
                     b.ToTable("AdminRoles", "prms");
                 });
 
+            modelBuilder.Entity("PReMaSys.Models.AuditLogEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Details")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EventType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AuditLogs", "prms");
+                });
+
             modelBuilder.Entity("PReMaSys.Models.DomainAccount", b =>
                 {
                     b.Property<int>("AdminInfoId")
@@ -550,6 +582,9 @@ namespace PReMaSys.Migrations
                     b.Property<int?>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("inventory")
+                        .HasColumnType("int");
+
                     b.HasKey("RewardsInformationId");
 
                     b.HasIndex("ApplicationUserId");
@@ -626,6 +661,108 @@ namespace PReMaSys.Migrations
                     b.HasIndex("ApplicationUserId");
 
                     b.ToTable("SalesEmployeeRecords", "prms");
+                });
+
+            modelBuilder.Entity("PReMaSys.Models.SalesForecast", b =>
+                {
+                    b.Property<int>("ForecastID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ForecastID"), 1L, 1);
+
+                    b.Property<decimal?>("DailyForecast")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("MonthlyForecast")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("QuarterlyForecast")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("SPID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SalesPerson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("WeeklyForecast")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("YearlyForecast")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("ForecastID");
+
+                    b.HasIndex("SPID")
+                        .IsUnique();
+
+                    b.ToTable("SalesForecasts", "prms");
+                });
+
+            modelBuilder.Entity("PReMaSys.Models.SalesPerformance", b =>
+                {
+                    b.Property<int>("SalesID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SalesID"), 1L, 1);
+
+                    b.Property<decimal>("AverageDealSize")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("ConversionR")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("CostPricePerUnit")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("CustomerAcquisition")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("CustomerRetentionR")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DateModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Particulars")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SalesPerson")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal?>("SalesProfit")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal?>("SalesRevenue")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("SalesVolume")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SellingPricePerUnit")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("UnitType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("UnitsSold")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<byte[]>("UserImage")
+                        .HasColumnType("varbinary(max)");
+
+                    b.HasKey("SalesID");
+
+                    b.ToTable("SalesPerformances", "prms");
                 });
 
             modelBuilder.Entity("PReMaSys.Models.SERecord", b =>
@@ -796,6 +933,17 @@ namespace PReMaSys.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("PReMaSys.Models.SalesForecast", b =>
+                {
+                    b.HasOne("PReMaSys.Models.SalesPerformance", "SalesPerformance")
+                        .WithOne("SalesForecast")
+                        .HasForeignKey("PReMaSys.Models.SalesForecast", "SPID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SalesPerformance");
+                });
+
             modelBuilder.Entity("PReMaSys.Models.SERecord", b =>
                 {
                     b.HasOne("PReMaSys.Data.ApplicationUser", "SERId")
@@ -803,6 +951,12 @@ namespace PReMaSys.Migrations
                         .HasForeignKey("SERIdId");
 
                     b.Navigation("SERId");
+                });
+
+            modelBuilder.Entity("PReMaSys.Models.SalesPerformance", b =>
+                {
+                    b.Navigation("SalesForecast")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
